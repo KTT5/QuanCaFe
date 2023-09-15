@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QLQuanCaFe
 {
-    public partial class Form1 : Form
+    public partial class Them : Form
     {
-        public Form1()
+        public Them()
         {
             InitializeComponent();
         }
