@@ -73,5 +73,10 @@ namespace QLQuanCaFe
         {
             openChildForm(new TaiBan());
         }
+
+        private void ban1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

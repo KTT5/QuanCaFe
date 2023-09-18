@@ -132,5 +132,11 @@
   <ItemGroup>
     <Folder Include="Image\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dynamic Controls\Dynamic Controls.csproj">
+      <Project>{98CE1164-5ABD-476E-A0DB-ABF837D6F5E2}</Project>
+      <Name>Dynamic Controls</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

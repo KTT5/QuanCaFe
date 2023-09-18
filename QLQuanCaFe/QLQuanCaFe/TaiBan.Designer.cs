@@ -48,6 +48,7 @@
             this.Controls.Add(this.label1);
             this.Name = "TaiBan";
             this.Text = "TaiBan";
+            this.Load += new System.EventHandler(this.TaiBan_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
