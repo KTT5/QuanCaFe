@@ -2,6 +2,15 @@
 use QLCafe
 
 --table
+CREATE TABLE NhanVien (
+    MaNhanVien INT PRIMARY KEY,
+    TenNhanVien NVARCHAR(255),
+    DiaChi NVARCHAR(255),
+    SoDienThoai NVARCHAR(20),
+    Email NVARCHAR(255),
+	Luong INT,
+	QuyenTruyCap NVARCHAR(225)
+);
 CREATE TABLE KhachHang (
     MaKhachHang INT PRIMARY KEY,
     TenKhachHang NVARCHAR(255),
@@ -32,7 +41,9 @@ CREATE TABLE DonHang (
     MaDonHang INT PRIMARY KEY IDENTITY(1,1),
     MaKhachHang INT,
     NgayDatHang DATE,
-    FOREIGN KEY (MaKhachHang) REFERENCES KhachHang(MaKhachHang)
+	MaNhanVien int,
+    FOREIGN KEY (MaKhachHang) REFERENCES KhachHang(MaKhachHang),
+	FOREIGN KEY (MaNhanVien) REFERENCES NhanVien(MaNhanVien)
 );
 
 CREATE TABLE ChiTietDonHang (
@@ -46,14 +57,35 @@ CREATE TABLE ChiTietDonHang (
     FOREIGN KEY (MaSanPham) REFERENCES SanPham(MaSanPham)
 );
 
-CREATE TABLE NhanVien (
-    MaNhanVien INT PRIMARY KEY,
-    TenNhanVien NVARCHAR(255),
-    DiaChi NVARCHAR(255),
-    SoDienThoai NVARCHAR(20),
-    Email NVARCHAR(255),
-	Luong INT,
-	QuyenTruyCap NVARCHAR(225)
+
+CREATE TABLE NhaCungCap(
+	MaNCC INT PRIMARY KEY,
+	TenNCC NVARCHAR(255),
+	DiaChi NVARCHAR(255),
+	SoDienThoaiNCC NVARCHAR(255),
+	Email NVARCHAR(255)
+);
+CREATE TABLE NguyenLieu(
+	MaNguyenLieu INT PRIMARY KEY IDENTITY(1,1),
+    TenNguyenLieu NVARCHAR(255),
+    GiaTien DECIMAL(10, 2),
+	DVT NVARCHAR(255)
+);
+CREATE TABLE DonNhap(
+	MaDonNhap INT PRIMARY KEY IDENTITY(1,1),
+	MaNCC INT,
+    NgayNhap DATE,
+	MaNhanVien INT,
+    FOREIGN KEY (MaNCC) REFERENCES NhaCungCap(MaNCC),
+	FOREIGN KEY (MaNhanVien) REFERENCES NhanVien(MaNhanVien)
+)
+CREATE TABLE ChiTietDonNhap (
+    MaChiTietDonNhap INT PRIMARY KEY IDENTITY(1,1),
+    MaDonNhap INT,
+    MaNguyenLieu INT,
+    SoLuong INT,
+    FOREIGN KEY (MaDonNhap) REFERENCES DonNhap(MaDonNhap),
+    FOREIGN KEY (MaNguyenLieu) REFERENCES NguyenLieu(MaNguyenLieu)
 );
 ---INSERT
 
