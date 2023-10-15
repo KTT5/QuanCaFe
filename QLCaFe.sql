@@ -88,6 +88,11 @@ CREATE TABLE ChiTietDonNhap (
     FOREIGN KEY (MaNguyenLieu) REFERENCES NguyenLieu(MaNguyenLieu)
 );
 ---INSERT
+INSERT INTO KhachHang  values ( 23001,N'Nguyễn Đức Long', N'Tp. Thủ Đức, TPHCM','0902748274')
+INSERT INTO KhachHang   values (23002,N'Hoàng Thiện Tâm', N'q. Phú Nhuận, TPHCM','0902571923')
+INSERT INTO KhachHang values (23003,N'Đoàn Duy Tùng', N'q. Gò Vấp, TPHCM','0902853404')
+INSERT INTO KhachHang   values (23004,N'Lê Phương Trinh', N'Tp.Thủ Đức, TPHCM','0902059780')
+INSERT INTO KhachHang  values (23005,N'Phạm Quốc Thanh', N'quận 7, TPHCM','0902491058')
 
 INSERT INTO TheLoai (MaTheLoai,TenTheLoai) VALUES (1,N'Trà Sữa');
 INSERT INTO TheLoai (MaTheLoai,TenTheLoai) VALUES (2,N'Hồng Trà');
