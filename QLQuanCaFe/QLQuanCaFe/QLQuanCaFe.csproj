@@ -34,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DAL_BLL">
-      <HintPath>..\DAL_BLL\bin\Debug\DAL_BLL.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -46,6 +43,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -66,11 +64,47 @@
     <Compile Include="GUI\BaoCao.Designer.cs">
       <DependentUpon>BaoCao.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\KhachHangGUI.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\KhachHangGUI.Designer.cs">
       <DependentUpon>KhachHangGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\permision.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\permision.Designer.cs">
+      <DependentUpon>permision.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Per_Detail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Per_Detail.Designer.cs">
+      <DependentUpon>Per_Detail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Per_relationship.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Per_relationship.Designer.cs">
+      <DependentUpon>Per_relationship.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\user.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\user.Designer.cs">
+      <DependentUpon>user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\User_PhanQuyen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\User_PhanQuyen.Designer.cs">
+      <DependentUpon>User_PhanQuyen.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,8 +135,26 @@
     <EmbeddedResource Include="GUI\BaoCao.resx">
       <DependentUpon>BaoCao.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\KhachHangGUI.resx">
       <DependentUpon>KhachHangGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\permision.resx">
+      <DependentUpon>permision.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Per_Detail.resx">
+      <DependentUpon>Per_Detail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Per_relationship.resx">
+      <DependentUpon>Per_relationship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\user.resx">
+      <DependentUpon>user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\User_PhanQuyen.resx">
+      <DependentUpon>User_PhanQuyen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -144,6 +196,10 @@
     <Folder Include="Image\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DAL_BLL\DAL_BLL.csproj">
+      <Project>{f17fa15e-23b1-4f79-baae-b2b0e3b1f35e}</Project>
+      <Name>DAL_BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Dynamic Controls\Dynamic Controls.csproj">
       <Project>{98CE1164-5ABD-476E-A0DB-ABF837D6F5E2}</Project>
       <Name>Dynamic Controls</Name>

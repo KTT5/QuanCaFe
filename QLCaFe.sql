@@ -87,6 +87,37 @@ CREATE TABLE ChiTietDonNhap (
     FOREIGN KEY (MaDonNhap) REFERENCES DonNhap(MaDonNhap),
     FOREIGN KEY (MaNguyenLieu) REFERENCES NguyenLieu(MaNguyenLieu)
 );
+
+create table tbl_user
+(
+	id_user int primary key IDENTITY(1,1),
+	name_user nvarchar(50),
+	user_name varchar(50),
+	pass varchar(50),
+)
+create table tbl_permision
+(
+	id_per int primary key IDENTITY(1,1),
+	name_per nvarchar(50),
+	description nvarchar(50),
+
+)
+create table tbl_per_relationship
+(
+	id_rel int primary key IDENTITY(1,1),
+	id_user_rel int,
+	id_per_rel int,
+	suspended bit,
+	FOREIGN KEY (id_user_rel) REFERENCES tbl_user(id_user),
+	FOREIGN KEY (id_per_rel) REFERENCES tbl_permision(id_per),
+)
+create table tbl_permision_del
+(
+	id_pd int primary key IDENTITY(1,1),
+	code_action nvarchar(50),
+	id_per int,
+	FOREIGN KEY (id_per) REFERENCES tbl_permision(id_per),
+)
 ---INSERT
 INSERT INTO KhachHang  values ( 23001,N'Nguyễn Đức Long', N'Tp. Thủ Đức, TPHCM','0902748274')
 INSERT INTO KhachHang   values (23002,N'Hoàng Thiện Tâm', N'q. Phú Nhuận, TPHCM','0902571923')
@@ -124,3 +155,17 @@ INSERT INTO Topping (MaTopping,Ten,Gia) VALUES (4,N'Topping Thạch',5000);
 
 INSERT INTO NhanVien (MaNhanVien,TenNhanVien,DiaChi,SoDienThoai,Email,Luong,QuyenTruyCap)
 VALUES (1,N'Nguyen Van A',N'Tây Ninh','01234567','nguyenvana@gmail.com',3000000,'Thu Chi');
+
+INSERT INTO tbl_user(name_user,user_name,pass) VALUES (N'Nguyễn Văn A','user','123');
+INSERT INTO tbl_user(name_user,user_name,pass) VALUES (N'Nguyễn Văn B','admin','123');
+
+INSERT INTO tbl_permision(name_per,description) VALUES (N'Admin',N'Quyền Cao Nhất');
+INSERT INTO tbl_permision(name_per,description) VALUES (N'Seller',N'Quyền Bán Hàng');
+
+INSERT INTO tbl_per_relationship(id_user_rel,id_per_rel,suspended) VALUES (1,2,'False');
+INSERT INTO tbl_per_relationship(id_user_rel,id_per_rel,suspended) VALUES (2,1,'False');
+
+INSERT INTO tbl_permision_del(code_action,id_per) VALUES('ADD',2);
+INSERT INTO tbl_permision_del(code_action,id_per) VALUES('EDIT',2);
+INSERT INTO tbl_permision_del(code_action,id_per) VALUES('DEL',2);
+INSERT INTO tbl_permision_del(code_action,id_per) VALUES('ALL',1);

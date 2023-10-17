@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using QLQuanCaFe.GUI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +18,7 @@ namespace QLQuanCaFe
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TrangChu());
+            Application.Run(new FormLogin());
         }
     }
 }
