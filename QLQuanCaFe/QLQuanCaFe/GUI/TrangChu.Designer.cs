@@ -41,11 +41,19 @@
             this.ptb_Logout = new System.Windows.Forms.PictureBox();
             this.ptb_User = new System.Windows.Forms.PictureBox();
             this.pn_main = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pn_Left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_TrangChu)).BeginInit();
             this.pn_Top.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_Logout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_User)).BeginInit();
+            this.pn_main.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // pn_Left
@@ -166,7 +174,6 @@
             this.pn_Top.Controls.Add(this.lb_User);
             this.pn_Top.Controls.Add(this.ptb_Logout);
             this.pn_Top.Controls.Add(this.ptb_User);
-            this.pn_Top.Dock = System.Windows.Forms.DockStyle.Top;
             this.pn_Top.Location = new System.Drawing.Point(137, 0);
             this.pn_Top.Name = "pn_Top";
             this.pn_Top.Size = new System.Drawing.Size(1047, 140);
@@ -203,13 +210,56 @@
             // 
             // pn_main
             // 
+            this.pn_main.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pn_main.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.pn_main.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pn_main.Controls.Add(this.panel1);
             this.pn_main.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pn_main.Location = new System.Drawing.Point(137, 140);
+            this.pn_main.Location = new System.Drawing.Point(137, 0);
             this.pn_main.Name = "pn_main";
-            this.pn_main.Size = new System.Drawing.Size(1047, 521);
+            this.pn_main.Size = new System.Drawing.Size(1047, 661);
             this.pn_main.TabIndex = 2;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1047, 140);
+            this.panel1.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label1.Location = new System.Drawing.Point(164, 74);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(108, 25);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Tên User";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(956, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(108, 62);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
             // 
             // TrangChu
             // 
@@ -221,6 +271,7 @@
             this.Controls.Add(this.pn_Left);
             this.Name = "TrangChu";
             this.Text = "TrangChu";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TrangChu_FormClosing);
             this.Load += new System.EventHandler(this.TrangChu_Load);
             this.pn_Left.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ptb_TrangChu)).EndInit();
@@ -228,6 +279,11 @@
             this.pn_Top.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_Logout)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_User)).EndInit();
+            this.pn_main.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -246,5 +302,9 @@
         private System.Windows.Forms.Button btn_BaoCao;
         private System.Windows.Forms.Button btn_TaiQuay;
         private System.Windows.Forms.Button btn_Them;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
