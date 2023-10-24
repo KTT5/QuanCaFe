@@ -42,5 +42,15 @@ namespace DAL_BLL.Properties {
                 return ((string)(this["QLCafeConnectionString1"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ADMIN-PC;Initial Catalog=QLCafe;Integrated Security=True")]
+        public string QLCafeConnectionString2 {
+            get {
+                return ((string)(this["QLCafeConnectionString2"]));
+            }
+        }
     }
 }

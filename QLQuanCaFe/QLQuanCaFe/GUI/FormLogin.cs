@@ -13,7 +13,7 @@ namespace QLQuanCaFe.GUI
 {
     public partial class FormLogin : Form
     {
-        string connection = @"Data Source=DESKTOP-HBPU190\SV;Initial Catalog=QLCafe;Integrated Security=True";
+        string connection = @"Data Source=ADMIN-PC;Initial Catalog=QLCafe;Integrated Security=True";
 
         public FormLogin()
         {
@@ -93,7 +93,7 @@ namespace QLQuanCaFe.GUI
             }
             else
             {
-                MessageBox.Show("Tài khoảng và mật khẩu không đúng !");
+                MessageBox.Show("Tài khoản và mật khẩu không đúng !");
             }
         }
         //Hiển Thị Mật Khẩu

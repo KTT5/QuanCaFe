@@ -56,6 +56,7 @@ namespace QLQuanCaFe
         private void btn_KhachHang_Click(object sender, EventArgs e)
         {
             openChildForm(new KhachHangGUI());
+
         }
 
         private void btn_Them_Click(object sender, EventArgs e)
@@ -190,6 +191,11 @@ namespace QLQuanCaFe
                 this.Hide();
                 
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            openChildForm(new DoUong());
         }
     }
 }

@@ -10,10 +10,13 @@ namespace DAL_BLL
     {
         public KhachHangDAL_BLL() { }
         QLCFDataContext qlcf = new QLCFDataContext();
-        
+        public void loadKhachHang()
+        {
+        }
         public List<KhachHang> getKhachHang()
         {
-            var khachhangs = (from kh in qlcf.KhachHangs select kh).ToList();
+            var khachhangs = qlcf.KhachHangs.Select(d => d).ToList();
+                //(from kh in qlcf.KhachHangs select kh).ToList();
             return khachhangs;
         }
         public List<KhachHang> getKhachHangTheoMa(int makh)

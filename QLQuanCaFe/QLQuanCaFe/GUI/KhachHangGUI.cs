@@ -21,7 +21,7 @@ namespace QLQuanCaFe
 
         private void dgvKhachhang_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow row = dgvKhachhang.Rows[e.RowIndex];
+             DataGridViewRow row = dgvKhachhang.Rows[e.RowIndex];
             int masv =  int.Parse(row.Cells[0].Value.ToString());
             List<KhachHang> khs = new List<KhachHang>();
             khs = kh.getKhachHangTheoMa(masv);

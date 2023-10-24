@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLCafe" Class="QLCFDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-HBPU190\SV;Initial Catalog=QLCafe;Integrated Security=True" SettingsObjectName="DAL_BLL.Properties.Settings" SettingsPropertyName="QLCafeConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=ADMIN-PC;Initial Catalog=QLCafe;Integrated Security=True" SettingsObjectName="DAL_BLL.Properties.Settings" SettingsPropertyName="QLCafeConnectionString2" Provider="System.Data.SqlClient" />
   <Table Name="dbo.ChiTietDonHang" Member="ChiTietDonHangs">
     <Type Name="ChiTietDonHang">
       <Column Name="MaChiTietDonHang" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -7,17 +7,9 @@
       <Column Name="MaSanPham" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MaTopping" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Topping_ChiTietDonHang" Member="Topping" ThisKey="MaTopping" OtherKey="MaTopping" Type="Topping" IsForeignKey="true" />
       <Association Name="DonHang_ChiTietDonHang" Member="DonHang" ThisKey="MaDonHang" OtherKey="MaDonHang" Type="DonHang" IsForeignKey="true" />
       <Association Name="SanPham_ChiTietDonHang" Member="SanPham" ThisKey="MaSanPham" OtherKey="MaSanPham" Type="SanPham" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Topping" Member="Toppings">
-    <Type Name="Topping">
-      <Column Name="MaTopping" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Ten" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="Gia" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Topping_ChiTietDonHang" Member="ChiTietDonHangs" ThisKey="MaTopping" OtherKey="MaTopping" Type="ChiTietDonHang" />
+      <Association Name="Topping_ChiTietDonHang" Member="Topping" ThisKey="MaTopping" OtherKey="MaTopping" Type="Topping" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ChiTietDonNhap" Member="ChiTietDonNhaps">
@@ -144,6 +136,14 @@
       <Column Name="MaTheLoai" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="TenTheLoai" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Association Name="TheLoai_SanPham" Member="SanPhams" ThisKey="MaTheLoai" OtherKey="MaTheLoai" Type="SanPham" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Topping" Member="Toppings">
+    <Type Name="Topping">
+      <Column Name="MaTopping" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Ten" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Gia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Topping_ChiTietDonHang" Member="ChiTietDonHangs" ThisKey="MaTopping" OtherKey="MaTopping" Type="ChiTietDonHang" />
     </Type>
   </Table>
 </Database>

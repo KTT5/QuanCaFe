@@ -45,6 +45,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.pn_Left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_TrangChu)).BeginInit();
             this.pn_Top.SuspendLayout();
@@ -59,6 +60,7 @@
             // pn_Left
             // 
             this.pn_Left.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.pn_Left.Controls.Add(this.button1);
             this.pn_Left.Controls.Add(this.btn_Them);
             this.pn_Left.Controls.Add(this.btn_KhachHang);
             this.pn_Left.Controls.Add(this.btn_BaoCao);
@@ -77,12 +79,10 @@
             this.btn_Them.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_Them.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Them.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btn_Them.Image = ((System.Drawing.Image)(resources.GetObject("btn_Them.Image")));
-            this.btn_Them.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_Them.Location = new System.Drawing.Point(0, 364);
             this.btn_Them.Name = "btn_Them";
             this.btn_Them.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.btn_Them.Size = new System.Drawing.Size(137, 56);
+            this.btn_Them.Size = new System.Drawing.Size(137, 75);
             this.btn_Them.TabIndex = 5;
             this.btn_Them.Text = "Thêm";
             this.btn_Them.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -261,6 +261,23 @@
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button1.Location = new System.Drawing.Point(0, 439);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(137, 69);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Khách hàng";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // TrangChu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -306,5 +323,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button button1;
     }
 }

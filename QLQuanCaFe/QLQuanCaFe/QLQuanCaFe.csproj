@@ -64,6 +64,12 @@
     <Compile Include="GUI\BaoCao.Designer.cs">
       <DependentUpon>BaoCao.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\DoUong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DoUong.Designer.cs">
+      <DependentUpon>DoUong.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     </Compile>
     <EmbeddedResource Include="GUI\BaoCao.resx">
       <DependentUpon>BaoCao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DoUong.resx">
+      <DependentUpon>DoUong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
