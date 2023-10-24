@@ -58,41 +58,14 @@ CREATE TABLE ChiTietDonHang (
 );
 
 
-CREATE TABLE NhaCungCap(
-	MaNCC INT PRIMARY KEY,
-	TenNCC NVARCHAR(255),
-	DiaChi NVARCHAR(255),
-	SoDienThoaiNCC NVARCHAR(255),
-	Email NVARCHAR(255)
-);
-CREATE TABLE NguyenLieu(
-	MaNguyenLieu INT PRIMARY KEY IDENTITY(1,1),
-    TenNguyenLieu NVARCHAR(255),
-    GiaTien DECIMAL(10, 2),
-	DVT NVARCHAR(255)
-);
-CREATE TABLE DonNhap(
-	MaDonNhap INT PRIMARY KEY IDENTITY(1,1),
-	MaNCC INT,
-    NgayNhap DATE,
-	MaNhanVien INT,
-    FOREIGN KEY (MaNCC) REFERENCES NhaCungCap(MaNCC),
-	FOREIGN KEY (MaNhanVien) REFERENCES NhanVien(MaNhanVien)
-)
-CREATE TABLE ChiTietDonNhap (
-    MaChiTietDonNhap INT PRIMARY KEY IDENTITY(1,1),
-    MaDonNhap INT,
-    MaNguyenLieu INT,
-    SoLuong INT,
-    FOREIGN KEY (MaDonNhap) REFERENCES DonNhap(MaDonNhap),
-    FOREIGN KEY (MaNguyenLieu) REFERENCES NguyenLieu(MaNguyenLieu)
-);
+
 ---INSERT
 INSERT INTO KhachHang  values ( 23001,N'Nguyễn Đức Long', N'Tp. Thủ Đức, TPHCM','0902748274')
 INSERT INTO KhachHang   values (23002,N'Hoàng Thiện Tâm', N'q. Phú Nhuận, TPHCM','0902571923')
 INSERT INTO KhachHang values (23003,N'Đoàn Duy Tùng', N'q. Gò Vấp, TPHCM','0902853404')
 INSERT INTO KhachHang   values (23004,N'Lê Phương Trinh', N'Tp.Thủ Đức, TPHCM','0902059780')
 INSERT INTO KhachHang  values (23005,N'Phạm Quốc Thanh', N'quận 7, TPHCM','0902491058')
+
 
 INSERT INTO TheLoai (MaTheLoai,TenTheLoai) VALUES (1,N'Trà Sữa');
 INSERT INTO TheLoai (MaTheLoai,TenTheLoai) VALUES (2,N'Hồng Trà');
