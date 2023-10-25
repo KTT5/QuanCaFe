@@ -1,0 +1,198 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using DAL_BLL;
+using System.IO;
+
+namespace QLQuanCaFe.GUI
+{
+    public partial class QLSanPham : Form
+    {
+        DoUongDAL_BLL du = new DoUongDAL_BLL(); 
+        TheLoaiDAL_BLL tl=new TheLoaiDAL_BLL();
+        public QLSanPham()
+        {
+            InitializeComponent();
+            List<SanPham> khs = du.GetSanPhams1();
+            dgvSanPham.DataSource = khs;
+            txtTimkiem.Text = "Tìm kiếm theo tên...";
+            txtTimkiem.ForeColor = System.Drawing.Color.Gray;
+        }
+
+        private void QLSanPham_Load(object sender, EventArgs e)
+        {
+            List<SanPham> sps = du.GetSanPhams1();
+            dgvSanPham.DataSource = sps;
+            txtMaSP.Enabled = false;
+            txtTenSP.Enabled = false;
+            txtGiaBan.Enabled = false;
+            //txtMaKH.Enabled = false;
+            btnLuu.Enabled = false;
+            List<TheLoai> tls = tl.getTheLoai();
+            cbbLoai.DataSource= tls;
+            cbbLoai.DisplayMember = "TenTheLoai";
+            cbbLoai.ValueMember = "MaTheLoai";
+        }
+
+        private void dgvSanPham_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //int r =dgvSanPham.CurrentCell.RowIndex; 
+            DataGridViewRow row = dgvSanPham.Rows[e.RowIndex];
+            int masv = int.Parse(row.Cells[0].Value.ToString());
+           //byte[] b = (byte[])dgvSanPham.Rows[r].Cells[4].Value;
+            //pictureBox1.Image=ByteArrayToImage(b);
+            List<SanPham> sps = new List<SanPham>();
+            sps = du.GetSanPhamsTheoMa(masv);
+            if (sps.Count > 0)
+            {
+                SanPham sanpham = sps[0];
+                txtMaSP.Text = sanpham.MaSanPham.ToString();
+                txtTenSP.Text = sanpham.TenSanPham;
+                txtGiaBan.Text = sanpham.GiaTien.ToString();
+                cbbLoai.Text = sanpham.MaTheLoai.ToString();
+                //string hinhanh = sanpham.HinhAnh.ToString();
+                //byte[] data = Encoding.UTF8.GetBytes(hinhanh);
+                //pictureBox1.Image = ByteArrayToImage(data);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            lbCheck.Text = "Sua";
+            //txtMaKH.Enabled = true;
+            txtGiaBan.Enabled = true;
+            txtTenSP.Enabled = true;
+            //txtTenKH.Enabled = true;
+            btnLuu.Enabled = true;
+            btnThem.Enabled = false;
+        }
+
+        private void txtTimkiem_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = txtTimkiem.Text.Trim().ToLower();
+            if (string.IsNullOrEmpty(searchText))
+            {
+                QLSanPham_Load(sender, e);
+            }
+            else
+            {
+                List<SanPham> sps = new List<SanPham>();
+                sps = du.GetSanPhamsTheoTen(searchText);
+                dgvSanPham.DataSource = sps;
+            }
+        }
+
+        private void txtTimkiem_Leave(object sender, EventArgs e)
+        {
+            if (txtTimkiem.Text == "Tìm kiếm theo tên...")
+            {
+                txtTimkiem.Text = "";
+                txtTimkiem.ForeColor = System.Drawing.Color.Black;
+            }
+        }
+
+        private void txtTimkiem_Enter(object sender, EventArgs e)
+        {
+            if (txtTimkiem.Text == "Tìm kiếm theo tên...")
+            {
+                txtTimkiem.Text = "";
+                txtTimkiem.ForeColor = System.Drawing.Color.Black;
+            }
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            lbCheck.Text = "Them";
+            //txtMaKH.Enabled = true;
+            txtTenSP.Enabled = true;
+            txtGiaBan.Enabled = true;
+            //txtTenKH.Enabled = true;
+            btnLuu.Enabled = true;
+            button2.Enabled = false;
+        }
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            if (lbCheck.Text == "Them")
+            {
+                //int ma = int.Parse(txtMaKH.Text);
+                byte[] b = ImageToByteArray(pictureBox1.Image);
+                string ten = txtTenSP.Text.ToString().Trim();
+                decimal gia = decimal.Parse(txtGiaBan.Text); ;
+                int matl = (int)cbbLoai.SelectedValue;
+                if (string.IsNullOrEmpty(ten) || string.IsNullOrEmpty(txtGiaBan.Text) )
+                {
+                    MessageBox.Show("Không được để trống bất kì giá trị nào", "Thông báo", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    
+                     du.ThemSP(ten, gia, matl, b);
+                     MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
+                     QLSanPham_Load(sender, e);
+                     txtGiaBan.Text = "";
+                     txtTenSP.Text = "";
+                     //txtDiaChi.Text = "";
+                     //txtTenKH.Text = ""; 
+                    button2.Enabled = true;
+                        
+                        
+
+                }
+
+            }
+            if (lbCheck.Text == "Sua")
+            {
+                int ma = int.Parse(txtMaSP.Text);
+                byte[] b = ImageToByteArray(pictureBox1.Image);
+                string ten = txtTenSP.Text.ToString().Trim();
+                decimal gia = decimal.Parse(txtGiaBan.Text); ;
+                int matl = (int)cbbLoai.SelectedValue;
+                if (string.IsNullOrEmpty(ten) || string.IsNullOrEmpty(txtMaSP.Text) || string.IsNullOrEmpty(txtGiaBan.Text) )
+                {
+                    MessageBox.Show("Không được để trống bất kì giá trị nào", "Thông báo", MessageBoxButtons.OK);
+                }
+                else
+                {
+
+                    du.SuaSP(ma, ten, gia, matl,b);
+                    MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK);
+                    QLSanPham_Load(sender, e);
+                    txtMaSP.Text = "";
+                    txtTenSP.Text = "";
+                    txtGiaBan.Text = "";
+                    pictureBox1.Image = null;
+                    btnThem.Enabled = true;
+                }
+
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open =new OpenFileDialog();
+            if(open.ShowDialog()==DialogResult.OK )
+            {
+                pictureBox1.Image=Image.FromFile(open.FileName);    
+                this.Text= open.FileName;   
+            }
+        }
+        byte[] ImageToByteArray(Image img)
+        {
+            MemoryStream m = new MemoryStream();
+            img.Save(m, System.Drawing.Imaging.ImageFormat.Png);
+            return m.ToArray(); 
+        }
+        //Image ByteArrayToImage(byte[] data)
+        //{
+        //    MemoryStream m = new MemoryStream(data);
+        //    return Image.FromStream(m);
+        //}
+    }
+}

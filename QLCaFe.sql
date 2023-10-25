@@ -60,38 +60,6 @@ CREATE TABLE ChiTietDonHang (
 );
 
 
--------HEAD
-
---------
-CREATE TABLE NhaCungCap(
-	MaNCC INT PRIMARY KEY,
-	TenNCC NVARCHAR(255),
-	DiaChi NVARCHAR(255),
-	SoDienThoaiNCC NVARCHAR(255),
-	Email NVARCHAR(255)
-);
-CREATE TABLE NguyenLieu(
-	MaNguyenLieu INT PRIMARY KEY IDENTITY(1,1),
-    TenNguyenLieu NVARCHAR(255),
-    GiaTien DECIMAL(10, 2),
-	DVT NVARCHAR(255)
-);
-CREATE TABLE DonNhap(
-	MaDonNhap INT PRIMARY KEY IDENTITY(1,1),
-	MaNCC INT,
-    NgayNhap DATE,
-	MaNhanVien INT,
-    FOREIGN KEY (MaNCC) REFERENCES NhaCungCap(MaNCC),
-	FOREIGN KEY (MaNhanVien) REFERENCES NhanVien(MaNhanVien)
-)
-CREATE TABLE ChiTietDonNhap (
-    MaChiTietDonNhap INT PRIMARY KEY IDENTITY(1,1),
-    MaDonNhap INT,
-    MaNguyenLieu INT,
-    SoLuong INT,
-    FOREIGN KEY (MaDonNhap) REFERENCES DonNhap(MaDonNhap),
-    FOREIGN KEY (MaNguyenLieu) REFERENCES NguyenLieu(MaNguyenLieu)
-);
 
 create table tbl_permision
 (
@@ -116,7 +84,9 @@ create table tbl_permision_del
 	id_per int,
 	FOREIGN KEY (id_per) REFERENCES tbl_permision(id_per),
 )
--------- 7ce15cffc3e7cc2901c2b6d0fd3cd83e88755c09
+alter table SanPham
+add HinhAnh image
+
 ---INSERT
 INSERT INTO KhachHang  values ( 23001,N'Nguyễn Đức Long', N'Tp. Thủ Đức, TPHCM','0902748274')
 INSERT INTO KhachHang   values (23002,N'Hoàng Thiện Tâm', N'q. Phú Nhuận, TPHCM','0902571923')

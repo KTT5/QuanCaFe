@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLCafe" Class="QLCFDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-HBPU190\SV;Initial Catalog=QLCafe;Integrated Security=True" SettingsObjectName="DAL_BLL.Properties.Settings" SettingsPropertyName="QLCafeConnectionString4" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=HP090123\SQLEXPRESS;Initial Catalog=QLCafe;Integrated Security=True" SettingsObjectName="DAL_BLL.Properties.Settings" SettingsPropertyName="QLCafeConnectionString3" Provider="System.Data.SqlClient" />
   <Table Name="dbo.ChiTietDonHang" Member="ChiTietDonHangs">
     <Type Name="ChiTietDonHang">
       <Column Name="MaChiTietDonHang" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -20,16 +20,6 @@
       <Association Name="Topping_ChiTietDonHang" Member="ChiTietDonHangs" ThisKey="MaTopping" OtherKey="MaTopping" Type="ChiTietDonHang" />
     </Type>
   </Table>
-  <Table Name="dbo.ChiTietDonNhap" Member="ChiTietDonNhaps">
-    <Type Name="ChiTietDonNhap">
-      <Column Name="MaChiTietDonNhap" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="MaDonNhap" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MaNguyenLieu" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="DonNhap_ChiTietDonNhap" Member="DonNhap" ThisKey="MaDonNhap" OtherKey="MaDonNhap" Type="DonNhap" IsForeignKey="true" />
-      <Association Name="NguyenLieu_ChiTietDonNhap" Member="NguyenLieu" ThisKey="MaNguyenLieu" OtherKey="MaNguyenLieu" Type="NguyenLieu" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.DonHang" Member="DonHangs">
     <Type Name="DonHang">
       <Column Name="MaDonHang" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -41,17 +31,6 @@
       <Association Name="NhanVien_DonHang" Member="NhanVien" ThisKey="MaNhanVien" OtherKey="MaNhanVien" Type="NhanVien" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.DonNhap" Member="DonNhaps">
-    <Type Name="DonNhap">
-      <Column Name="MaDonNhap" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="MaNCC" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NgayNhap" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="MaNhanVien" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="DonNhap_ChiTietDonNhap" Member="ChiTietDonNhaps" ThisKey="MaDonNhap" OtherKey="MaDonNhap" Type="ChiTietDonNhap" />
-      <Association Name="NhaCungCap_DonNhap" Member="NhaCungCap" ThisKey="MaNCC" OtherKey="MaNCC" Type="NhaCungCap" IsForeignKey="true" />
-      <Association Name="NhanVien_DonNhap" Member="NhanVien" ThisKey="MaNhanVien" OtherKey="MaNhanVien" Type="NhanVien" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.KhachHang" Member="KhachHangs">
     <Type Name="KhachHang">
       <Column Name="MaKhachHang" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -59,25 +38,6 @@
       <Column Name="DiaChi" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="SoDienThoai" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Association Name="KhachHang_DonHang" Member="DonHangs" ThisKey="MaKhachHang" OtherKey="MaKhachHang" Type="DonHang" />
-    </Type>
-  </Table>
-  <Table Name="dbo.NguyenLieu" Member="NguyenLieus">
-    <Type Name="NguyenLieu">
-      <Column Name="MaNguyenLieu" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="TenNguyenLieu" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="GiaTien" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Column Name="DVT" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Association Name="NguyenLieu_ChiTietDonNhap" Member="ChiTietDonNhaps" ThisKey="MaNguyenLieu" OtherKey="MaNguyenLieu" Type="ChiTietDonNhap" />
-    </Type>
-  </Table>
-  <Table Name="dbo.NhaCungCap" Member="NhaCungCaps">
-    <Type Name="NhaCungCap">
-      <Column Name="MaNCC" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TenNCC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="SoDienThoaiNCC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Association Name="NhaCungCap_DonNhap" Member="DonNhaps" ThisKey="MaNCC" OtherKey="MaNCC" Type="DonNhap" />
     </Type>
   </Table>
   <Table Name="dbo.NhanVien" Member="NhanViens">
@@ -91,7 +51,6 @@
       <Column Name="Email" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="Luong" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="NhanVien_DonHang" Member="DonHangs" ThisKey="MaNhanVien" OtherKey="MaNhanVien" Type="DonHang" />
-      <Association Name="NhanVien_DonNhap" Member="DonNhaps" ThisKey="MaNhanVien" OtherKey="MaNhanVien" Type="DonNhap" />
       <Association Name="NhanVien_tbl_per_relationship" Member="tbl_per_relationships" ThisKey="MaNhanVien" OtherKey="id_user_rel" Type="tbl_per_relationship" />
     </Type>
   </Table>
@@ -101,6 +60,7 @@
       <Column Name="TenSanPham" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="GiaTien" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
       <Column Name="MaTheLoai" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HinhAnh" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
       <Association Name="SanPham_ChiTietDonHang" Member="ChiTietDonHangs" ThisKey="MaSanPham" OtherKey="MaSanPham" Type="ChiTietDonHang" />
       <Association Name="TheLoai_SanPham" Member="TheLoai" ThisKey="MaTheLoai" OtherKey="MaTheLoai" Type="TheLoai" IsForeignKey="true" />
     </Type>

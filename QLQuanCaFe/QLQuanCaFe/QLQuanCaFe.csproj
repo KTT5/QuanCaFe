@@ -104,6 +104,12 @@
     <Compile Include="GUI\Per_relationship.Designer.cs">
       <DependentUpon>Per_relationship.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\QLSanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\QLSanPham.Designer.cs">
+      <DependentUpon>QLSanPham.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\user.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Per_relationship.resx">
       <DependentUpon>Per_relationship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QLSanPham.resx">
+      <DependentUpon>QLSanPham.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\user.resx">
       <DependentUpon>user.cs</DependentUpon>
