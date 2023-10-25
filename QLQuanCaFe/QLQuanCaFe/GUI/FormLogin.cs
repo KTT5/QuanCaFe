@@ -13,7 +13,7 @@ namespace QLQuanCaFe.GUI
 {
     public partial class FormLogin : Form
     {
-        string connection = @"Data Source=ADMIN-PC;Initial Catalog=QLCafe;Integrated Security=True";
+        string connection = @"Data Source=HP090123\SQLEXPRESS;Initial Catalog=QLCafe;Integrated Security=True";
 
         public FormLogin()
         {

@@ -12,7 +12,7 @@ namespace DAL_BLL.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.4.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,7 +26,17 @@ namespace DAL_BLL.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HP090123\\SQLEXPRESS;Initial Catalog=QLCafe;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ADMIN-PC;Initial Catalog=QLCafe;Integrated Security=True")]
+        public string QLCafeConnectionString2 {
+            get {
+                return ((string)(this["QLCafeConnectionString2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ADMIN-PC;Initial Catalog=QLCafe;Integrated Security=True")]
         public string QLCafeConnectionString {
             get {
                 return ((string)(this["QLCafeConnectionString"]));
@@ -36,7 +46,7 @@ namespace DAL_BLL.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-HBPU190\\SV;Initial Catalog=QLCafe;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ADMIN-PC;Initial Catalog=QLCafe;Integrated Security=True")]
         public string QLCafeConnectionString1 {
             get {
                 return ((string)(this["QLCafeConnectionString1"]));
@@ -46,10 +56,10 @@ namespace DAL_BLL.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ADMIN-PC;Initial Catalog=QLCafe;Integrated Security=True")]
-        public string QLCafeConnectionString2 {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HP090123\\SQLEXPRESS;Initial Catalog=QLCafe;Integrated Security=True")]
+        public string QLCafeConnectionString3 {
             get {
-                return ((string)(this["QLCafeConnectionString2"]));
+                return ((string)(this["QLCafeConnectionString3"]));
             }
         }
     }
