@@ -29,10 +29,10 @@ namespace QLQuanCaFe.GUI
         }
         void loadCBUser()
         {
-            var user = from us in data.tbl_users select us;
+            var user = from us in data.NhanViens select us;
             cbNameUser.DataSource = user;
-            cbNameUser.DisplayMember = "name_user";
-            cbNameUser.ValueMember = "id_user";
+            cbNameUser.DisplayMember = "TenNhanVien";
+            cbNameUser.ValueMember = "MaNhanVien";
         }
         void loadCBPer()
         {

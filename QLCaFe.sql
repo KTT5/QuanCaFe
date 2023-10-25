@@ -1,15 +1,17 @@
 ﻿create database QLCafe
 use QLCafe
 
+
 --table
 CREATE TABLE NhanVien (
-    MaNhanVien INT PRIMARY KEY,
+    MaNhanVien INT PRIMARY KEY IDENTITY(1,1),
     TenNhanVien NVARCHAR(255),
+	user_name varchar(50),
+	pass varchar(50),
     DiaChi NVARCHAR(255),
     SoDienThoai NVARCHAR(20),
     Email NVARCHAR(255),
 	Luong INT,
-	QuyenTruyCap NVARCHAR(225)
 );
 CREATE TABLE KhachHang (
     MaKhachHang INT PRIMARY KEY,
@@ -58,9 +60,9 @@ CREATE TABLE ChiTietDonHang (
 );
 
 
-<<<<<<< HEAD
+-------HEAD
 
-=======
+--------
 CREATE TABLE NhaCungCap(
 	MaNCC INT PRIMARY KEY,
 	TenNCC NVARCHAR(255),
@@ -91,13 +93,6 @@ CREATE TABLE ChiTietDonNhap (
     FOREIGN KEY (MaNguyenLieu) REFERENCES NguyenLieu(MaNguyenLieu)
 );
 
-create table tbl_user
-(
-	id_user int primary key IDENTITY(1,1),
-	name_user nvarchar(50),
-	user_name varchar(50),
-	pass varchar(50),
-)
 create table tbl_permision
 (
 	id_per int primary key IDENTITY(1,1),
@@ -111,7 +106,7 @@ create table tbl_per_relationship
 	id_user_rel int,
 	id_per_rel int,
 	suspended bit,
-	FOREIGN KEY (id_user_rel) REFERENCES tbl_user(id_user),
+	FOREIGN KEY (id_user_rel) REFERENCES NhanVien(MaNhanVien),
 	FOREIGN KEY (id_per_rel) REFERENCES tbl_permision(id_per),
 )
 create table tbl_permision_del
@@ -121,7 +116,7 @@ create table tbl_permision_del
 	id_per int,
 	FOREIGN KEY (id_per) REFERENCES tbl_permision(id_per),
 )
->>>>>>> 7ce15cffc3e7cc2901c2b6d0fd3cd83e88755c09
+-------- 7ce15cffc3e7cc2901c2b6d0fd3cd83e88755c09
 ---INSERT
 INSERT INTO KhachHang  values ( 23001,N'Nguyễn Đức Long', N'Tp. Thủ Đức, TPHCM','0902748274')
 INSERT INTO KhachHang   values (23002,N'Hoàng Thiện Tâm', N'q. Phú Nhuận, TPHCM','0902571923')
@@ -158,19 +153,18 @@ INSERT INTO Topping (MaTopping,Ten,Gia) VALUES (2,N'Topping Socola',5000);
 INSERT INTO Topping (MaTopping,Ten,Gia) VALUES (3,N'Topping trân châu đen',5000);
 INSERT INTO Topping (MaTopping,Ten,Gia) VALUES (4,N'Topping Thạch',5000);
 
-INSERT INTO NhanVien (MaNhanVien,TenNhanVien,DiaChi,SoDienThoai,Email,Luong,QuyenTruyCap)
-VALUES (1,N'Nguyen Van A',N'Tây Ninh','01234567','nguyenvana@gmail.com',3000000,'Thu Chi');
-
-INSERT INTO tbl_user(name_user,user_name,pass) VALUES (N'Nguyễn Văn A','user','123');
-INSERT INTO tbl_user(name_user,user_name,pass) VALUES (N'Nguyễn Văn B','admin','123');
+INSERT INTO NhanVien (TenNhanVien,user_name,pass,DiaChi,SoDienThoai,Email,Luong)
+VALUES (N'Nguyễn Văn A','user','123',N'Tây Ninh','01234567','nguyenvana@gmail.com',3000000);
+INSERT INTO NhanVien (TenNhanVien,user_name,pass,DiaChi,SoDienThoai,Email,Luong)
+VALUES (N'Nguyễn Văn B','admin','123',N'Hà Nội','01234568','nguyenvanB@gmail.com',3000000);
 
 INSERT INTO tbl_permision(name_per,description) VALUES (N'Admin',N'Quyền Cao Nhất');
 INSERT INTO tbl_permision(name_per,description) VALUES (N'Seller',N'Quyền Bán Hàng');
-
+--Bảng mối quan hệ giữa nhân viên và nhóm quyền có bị chặn hay không
 INSERT INTO tbl_per_relationship(id_user_rel,id_per_rel,suspended) VALUES (1,2,'False');
 INSERT INTO tbl_per_relationship(id_user_rel,id_per_rel,suspended) VALUES (2,1,'False');
-
-INSERT INTO tbl_permision_del(code_action,id_per) VALUES('ADD',2);
-INSERT INTO tbl_permision_del(code_action,id_per) VALUES('EDIT',2);
-INSERT INTO tbl_permision_del(code_action,id_per) VALUES('DEL',2);
+--Bảng chi tiết nhóm quyền sẽ được làm gì
+INSERT INTO tbl_permision_del(code_action,id_per) VALUES('Thu Chi',2);
+INSERT INTO tbl_permision_del(code_action,id_per) VALUES('Bao Cao',2);
+INSERT INTO tbl_permision_del(code_action,id_per) VALUES('QL Khach Hang',2);
 INSERT INTO tbl_permision_del(code_action,id_per) VALUES('ALL',1);

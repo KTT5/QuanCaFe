@@ -36,7 +36,7 @@ namespace QLQuanCaFe.GUI
         private void button1_Click(object sender, EventArgs e)
         {
             OpenChildForm(new user());
-            label1.Text = "USER";
+            label1.Text = "NHÂN VIÊN";
         }
 
         private void button2_Click(object sender, EventArgs e)

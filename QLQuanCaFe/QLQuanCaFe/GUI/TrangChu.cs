@@ -1,4 +1,5 @@
-﻿using QLQuanCaFe.GUI;
+﻿using DAL_BLL;
+using QLQuanCaFe.GUI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,7 @@ namespace QLQuanCaFe
 {
     public partial class TrangChu : Form
     {
-        string connection = @"Data Source=DESKTOP-HBPU190\SV;Initial Catalog=QLCafe;Integrated Security=True";
+        QLCFDataContext data = new QLCFDataContext();
         List<string> list_detail;
         public TrangChu()
         {
@@ -102,26 +103,11 @@ namespace QLQuanCaFe
             string id = "";
             try
             {
-                using (SqlConnection con = new SqlConnection(connection))
-                {
-                    con.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM tbl_per_relationship WHERE id_user_rel ='" + id_user + "'", con);
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    if (dt != null)
-                    {
-                        foreach (DataRow dr in dt.Rows)
-                        {
-                            if (dr["suspended"].ToString() == "False")
-                            {
-                                id = dr["id_per_rel"].ToString();
-                            }
-                        }
-                    }
-                    con.Close();
-
-                }
+                int idUr = int.Parse(id_user.ToString());
+                var query = from per in data.tbl_per_relationships
+                            where per.id_user_rel == idUr && per.suspended == false
+                            select per.id_per_rel;
+                id = query.FirstOrDefault().ToString();
             }
             catch (Exception)
             {
@@ -135,7 +121,13 @@ namespace QLQuanCaFe
             List<string> termsList = new List<string>();
             try
             {
-                using (SqlConnection con = new SqlConnection(connection))
+                int idP = int.Parse(id_per.ToString());
+                var query = from perm in data.tbl_permision_dels
+                            where perm.id_per == idP
+                            select perm.code_action;
+
+                termsList = query.ToList();
+                /*using (SqlConnection con = new SqlConnection(connection))
                 {
                     con.Open();
                     SqlCommand cmd = new SqlCommand("SELECT * FROM tbl_permision_del WHERE id_per ='" + id_per + "'", con);
@@ -151,7 +143,7 @@ namespace QLQuanCaFe
                     }
                     con.Close();
 
-                }
+                }*/
             }
             catch (Exception)
             {

@@ -8,13 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DAL_BLL;
 
 namespace QLQuanCaFe.GUI
 {
     public partial class FormLogin : Form
     {
-        string connection = @"Data Source=HP090123\SQLEXPRESS;Initial Catalog=QLCafe;Integrated Security=True";
-
+        QLCFDataContext data = new QLCFDataContext();
         public FormLogin()
         {
             InitializeComponent();
@@ -28,7 +28,11 @@ namespace QLQuanCaFe.GUI
             string id = "";
             try
             {
-                using (SqlConnection con = new SqlConnection(connection))
+                var query = from user in data.NhanViens
+                            where user.user_name == username && user.pass == pass
+                            select user.MaNhanVien;
+                id = query.FirstOrDefault().ToString();
+                /*using (SqlConnection con = new SqlConnection(connection))
                 {
                     con.Open();
                     SqlCommand cmd = new SqlCommand("SELECT * FROM tbl_user WHERE user_name ='" + username + "' and pass='" + pass + "'", con);
@@ -43,7 +47,7 @@ namespace QLQuanCaFe.GUI
                         }
                     }
                     con.Close();
-                }
+                }*/
             }
             catch (Exception)
             {
@@ -57,7 +61,11 @@ namespace QLQuanCaFe.GUI
             string id = "";
             try
             {
-                using (SqlConnection con = new SqlConnection(connection))
+                var query = from user in data.NhanViens
+                            where user.user_name == username && user.pass == pass
+                            select user.TenNhanVien;
+                id = query.FirstOrDefault().ToString();
+                /*using (SqlConnection con = new SqlConnection(connection))
                 {
                     con.Open();
                     SqlCommand cmd = new SqlCommand("SELECT * FROM tbl_user WHERE user_name ='" + username + "' and pass='" + pass + "'", con);
@@ -72,7 +80,7 @@ namespace QLQuanCaFe.GUI
                         }
                     }
                     con.Close();
-                }
+                }*/
             }
             catch (Exception)
             {

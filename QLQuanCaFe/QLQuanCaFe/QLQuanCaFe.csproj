@@ -34,6 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DAL_BLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DAL_BLL\bin\Debug\DAL_BLL.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -205,10 +209,6 @@
     <Folder Include="Image\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DAL_BLL\DAL_BLL.csproj">
-      <Project>{f17fa15e-23b1-4f79-baae-b2b0e3b1f35e}</Project>
-      <Name>DAL_BLL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Dynamic Controls\Dynamic Controls.csproj">
       <Project>{98CE1164-5ABD-476E-A0DB-ABF837D6F5E2}</Project>
       <Name>Dynamic Controls</Name>
