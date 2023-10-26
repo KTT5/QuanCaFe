@@ -42,11 +42,12 @@ namespace QLQuanCaFe.GUI
 
         private void dgvSanPham_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //int r =dgvSanPham.CurrentCell.RowIndex; 
+            int r =dgvSanPham.CurrentCell.RowIndex; 
             DataGridViewRow row = dgvSanPham.Rows[e.RowIndex];
             int masv = int.Parse(row.Cells[0].Value.ToString());
-           //byte[] b = (byte[])dgvSanPham.Rows[r].Cells[4].Value;
-            //pictureBox1.Image=ByteArrayToImage(b);
+            //byte[] b = (byte[])dgvSanPham.Rows[r].Cells[4].Value;
+            
+            //pictureBox1.Image=ByteArrayToImage(byteArray);
             List<SanPham> sps = new List<SanPham>();
             sps = du.GetSanPhamsTheoMa(masv);
             if (sps.Count > 0)
@@ -57,8 +58,18 @@ namespace QLQuanCaFe.GUI
                 txtGiaBan.Text = sanpham.GiaTien.ToString();
                 cbbLoai.Text = sanpham.MaTheLoai.ToString();
                 //string hinhanh = sanpham.HinhAnh.ToString();
-                //byte[] data = Encoding.UTF8.GetBytes(hinhanh);
-                //pictureBox1.Image = ByteArrayToImage(data);
+                //byte[] data = (byte[])sanpham.HinhAnh;
+                if (sanpham.HinhAnh == null)
+                {
+                    pictureBox1.Image = null;
+                }
+                else
+                {
+                    System.Data.Linq.Binary binaryData = (System.Data.Linq.Binary)sanpham.HinhAnh;
+                    byte[] byteArray = binaryData.ToArray();
+                    pictureBox1.Image = ByteArrayToImage(byteArray);
+                }
+                
             }
         }
 
@@ -122,7 +133,8 @@ namespace QLQuanCaFe.GUI
             if (lbCheck.Text == "Them")
             {
                 //int ma = int.Parse(txtMaKH.Text);
-                byte[] b = ImageToByteArray(pictureBox1.Image);
+                //byte[] b = ImageToByteArray(pictureBox1.Image);
+                byte[] b = PathToArray(this.Text);
                 string ten = txtTenSP.Text.ToString().Trim();
                 decimal gia = decimal.Parse(txtGiaBan.Text); ;
                 int matl = (int)cbbLoai.SelectedValue;
@@ -141,8 +153,8 @@ namespace QLQuanCaFe.GUI
                      //txtDiaChi.Text = "";
                      //txtTenKH.Text = ""; 
                     button2.Enabled = true;
-                        
-                        
+                    pictureBox1.Image = null;
+
 
                 }
 
@@ -150,7 +162,8 @@ namespace QLQuanCaFe.GUI
             if (lbCheck.Text == "Sua")
             {
                 int ma = int.Parse(txtMaSP.Text);
-                byte[] b = ImageToByteArray(pictureBox1.Image);
+                //byte[] b = ImageToByteArray(pictureBox1.Image);
+                byte[] b = PathToArray(this.Text);
                 string ten = txtTenSP.Text.ToString().Trim();
                 decimal gia = decimal.Parse(txtGiaBan.Text); ;
                 int matl = (int)cbbLoai.SelectedValue;
@@ -189,10 +202,18 @@ namespace QLQuanCaFe.GUI
             img.Save(m, System.Drawing.Imaging.ImageFormat.Png);
             return m.ToArray(); 
         }
-        //Image ByteArrayToImage(byte[] data)
-        //{
-        //    MemoryStream m = new MemoryStream(data);
-        //    return Image.FromStream(m);
-        //}
+        byte[] PathToArray(string path)
+        {
+            //MemoryStream m = new MemoryStream();
+            //Image img = Image.FromFile(path);
+            //img.Save(m, System.Drawing.Imaging.ImageFormat.Png);
+            //return m.ToArray();
+            return File.ReadAllBytes(path);
+        }
+        Image ByteArrayToImage(byte[] data)
+        {
+            MemoryStream m = new MemoryStream(data);
+            return Image.FromStream(m);
+        }
     }
 }

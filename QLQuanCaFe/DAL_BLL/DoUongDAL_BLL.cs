@@ -36,6 +36,13 @@ namespace DAL_BLL
             return khachhangs;
 
         }
+        public SanPham Get1SanPhamsTheoMa(int ma)
+        {
+            var sanpham = qlcf.SanPhams.FirstOrDefault(kh => kh.MaSanPham == ma);
+
+            return sanpham;
+
+        }
         public List<SanPham> GetSanPhamsTheoTen(string ma)
         {
             var khachhangs = (from kh in qlcf.SanPhams

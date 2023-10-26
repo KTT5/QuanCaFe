@@ -30,15 +30,16 @@
         {
             this.grbban = new System.Windows.Forms.GroupBox();
             this.pbdouong = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpDSDoUong = new System.Windows.Forms.FlowLayoutPanel();
             this.grbban.SuspendLayout();
             this.SuspendLayout();
             // 
             // grbban
             // 
             this.grbban.Controls.Add(this.pbdouong);
-            this.grbban.Location = new System.Drawing.Point(12, 12);
+            this.grbban.Location = new System.Drawing.Point(1, 12);
             this.grbban.Name = "grbban";
-            this.grbban.Size = new System.Drawing.Size(788, 426);
+            this.grbban.Size = new System.Drawing.Size(561, 426);
             this.grbban.TabIndex = 0;
             this.grbban.TabStop = false;
             this.grbban.Text = "Ban";
@@ -46,16 +47,25 @@
             // 
             // pbdouong
             // 
-            this.pbdouong.Location = new System.Drawing.Point(40, 10);
+            this.pbdouong.Location = new System.Drawing.Point(6, 19);
             this.pbdouong.Name = "pbdouong";
-            this.pbdouong.Size = new System.Drawing.Size(714, 416);
+            this.pbdouong.Size = new System.Drawing.Size(552, 401);
             this.pbdouong.TabIndex = 0;
+            // 
+            // flpDSDoUong
+            // 
+            this.flpDSDoUong.Location = new System.Drawing.Point(568, 22);
+            this.flpDSDoUong.Name = "flpDSDoUong";
+            this.flpDSDoUong.Padding = new System.Windows.Forms.Padding(7);
+            this.flpDSDoUong.Size = new System.Drawing.Size(332, 259);
+            this.flpDSDoUong.TabIndex = 0;
             // 
             // DoUong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(912, 450);
+            this.Controls.Add(this.flpDSDoUong);
             this.Controls.Add(this.grbban);
             this.Name = "DoUong";
             this.Text = "DoUong";
@@ -69,5 +79,6 @@
 
         private System.Windows.Forms.GroupBox grbban;
         private System.Windows.Forms.FlowLayoutPanel pbdouong;
+        private System.Windows.Forms.FlowLayoutPanel flpDSDoUong;
     }
 }

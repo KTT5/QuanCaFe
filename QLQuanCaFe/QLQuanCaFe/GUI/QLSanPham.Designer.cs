@@ -57,6 +57,7 @@
             this.lbCheck.Size = new System.Drawing.Size(35, 13);
             this.lbCheck.TabIndex = 40;
             this.lbCheck.Text = "label6";
+            this.lbCheck.Visible = false;
             // 
             // btnLuu
             // 
