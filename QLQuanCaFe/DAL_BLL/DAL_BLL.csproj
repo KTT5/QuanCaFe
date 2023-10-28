@@ -70,6 +70,7 @@
       <DependentUpon>QLCF.dbml</DependentUpon>
     </Compile>
     <Compile Include="TheLoaiDAL_BLL.cs" />
+    <Compile Include="ToppingDAL_BLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
