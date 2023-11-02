@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QLQuanCaFe.GUI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,18 @@ namespace QLQuanCaFe
         public Them()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            User_PhanQuyen form = new User_PhanQuyen();
+            form.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            QLSanPham form = new QLSanPham();
+            form.Show();
         }
     }
 }

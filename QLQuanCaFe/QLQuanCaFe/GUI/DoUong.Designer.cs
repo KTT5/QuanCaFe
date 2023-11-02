@@ -32,9 +32,9 @@
             this.pbdouong = new System.Windows.Forms.FlowLayoutPanel();
             this.flpDSDoUong = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lbTongTien = new System.Windows.Forms.Label();
             this.btnThanhtoan = new System.Windows.Forms.Button();
+            this.lbTongTien = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.lbDouong = new System.Windows.Forms.Label();
             this.grbban.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -62,7 +62,7 @@
             this.flpDSDoUong.Location = new System.Drawing.Point(568, 22);
             this.flpDSDoUong.Name = "flpDSDoUong";
             this.flpDSDoUong.Padding = new System.Windows.Forms.Padding(7);
-            this.flpDSDoUong.Size = new System.Drawing.Size(449, 374);
+            this.flpDSDoUong.Size = new System.Drawing.Size(449, 322);
             this.flpDSDoUong.TabIndex = 0;
             // 
             // panel1
@@ -70,29 +70,10 @@
             this.panel1.Controls.Add(this.btnThanhtoan);
             this.panel1.Controls.Add(this.lbTongTien);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(568, 402);
+            this.panel1.Location = new System.Drawing.Point(568, 350);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(449, 162);
             this.panel1.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(24, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Tổng Tiền";
-            // 
-            // lbTongTien
-            // 
-            this.lbTongTien.AutoSize = true;
-            this.lbTongTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTongTien.Location = new System.Drawing.Point(291, 34);
-            this.lbTongTien.Name = "lbTongTien";
-            this.lbTongTien.Size = new System.Drawing.Size(0, 20);
-            this.lbTongTien.TabIndex = 1;
             // 
             // btnThanhtoan
             // 
@@ -104,6 +85,25 @@
             this.btnThanhtoan.TabIndex = 2;
             this.btnThanhtoan.Text = "Thanh Toán";
             this.btnThanhtoan.UseVisualStyleBackColor = true;
+            // 
+            // lbTongTien
+            // 
+            this.lbTongTien.AutoSize = true;
+            this.lbTongTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTongTien.Location = new System.Drawing.Point(291, 34);
+            this.lbTongTien.Name = "lbTongTien";
+            this.lbTongTien.Size = new System.Drawing.Size(0, 20);
+            this.lbTongTien.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(24, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(88, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Tổng Tiền";
             // 
             // lbDouong
             // 

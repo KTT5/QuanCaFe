@@ -18,7 +18,7 @@ namespace QLQuanCaFe
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DoUong());
+            Application.Run(new FormLogin());
         }
     }
 }

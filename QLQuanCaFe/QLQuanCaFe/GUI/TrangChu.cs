@@ -46,12 +46,12 @@ namespace QLQuanCaFe
 
         private void btn_TaiQuay_Click(object sender, EventArgs e)
         {
-            openChildForm(new TaiQuay());
+            openChildForm(new DoUong());
         }
 
         private void btn_BaoCao_Click(object sender, EventArgs e)
         {
-            openChildForm(new BaoCao());
+            openChildForm(new ThongKe());
         }
 
         private void btn_KhachHang_Click(object sender, EventArgs e)
@@ -67,7 +67,7 @@ namespace QLQuanCaFe
             if (checkper("ALL") == true)
             {
                 MessageBox.Show("Chào Admin");
-                openChildForm(new User_PhanQuyen());
+                openChildForm(new Them());
             }
             else
             {
@@ -172,6 +172,10 @@ namespace QLQuanCaFe
                 e.Cancel = true;
                 this.Close();
             }
+            else
+            {
+                return;
+            }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -183,11 +187,15 @@ namespace QLQuanCaFe
                 this.Hide();
                 
             }
+            else
+            {
+                return;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            openChildForm(new DoUong());
+            
         }
     }
 }
