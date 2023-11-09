@@ -44,6 +44,10 @@ namespace QLQuanCaFe
 
         private void KhachHang_Load(object sender, EventArgs e)
         {
+            dgvKhachhang.Columns[0].HeaderText = "Mã KH";
+            dgvKhachhang.Columns[1].HeaderText = "Tên KH";
+            dgvKhachhang.Columns[2].HeaderText = "Địa chỉ";
+            dgvKhachhang.Columns[3].HeaderText = "Số ĐT";
             List<KhachHang> khs = kh.getKhachHang();
             dgvKhachhang.DataSource = khs;
             txtDiaChi.Enabled = false;
@@ -192,6 +196,11 @@ namespace QLQuanCaFe
 
                 MessageBox.Show("Không được để trống số đt", "Thông báo", MessageBoxButtons.OK);
             }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

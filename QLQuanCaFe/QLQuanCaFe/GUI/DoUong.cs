@@ -18,9 +18,9 @@ namespace QLQuanCaFe.GUI
     {
         DoUongDAL_BLL du = new DoUongDAL_BLL();
         ToppingDAL_BLL to = new ToppingDAL_BLL();
-        decimal tongTien = 0;
+        //decimal tongTien = 0;
         decimal tiendu = 0;
-        decimal tientopping = 0;
+        //decimal tientopping = 0;
         decimal thanhtoan = 0;
         private SanPham sanPham;
         Button bt;
@@ -40,6 +40,8 @@ namespace QLQuanCaFe.GUI
 
         private void DoUong_Load(object sender, EventArgs e)
         {
+            List<Topping> tp = to.getToppping();
+            dataGridView1.DataSource = tp;
             pbdouong.FlowDirection = FlowDirection.LeftToRight;
             pbdouong.AutoScroll = true;
             pbdouong.Dock = DockStyle.Fill;
@@ -105,8 +107,9 @@ namespace QLQuanCaFe.GUI
                 Panel card = new Panel();
                 card.BorderStyle = BorderStyle.Fixed3D;
                 card.Padding = new Padding(10);
-                card.Width = 400;
+                card.Width = 350;
                 card.Tag = maSanPham;
+                card.Height= 60;
 
                 Label lb = new Label();
                 lb.Text = sanPham.TenSanPham + "       " + sanPham.GiaTien;
@@ -140,7 +143,7 @@ namespace QLQuanCaFe.GUI
                  bt = new Button();
                 bt.Text = "Hoàn thành";
                 bt.Font = new Font(Font.FontFamily, 10);
-                bt.Location = new Point(300, 60);
+                bt.Location = new Point(240, 30);
                 bt.Width = 100;
                 bt.Click += Bt_Click;
 

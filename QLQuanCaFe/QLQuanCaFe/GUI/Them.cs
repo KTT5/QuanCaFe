@@ -29,5 +29,11 @@ namespace QLQuanCaFe
             QLSanPham form = new QLSanPham();
             form.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            QLNhanVien_GUI form = new QLNhanVien_GUI();
+            form.Show();
+        }
     }
 }

@@ -22,24 +22,24 @@ namespace QLQuanCaFe.GUI
         }
         void LoadListBillByDate(DateTime checkIn)
         {
-            var query = from donHang in data.DonHangs
-                        where donHang.NgayDatHang == checkIn
-                        select new
-                        {
-                            DonHang = donHang,
-                            ChiTietDonHangs = data.ChiTietDonHangs.Where(ctdh => ctdh.MaDonHang == donHang.MaDonHang).ToList()
-                        };
+            //var query = from donHang in data.DonHangs
+            //            where donHang.NgayDatHang == checkIn
+            //            select new
+            //            {
+            //                DonHang = donHang,
+            //                ChiTietDonHangs = data.ChiTietDonHangs.Where(ctdh => ctdh.MaDonHang == donHang.MaDonHang).ToList()
+            //            };
 
-            foreach (var item in query)
-            {
-                DonHang donHang = item.DonHang;
-                List<ChiTietDonHang> ctdh = item.ChiTietDonHangs;
-                foreach (var ch in ctdh)
-                {
-                    dtgvBill.Rows.Add(donHang.MaDonHang, donHang.NgayDatHang, donHang.NhanVien.TenNhanVien, ch.SoLuong, ch.SanPham.TenSanPham, ch.Topping.Ten);
-                }
+            //foreach (var item in query)
+            //{
+            //    DonHang donHang = item.DonHang;
+            //    List<ChiTietDonHang> ctdh = item.ChiTietDonHangs;
+            //    foreach (var ch in ctdh)
+            //    {
+            //        dtgvBill.Rows.Add(donHang.MaDonHang, donHang.NgayDatHang, donHang.NhanVien.TenNhanVien, ch.SoLuong, ch.SanPham.TenSanPham, ch.Topping.Ten);
+            //    }
 
-            }
+            //}
 
         }
         void setDataGridView()

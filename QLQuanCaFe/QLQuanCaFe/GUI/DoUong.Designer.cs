@@ -36,8 +36,10 @@
             this.lbTongTien = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lbDouong = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.grbban.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // grbban
@@ -45,7 +47,7 @@
             this.grbban.Controls.Add(this.pbdouong);
             this.grbban.Location = new System.Drawing.Point(1, 22);
             this.grbban.Name = "grbban";
-            this.grbban.Size = new System.Drawing.Size(561, 582);
+            this.grbban.Size = new System.Drawing.Size(438, 582);
             this.grbban.TabIndex = 0;
             this.grbban.TabStop = false;
             this.grbban.Enter += new System.EventHandler(this.grbban_Enter);
@@ -54,15 +56,15 @@
             // 
             this.pbdouong.Location = new System.Drawing.Point(6, 19);
             this.pbdouong.Name = "pbdouong";
-            this.pbdouong.Size = new System.Drawing.Size(552, 563);
+            this.pbdouong.Size = new System.Drawing.Size(427, 563);
             this.pbdouong.TabIndex = 0;
             // 
             // flpDSDoUong
             // 
-            this.flpDSDoUong.Location = new System.Drawing.Point(568, 22);
+            this.flpDSDoUong.Location = new System.Drawing.Point(674, 22);
             this.flpDSDoUong.Name = "flpDSDoUong";
             this.flpDSDoUong.Padding = new System.Windows.Forms.Padding(7);
-            this.flpDSDoUong.Size = new System.Drawing.Size(449, 322);
+            this.flpDSDoUong.Size = new System.Drawing.Size(343, 322);
             this.flpDSDoUong.TabIndex = 0;
             // 
             // panel1
@@ -116,11 +118,20 @@
             this.lbDouong.Text = "Đồ uống";
             this.lbDouong.Click += new System.EventHandler(this.lbDouong_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(445, 41);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(223, 303);
+            this.dataGridView1.TabIndex = 3;
+            // 
             // DoUong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1029, 621);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lbDouong);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flpDSDoUong);
@@ -131,6 +142,7 @@
             this.grbban.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,5 +158,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnThanhtoan;
         private System.Windows.Forms.Label lbDouong;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

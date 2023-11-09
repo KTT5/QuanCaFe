@@ -44,21 +44,32 @@ CREATE TABLE DonHang (
     MaKhachHang INT,
     NgayDatHang DATE,
 	MaNhanVien int,
+	TongTien decimal(10,2),
     FOREIGN KEY (MaKhachHang) REFERENCES KhachHang(MaKhachHang),
 	FOREIGN KEY (MaNhanVien) REFERENCES NhanVien(MaNhanVien)
 );
+
 
 CREATE TABLE ChiTietDonHang (
     MaChiTietDonHang INT PRIMARY KEY IDENTITY(1,1),
     MaDonHang INT,
     MaSanPham INT,
     SoLuong INT,
-	MaTopping INT,
     FOREIGN KEY (MaDonHang) REFERENCES DonHang(MaDonHang),
-	FOREIGN KEY (MaTopping) REFERENCES Topping(MaTopping),
+	--FOREIGN KEY (MaTopping) REFERENCES Topping(MaTopping),
     FOREIGN KEY (MaSanPham) REFERENCES SanPham(MaSanPham)
 );
 
+
+create table ChiTietTopping
+(
+	MaChiTietTopping INT PRIMARY KEY IDENTITY(1,1),
+	MaDonHang INT,
+    MaTopping INT,
+	SoLuong INT,
+	foreign key (MaDonHang) references DonHang(MaDonHang),
+	foreign key (MaTopping) references Topping(MaTopping)
+)
 
 
 create table tbl_permision

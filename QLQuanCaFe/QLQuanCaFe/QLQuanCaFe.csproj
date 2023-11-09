@@ -117,6 +117,12 @@
     <Compile Include="GUI\Per_relationship.Designer.cs">
       <DependentUpon>Per_relationship.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\QLNhanVien_GUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\QLNhanVien_GUI.Designer.cs">
+      <DependentUpon>QLNhanVien_GUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\QLSanPham.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Per_relationship.resx">
       <DependentUpon>Per_relationship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QLNhanVien_GUI.resx">
+      <DependentUpon>QLNhanVien_GUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QLSanPham.resx">
       <DependentUpon>QLSanPham.cs</DependentUpon>

@@ -1,23 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLCafe" Class="QLCFDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=HP090123\SQLEXPRESS;Initial Catalog=QLCafe;Integrated Security=True" SettingsObjectName="DAL_BLL.Properties.Settings" SettingsPropertyName="QLCafeConnectionString3" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Topping" Member="Toppings">
-    <Type Name="Topping">
-      <Column Name="MaTopping" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Ten" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="Gia" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Topping_ChiTietDonHang" Member="ChiTietDonHangs" ThisKey="MaTopping" OtherKey="MaTopping" Type="ChiTietDonHang" />
-    </Type>
-  </Table>
   <Table Name="dbo.ChiTietDonHang" Member="ChiTietDonHangs">
     <Type Name="ChiTietDonHang">
       <Column Name="MaChiTietDonHang" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="MaDonHang" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MaSanPham" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MaTopping" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Topping_ChiTietDonHang" Member="Topping" ThisKey="MaTopping" OtherKey="MaTopping" Type="Topping" IsForeignKey="true" />
       <Association Name="DonHang_ChiTietDonHang" Member="DonHang" ThisKey="MaDonHang" OtherKey="MaDonHang" Type="DonHang" IsForeignKey="true" />
       <Association Name="SanPham_ChiTietDonHang" Member="SanPham" ThisKey="MaSanPham" OtherKey="MaSanPham" Type="SanPham" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Topping" Member="Toppings">
+    <Type Name="Topping">
+      <Column Name="MaTopping" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Ten" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Gia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Topping_ChiTietTopping" Member="ChiTietToppings" ThisKey="MaTopping" OtherKey="MaTopping" Type="ChiTietTopping" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ChiTietTopping" Member="ChiTietToppings">
+    <Type Name="ChiTietTopping">
+      <Column Name="MaChiTietTopping" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MaDonHang" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaTopping" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Topping_ChiTietTopping" Member="Topping" ThisKey="MaTopping" OtherKey="MaTopping" Type="Topping" IsForeignKey="true" />
+      <Association Name="DonHang_ChiTietTopping" Member="DonHang" ThisKey="MaDonHang" OtherKey="MaDonHang" Type="DonHang" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.DonHang" Member="DonHangs">
@@ -26,7 +34,9 @@
       <Column Name="MaKhachHang" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NgayDatHang" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="MaNhanVien" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TongTien" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
       <Association Name="DonHang_ChiTietDonHang" Member="ChiTietDonHangs" ThisKey="MaDonHang" OtherKey="MaDonHang" Type="ChiTietDonHang" />
+      <Association Name="DonHang_ChiTietTopping" Member="ChiTietToppings" ThisKey="MaDonHang" OtherKey="MaDonHang" Type="ChiTietTopping" />
       <Association Name="KhachHang_DonHang" Member="KhachHang" ThisKey="MaKhachHang" OtherKey="MaKhachHang" Type="KhachHang" IsForeignKey="true" />
       <Association Name="NhanVien_DonHang" Member="NhanVien" ThisKey="MaNhanVien" OtherKey="MaNhanVien" Type="NhanVien" IsForeignKey="true" />
     </Type>
