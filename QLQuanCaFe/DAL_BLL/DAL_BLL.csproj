@@ -51,7 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CTHoaDon.cs" />
+    <Compile Include="CTTopping.cs" />
     <Compile Include="DoUongDAL_BLL.cs" />
+    <Compile Include="HoaDonDAL_BLL.cs" />
     <Compile Include="KhachHangDAL_BLL.cs" />
     <Compile Include="NhanVienDAL_BLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

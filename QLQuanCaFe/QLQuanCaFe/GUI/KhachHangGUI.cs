@@ -15,6 +15,7 @@ namespace QLQuanCaFe
     public partial class KhachHangGUI : Form
     {
         KhachHangDAL_BLL kh = new KhachHangDAL_BLL();
+        public KhachHang KhachHangDuocChon { get; private set; }
         public KhachHangGUI()
         {
             InitializeComponent();
@@ -201,6 +202,16 @@ namespace QLQuanCaFe
         private void btnXoa_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgvKhachhang_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            if (rowIndex >= 0 && rowIndex < dgvKhachhang.Rows.Count)
+            {
+                KhachHangDuocChon = (KhachHang)dgvKhachhang.Rows[rowIndex].DataBoundItem;
+                this.Close(); // Đóng Form khi chọn xong
+            }
         }
     }
 }

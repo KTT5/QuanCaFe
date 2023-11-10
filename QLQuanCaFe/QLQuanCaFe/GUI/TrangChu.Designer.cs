@@ -80,7 +80,7 @@
             this.btn_Them.Location = new System.Drawing.Point(0, 364);
             this.btn_Them.Name = "btn_Them";
             this.btn_Them.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.btn_Them.Size = new System.Drawing.Size(137, 75);
+            this.btn_Them.Size = new System.Drawing.Size(137, 55);
             this.btn_Them.TabIndex = 5;
             this.btn_Them.Text = "Thêm";
             this.btn_Them.TextAlign = System.Drawing.ContentAlignment.TopCenter;

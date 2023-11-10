@@ -55,6 +55,7 @@
             this.dgvKhachhang.Size = new System.Drawing.Size(267, 384);
             this.dgvKhachhang.TabIndex = 0;
             this.dgvKhachhang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKhachhang_CellContentClick);
+            this.dgvKhachhang.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKhachhang_CellContentDoubleClick);
             // 
             // label1
             // 

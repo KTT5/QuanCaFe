@@ -95,17 +95,17 @@ create table tbl_permision_del
 	id_per int,
 	FOREIGN KEY (id_per) REFERENCES tbl_permision(id_per),
 )
-alter table SanPham
-add HinhAnh image
+
 
 ---INSERT
+INSERT INTO KhachHang  values ( 23000,N'Vãng Lai', N'TPHCM','0000000000')
 INSERT INTO KhachHang  values ( 23001,N'Nguyễn Đức Long', N'Tp. Thủ Đức, TPHCM','0902748274')
 INSERT INTO KhachHang   values (23002,N'Hoàng Thiện Tâm', N'q. Phú Nhuận, TPHCM','0902571923')
 INSERT INTO KhachHang values (23003,N'Đoàn Duy Tùng', N'q. Gò Vấp, TPHCM','0902853404')
 INSERT INTO KhachHang   values (23004,N'Lê Phương Trinh', N'Tp.Thủ Đức, TPHCM','0902059780')
 INSERT INTO KhachHang  values (23005,N'Phạm Quốc Thanh', N'quận 7, TPHCM','0902491058')
 
-
+select * from KhachHang
 INSERT INTO TheLoai (MaTheLoai,TenTheLoai) VALUES (1,N'Trà Sữa');
 INSERT INTO TheLoai (MaTheLoai,TenTheLoai) VALUES (2,N'Hồng Trà');
 INSERT INTO TheLoai (MaTheLoai,TenTheLoai) VALUES (3,N'Cà Phê');
@@ -139,6 +139,7 @@ INSERT INTO NhanVien (TenNhanVien,user_name,pass,DiaChi,SoDienThoai,Email,Luong)
 VALUES (N'Nguyễn Văn A','user','123',N'Tây Ninh','01234567','nguyenvana@gmail.com',3000000);
 INSERT INTO NhanVien (TenNhanVien,user_name,pass,DiaChi,SoDienThoai,Email,Luong)
 VALUES (N'Nguyễn Văn B','admin','123',N'Hà Nội','01234568','nguyenvanB@gmail.com',3000000);
+
 
 INSERT INTO tbl_permision(name_per,description) VALUES (N'Admin',N'Quyền Cao Nhất');
 INSERT INTO tbl_permision(name_per,description) VALUES (N'Seller',N'Quyền Bán Hàng');

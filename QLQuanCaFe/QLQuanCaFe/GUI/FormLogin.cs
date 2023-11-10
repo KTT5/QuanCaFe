@@ -32,22 +32,7 @@ namespace QLQuanCaFe.GUI
                             where user.user_name == username && user.pass == pass
                             select user.MaNhanVien;
                 id = query.FirstOrDefault().ToString();
-                /*using (SqlConnection con = new SqlConnection(connection))
-                {
-                    con.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM tbl_user WHERE user_name ='" + username + "' and pass='" + pass + "'", con);
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    if (dt != null)
-                    {
-                        foreach (DataRow dr in dt.Rows)
-                        {
-                            id = dr["id_user"].ToString();
-                        }
-                    }
-                    con.Close();
-                }*/
+               
             }
             catch (Exception)
             {
@@ -65,22 +50,7 @@ namespace QLQuanCaFe.GUI
                             where user.user_name == username && user.pass == pass
                             select user.TenNhanVien;
                 id = query.FirstOrDefault().ToString();
-                /*using (SqlConnection con = new SqlConnection(connection))
-                {
-                    con.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM tbl_user WHERE user_name ='" + username + "' and pass='" + pass + "'", con);
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    if (dt != null)
-                    {
-                        foreach (DataRow dr in dt.Rows)
-                        {
-                            id = dr["name_user"].ToString();
-                        }
-                    }
-                    con.Close();
-                }*/
+                
             }
             catch (Exception)
             {

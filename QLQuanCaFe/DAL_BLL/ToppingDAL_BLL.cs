@@ -17,5 +17,13 @@ namespace DAL_BLL
             //(from kh in qlcf.KhachHangs select kh).ToList();
             return khachhangs;
         }
+        public List<Topping> getToppingTheoMa(int makh)
+        {
+            var khachhangs = (from kh in qlcf.Toppings
+                              where kh.MaTopping == makh
+                              select kh).ToList();
+
+            return khachhangs;
+        }
     }
 }
