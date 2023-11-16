@@ -49,12 +49,12 @@
             this.dtgvBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvBill.Location = new System.Drawing.Point(27, 78);
             this.dtgvBill.Name = "dtgvBill";
-            this.dtgvBill.Size = new System.Drawing.Size(511, 239);
+            this.dtgvBill.Size = new System.Drawing.Size(614, 239);
             this.dtgvBill.TabIndex = 2;
             // 
             // btnThongKe
             // 
-            this.btnThongKe.Location = new System.Drawing.Point(339, 26);
+            this.btnThongKe.Location = new System.Drawing.Point(408, 26);
             this.btnThongKe.Name = "btnThongKe";
             this.btnThongKe.Size = new System.Drawing.Size(75, 23);
             this.btnThongKe.TabIndex = 3;
@@ -64,7 +64,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(420, 27);
+            this.button1.Location = new System.Drawing.Point(489, 27);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 3;
@@ -76,7 +76,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(580, 356);
+            this.ClientSize = new System.Drawing.Size(697, 356);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnThongKe);
             this.Controls.Add(this.dtgvBill);

@@ -17,6 +17,20 @@ namespace DAL_BLL
             return sanphams;
           
         }
+
+        public List<SanPham> GetSanPhamByTheLoai(string id)
+        {
+            var sanphams = (from sp in qlcf.SanPhams where sp.MaTheLoai == int.Parse(id.ToString()) select sp);
+            //(from kh in qlcf.KhachHangs select kh).ToList();
+            List<SanPham> sps= new List<SanPham>();
+            foreach (var s in sanphams)
+            {
+                sps.Add(s);
+            }    
+            return sps;
+
+        }
+
         public List<SanPham> GetSanPhams1()
         {
             var query = from sp in qlcf.SanPhams

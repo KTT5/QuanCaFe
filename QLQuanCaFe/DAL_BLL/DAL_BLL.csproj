@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ban_DAL_BLL.cs" />
     <Compile Include="CTHoaDon.cs" />
     <Compile Include="CTTopping.cs" />
     <Compile Include="DoUongDAL_BLL.cs" />

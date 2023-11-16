@@ -19,5 +19,14 @@ namespace DAL_BLL
             qlcf.ChiTietDonHangs.InsertOnSubmit(cthd);
             qlcf.SubmitChanges();
         }
+        public void InsertBillInfo(int id, int sp,int sl)
+        {
+            ChiTietDonHang cthd = new ChiTietDonHang();
+            cthd.MaDonHang = id;
+            cthd.MaSanPham = sp;
+            cthd.SoLuong= sl;
+            qlcf.ChiTietDonHangs.InsertOnSubmit(cthd);
+            qlcf.SubmitChanges();
+        }
     }
 }

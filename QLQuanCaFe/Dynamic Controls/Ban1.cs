@@ -8,7 +8,7 @@ using System.Drawing.Design;
 using System.Drawing;
 namespace Dynamic_Controls
 {
-    public class Ban : Button
+    public class Ban1 : Button
     {
        public Button CreateButton(string name, string text, int x, int y, EventHandler clickEvent)
         {

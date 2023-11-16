@@ -30,12 +30,15 @@ namespace DAL_BLL
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertChiTietDonHang(ChiTietDonHang instance);
-    partial void UpdateChiTietDonHang(ChiTietDonHang instance);
-    partial void DeleteChiTietDonHang(ChiTietDonHang instance);
+    partial void InsertBan(Ban instance);
+    partial void UpdateBan(Ban instance);
+    partial void DeleteBan(Ban instance);
     partial void InsertTopping(Topping instance);
     partial void UpdateTopping(Topping instance);
     partial void DeleteTopping(Topping instance);
+    partial void InsertChiTietDonHang(ChiTietDonHang instance);
+    partial void UpdateChiTietDonHang(ChiTietDonHang instance);
+    partial void DeleteChiTietDonHang(ChiTietDonHang instance);
     partial void InsertChiTietTopping(ChiTietTopping instance);
     partial void UpdateChiTietTopping(ChiTietTopping instance);
     partial void DeleteChiTietTopping(ChiTietTopping instance);
@@ -66,7 +69,7 @@ namespace DAL_BLL
     #endregion
 		
 		public QLCFDataContext() : 
-				base(global::DAL_BLL.Properties.Settings.Default.QLCafeConnectionString3, mappingSource)
+				base(global::DAL_BLL.Properties.Settings.Default.QLCafeConnectionString4, mappingSource)
 		{
 			OnCreated();
 		}
@@ -95,11 +98,11 @@ namespace DAL_BLL
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<ChiTietDonHang> ChiTietDonHangs
+		public System.Data.Linq.Table<Ban> Bans
 		{
 			get
 			{
-				return this.GetTable<ChiTietDonHang>();
+				return this.GetTable<Ban>();
 			}
 		}
 		
@@ -108,6 +111,14 @@ namespace DAL_BLL
 			get
 			{
 				return this.GetTable<Topping>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ChiTietDonHang> ChiTietDonHangs
+		{
+			get
+			{
+				return this.GetTable<ChiTietDonHang>();
 			}
 		}
 		
@@ -181,6 +192,282 @@ namespace DAL_BLL
 			{
 				return this.GetTable<TheLoai>();
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Ban")]
+	public partial class Ban : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _Name;
+		
+		private string _status;
+		
+		private EntitySet<DonHang> _DonHangs;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnstatusChanging(string value);
+    partial void OnstatusChanged();
+    #endregion
+		
+		public Ban()
+		{
+			this._DonHangs = new EntitySet<DonHang>(new Action<DonHang>(this.attach_DonHangs), new Action<DonHang>(this.detach_DonHangs));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(20)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="NVarChar(20)")]
+		public string status
+		{
+			get
+			{
+				return this._status;
+			}
+			set
+			{
+				if ((this._status != value))
+				{
+					this.OnstatusChanging(value);
+					this.SendPropertyChanging();
+					this._status = value;
+					this.SendPropertyChanged("status");
+					this.OnstatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Ban_DonHang", Storage="_DonHangs", ThisKey="ID", OtherKey="IDTable")]
+		public EntitySet<DonHang> DonHangs
+		{
+			get
+			{
+				return this._DonHangs;
+			}
+			set
+			{
+				this._DonHangs.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_DonHangs(DonHang entity)
+		{
+			this.SendPropertyChanging();
+			entity.Ban = this;
+		}
+		
+		private void detach_DonHangs(DonHang entity)
+		{
+			this.SendPropertyChanging();
+			entity.Ban = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Topping")]
+	public partial class Topping : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _MaTopping;
+		
+		private string _Ten;
+		
+		private System.Nullable<int> _Gia;
+		
+		private EntitySet<ChiTietTopping> _ChiTietToppings;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMaToppingChanging(int value);
+    partial void OnMaToppingChanged();
+    partial void OnTenChanging(string value);
+    partial void OnTenChanged();
+    partial void OnGiaChanging(System.Nullable<int> value);
+    partial void OnGiaChanged();
+    #endregion
+		
+		public Topping()
+		{
+			this._ChiTietToppings = new EntitySet<ChiTietTopping>(new Action<ChiTietTopping>(this.attach_ChiTietToppings), new Action<ChiTietTopping>(this.detach_ChiTietToppings));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTopping", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int MaTopping
+		{
+			get
+			{
+				return this._MaTopping;
+			}
+			set
+			{
+				if ((this._MaTopping != value))
+				{
+					this.OnMaToppingChanging(value);
+					this.SendPropertyChanging();
+					this._MaTopping = value;
+					this.SendPropertyChanged("MaTopping");
+					this.OnMaToppingChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ten", DbType="NVarChar(255)")]
+		public string Ten
+		{
+			get
+			{
+				return this._Ten;
+			}
+			set
+			{
+				if ((this._Ten != value))
+				{
+					this.OnTenChanging(value);
+					this.SendPropertyChanging();
+					this._Ten = value;
+					this.SendPropertyChanged("Ten");
+					this.OnTenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Gia", DbType="Int")]
+		public System.Nullable<int> Gia
+		{
+			get
+			{
+				return this._Gia;
+			}
+			set
+			{
+				if ((this._Gia != value))
+				{
+					this.OnGiaChanging(value);
+					this.SendPropertyChanging();
+					this._Gia = value;
+					this.SendPropertyChanged("Gia");
+					this.OnGiaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Topping_ChiTietTopping", Storage="_ChiTietToppings", ThisKey="MaTopping", OtherKey="MaTopping")]
+		public EntitySet<ChiTietTopping> ChiTietToppings
+		{
+			get
+			{
+				return this._ChiTietToppings;
+			}
+			set
+			{
+				this._ChiTietToppings.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_ChiTietToppings(ChiTietTopping entity)
+		{
+			this.SendPropertyChanging();
+			entity.Topping = this;
+		}
+		
+		private void detach_ChiTietToppings(ChiTietTopping entity)
+		{
+			this.SendPropertyChanging();
+			entity.Topping = null;
 		}
 	}
 	
@@ -397,144 +684,6 @@ namespace DAL_BLL
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Topping")]
-	public partial class Topping : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _MaTopping;
-		
-		private string _Ten;
-		
-		private System.Nullable<int> _Gia;
-		
-		private EntitySet<ChiTietTopping> _ChiTietToppings;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMaToppingChanging(int value);
-    partial void OnMaToppingChanged();
-    partial void OnTenChanging(string value);
-    partial void OnTenChanged();
-    partial void OnGiaChanging(System.Nullable<int> value);
-    partial void OnGiaChanged();
-    #endregion
-		
-		public Topping()
-		{
-			this._ChiTietToppings = new EntitySet<ChiTietTopping>(new Action<ChiTietTopping>(this.attach_ChiTietToppings), new Action<ChiTietTopping>(this.detach_ChiTietToppings));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTopping", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int MaTopping
-		{
-			get
-			{
-				return this._MaTopping;
-			}
-			set
-			{
-				if ((this._MaTopping != value))
-				{
-					this.OnMaToppingChanging(value);
-					this.SendPropertyChanging();
-					this._MaTopping = value;
-					this.SendPropertyChanged("MaTopping");
-					this.OnMaToppingChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ten", DbType="NVarChar(255)")]
-		public string Ten
-		{
-			get
-			{
-				return this._Ten;
-			}
-			set
-			{
-				if ((this._Ten != value))
-				{
-					this.OnTenChanging(value);
-					this.SendPropertyChanging();
-					this._Ten = value;
-					this.SendPropertyChanged("Ten");
-					this.OnTenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Gia", DbType="Int")]
-		public System.Nullable<int> Gia
-		{
-			get
-			{
-				return this._Gia;
-			}
-			set
-			{
-				if ((this._Gia != value))
-				{
-					this.OnGiaChanging(value);
-					this.SendPropertyChanging();
-					this._Gia = value;
-					this.SendPropertyChanged("Gia");
-					this.OnGiaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Topping_ChiTietTopping", Storage="_ChiTietToppings", ThisKey="MaTopping", OtherKey="MaTopping")]
-		public EntitySet<ChiTietTopping> ChiTietToppings
-		{
-			get
-			{
-				return this._ChiTietToppings;
-			}
-			set
-			{
-				this._ChiTietToppings.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_ChiTietToppings(ChiTietTopping entity)
-		{
-			this.SendPropertyChanging();
-			entity.Topping = this;
-		}
-		
-		private void detach_ChiTietToppings(ChiTietTopping entity)
-		{
-			this.SendPropertyChanging();
-			entity.Topping = null;
 		}
 	}
 	
@@ -768,11 +917,15 @@ namespace DAL_BLL
 		
 		private System.Nullable<int> _MaNhanVien;
 		
+		private System.Nullable<int> _IDTable;
+		
 		private System.Nullable<decimal> _TongTien;
 		
 		private EntitySet<ChiTietDonHang> _ChiTietDonHangs;
 		
 		private EntitySet<ChiTietTopping> _ChiTietToppings;
+		
+		private EntityRef<Ban> _Ban;
 		
 		private EntityRef<KhachHang> _KhachHang;
 		
@@ -790,6 +943,8 @@ namespace DAL_BLL
     partial void OnNgayDatHangChanged();
     partial void OnMaNhanVienChanging(System.Nullable<int> value);
     partial void OnMaNhanVienChanged();
+    partial void OnIDTableChanging(System.Nullable<int> value);
+    partial void OnIDTableChanged();
     partial void OnTongTienChanging(System.Nullable<decimal> value);
     partial void OnTongTienChanged();
     #endregion
@@ -798,6 +953,7 @@ namespace DAL_BLL
 		{
 			this._ChiTietDonHangs = new EntitySet<ChiTietDonHang>(new Action<ChiTietDonHang>(this.attach_ChiTietDonHangs), new Action<ChiTietDonHang>(this.detach_ChiTietDonHangs));
 			this._ChiTietToppings = new EntitySet<ChiTietTopping>(new Action<ChiTietTopping>(this.attach_ChiTietToppings), new Action<ChiTietTopping>(this.detach_ChiTietToppings));
+			this._Ban = default(EntityRef<Ban>);
 			this._KhachHang = default(EntityRef<KhachHang>);
 			this._NhanVien = default(EntityRef<NhanVien>);
 			OnCreated();
@@ -891,6 +1047,30 @@ namespace DAL_BLL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDTable", DbType="Int")]
+		public System.Nullable<int> IDTable
+		{
+			get
+			{
+				return this._IDTable;
+			}
+			set
+			{
+				if ((this._IDTable != value))
+				{
+					if (this._Ban.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDTableChanging(value);
+					this.SendPropertyChanging();
+					this._IDTable = value;
+					this.SendPropertyChanged("IDTable");
+					this.OnIDTableChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongTien", DbType="Decimal(10,2)")]
 		public System.Nullable<decimal> TongTien
 		{
@@ -934,6 +1114,40 @@ namespace DAL_BLL
 			set
 			{
 				this._ChiTietToppings.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Ban_DonHang", Storage="_Ban", ThisKey="IDTable", OtherKey="ID", IsForeignKey=true)]
+		public Ban Ban
+		{
+			get
+			{
+				return this._Ban.Entity;
+			}
+			set
+			{
+				Ban previousValue = this._Ban.Entity;
+				if (((previousValue != value) 
+							|| (this._Ban.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Ban.Entity = null;
+						previousValue.DonHangs.Remove(this);
+					}
+					this._Ban.Entity = value;
+					if ((value != null))
+					{
+						value.DonHangs.Add(this);
+						this._IDTable = value.ID;
+					}
+					else
+					{
+						this._IDTable = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Ban");
+				}
 			}
 		}
 		
@@ -1625,7 +1839,7 @@ namespace DAL_BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HinhAnh", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HinhAnh", DbType="Binary(50)", UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary HinhAnh
 		{
 			get

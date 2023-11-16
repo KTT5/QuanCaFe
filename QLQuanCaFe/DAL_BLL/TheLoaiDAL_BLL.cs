@@ -16,5 +16,7 @@ namespace DAL_BLL
             //(from kh in qlcf.KhachHangs select kh).ToList();
             return khachhangs;
         }
+
+
     }
 }

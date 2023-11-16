@@ -163,7 +163,7 @@ namespace QLQuanCaFe.GUI
 
                 PictureBox pc = new PictureBox();
                 pc.Size = new Size(30, 30);
-                string path = "D:\\hk1 nam4\\phatTrienPhanMem\\cf\\QuanCaFe\\QLQuanCaFe\\QLQuanCaFe\\Image\\icontrasg.png";
+                string path = "C:\\Users\\PC\\Documents\\GitHub\\QuanCaFe\\QLQuanCaFe\\QLQuanCaFe\\Image\\icontrasg.png"; //"D:\\hk1 nam4\\phatTrienPhanMem\\cf\\QuanCaFe\\QLQuanCaFe\\QLQuanCaFe\\Image\\icontrasg.png";
                 pc.Image = Image.FromFile(path);
                 pc.Location = new Point(40, 25);
                 pc.Click += Pc_Click;

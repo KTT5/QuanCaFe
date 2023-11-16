@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ban.cs">
+    <Compile Include="Ban1.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DoUong.cs" />

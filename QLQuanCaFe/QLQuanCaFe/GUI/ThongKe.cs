@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,24 +23,25 @@ namespace QLQuanCaFe.GUI
         }
         void LoadListBillByDate(DateTime checkIn)
         {
-            //var query = from donHang in data.DonHangs
-            //            where donHang.NgayDatHang == checkIn
-            //            select new
-            //            {
-            //                DonHang = donHang,
-            //                ChiTietDonHangs = data.ChiTietDonHangs.Where(ctdh => ctdh.MaDonHang == donHang.MaDonHang).ToList()
-            //            };
+            string Text = FormLogin.NAME_USER;
+            var query = from donHang in data.DonHangs
+                        where donHang.NgayDatHang == checkIn && donHang.TongTien !=null
+                        select new
+                        {
+                            DonHang = donHang,
+                            ChiTietDonHangs = data.ChiTietDonHangs.Where(ctdh => ctdh.MaDonHang == donHang.MaDonHang).ToList()
+                        };
 
-            //foreach (var item in query)
-            //{
-            //    DonHang donHang = item.DonHang;
-            //    List<ChiTietDonHang> ctdh = item.ChiTietDonHangs;
-            //    foreach (var ch in ctdh)
-            //    {
-            //        dtgvBill.Rows.Add(donHang.MaDonHang, donHang.NgayDatHang, donHang.NhanVien.TenNhanVien, ch.SoLuong, ch.SanPham.TenSanPham, ch.Topping.Ten);
-            //    }
+            foreach (var item in query)
+            {
+                DonHang donHang = item.DonHang;
+                List<ChiTietDonHang> ctdh = item.ChiTietDonHangs;
+                foreach (var ch in ctdh)
+                {
+                    dtgvBill.Rows.Add(donHang.MaDonHang, donHang.NgayDatHang, Text, ch.SoLuong, ch.SanPham.TenSanPham,ch.DonHang.TongTien);
+                }
 
-            //}
+            }
 
         }
         void setDataGridView()
@@ -49,7 +51,7 @@ namespace QLQuanCaFe.GUI
             dtgvBill.Columns.Add("TenNhanVien", "Tên Nhân Viên");
             dtgvBill.Columns.Add("SoLuong", "Số Lượng");
             dtgvBill.Columns.Add("TenSanPham", "Sản Phẩm");
-            dtgvBill.Columns.Add("Ten", "Topping");
+            dtgvBill.Columns.Add("TongTien", "Tổng Tiền");
         }
 
         private void btnThongKe_Click(object sender, EventArgs e)
@@ -61,6 +63,7 @@ namespace QLQuanCaFe.GUI
         private void ThongKe_Load(object sender, EventArgs e)
         {
             setDataGridView();
+            dateTimePicker1.Value= DateTime.Now;
             //LoadListBillByDate(dateTimePicker1.Value);
         }
         private void btnSave_Click(object sender, EventArgs e)
@@ -106,7 +109,7 @@ namespace QLQuanCaFe.GUI
                     dataToSave += Environment.NewLine; // Xuống dòng để tách dòng
                 }
                 // Tạo dòng "Thống kê Hóa đơn" và đặt nó vào giữa
-                string header = "Thống kê Hóa đơn".PadLeft(dataToSave.Length / 2 + "Thống kê Hóa đơn".Length / 2);
+                string header = "Thống kê Hóa đơn";
                 dataToSave = header + Environment.NewLine + dataToSave;
 
                 // Lưu chuỗi dữ liệu vào tệp văn bản

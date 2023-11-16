@@ -39,13 +39,22 @@ CREATE TABLE SanPham (
 	FOREIGN KEY (MaTheLoai) REFERENCES TheLoai(MaTheLoai)
 );
 
+CREATE TABLE Ban
+(
+	ID int primary key,
+	Name nvarchar(20),
+	status nvarchar(20)
+)
+
 CREATE TABLE DonHang (
     MaDonHang INT PRIMARY KEY IDENTITY(1,1),
     MaKhachHang INT,
     NgayDatHang DATE,
 	MaNhanVien int,
+	IDTable int,
 	TongTien decimal(10,2),
     FOREIGN KEY (MaKhachHang) REFERENCES KhachHang(MaKhachHang),
+	FOREIGN KEY (IDTable) REFERENCES Ban(ID),
 	FOREIGN KEY (MaNhanVien) REFERENCES NhanVien(MaNhanVien)
 );
 
@@ -151,3 +160,13 @@ INSERT INTO tbl_permision_del(code_action,id_per) VALUES('Thu Chi',2);
 INSERT INTO tbl_permision_del(code_action,id_per) VALUES('Bao Cao',2);
 INSERT INTO tbl_permision_del(code_action,id_per) VALUES('QL Khach Hang',2);
 INSERT INTO tbl_permision_del(code_action,id_per) VALUES('ALL',1);
+
+INSERT INTO Ban
+VALUES (1,N'Bàn 1',N'Trống'),
+	   (2,N'Bàn 2',N'Trống'),
+	   (3,N'Bàn 3',N'Trống'),
+	   (4,N'Bàn 4',N'Trống'),
+	   (5,N'Bàn 5',N'Trống'),
+	   (6,N'Bàn 6',N'Trống'),
+	   (7,N'Bàn 7',N'Trống'),
+	   (8,N'Bàn 8',N'Trống')
