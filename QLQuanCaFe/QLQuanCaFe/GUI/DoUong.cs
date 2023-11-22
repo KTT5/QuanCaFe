@@ -163,7 +163,8 @@ namespace QLQuanCaFe.GUI
 
                 PictureBox pc = new PictureBox();
                 pc.Size = new Size(30, 30);
-                string path = "C:\\Users\\PC\\Documents\\GitHub\\QuanCaFe\\QLQuanCaFe\\QLQuanCaFe\\Image\\icontrasg.png"; //"D:\\hk1 nam4\\phatTrienPhanMem\\cf\\QuanCaFe\\QLQuanCaFe\\QLQuanCaFe\\Image\\icontrasg.png";
+                string path = "D:\\hk1 nam4\\phatTrienPhanMem\\cf\\QuanCaFe\\QLQuanCaFe\\QLQuanCaFe\\Image\\icontrasg.png";
+                //string path = "C:\\Users\\PC\\Documents\\GitHub\\QuanCaFe\\QLQuanCaFe\\QLQuanCaFe\\Image\\icontrasg.png";
                 pc.Image = Image.FromFile(path);
                 pc.Location = new Point(40, 25);
                 pc.Click += Pc_Click;
@@ -239,8 +240,8 @@ namespace QLQuanCaFe.GUI
             thanhtoan += tiendu;
             lbTongTien.Text = thanhtoan.ToString();
             bt.Enabled = false;
-            
-            //UpdateTotalPrice();
+            RecommendProducts(sanPham);
+
         }
 
         private void lbDouong_Click(object sender, EventArgs e)
@@ -381,5 +382,70 @@ namespace QLQuanCaFe.GUI
             lbTongTien.Text = "";
             
         }
+        
+        private void RecommendProducts(SanPham selectedDrink)
+        {
+            // Duyệt qua tất cả sản phẩm và tính toán sự tương đồng với đồ uống đã chọn
+            var recommendedProducts = du.GetSanPhams()
+                .Where(product => product.MaSanPham != selectedDrink.MaSanPham) // Loại bỏ đồ uống đã chọn
+                .OrderByDescending(product => ContentBasedRecommendation.CalculateSimilarity(selectedDrink, product))
+                .Take(1); // Lấy ra 5 đồ uống có sự tương đồng cao nhất
+
+            // Hiển thị các sản phẩm được đề xuất (thay thế bằng cách phù hợp với giao diện của bạn)
+            foreach (var product in recommendedProducts)
+            {
+                Console.WriteLine($"Đồ uống được đề xuất: {product.TenSanPham}");
+                HighlightButton(product);
+            }
+        }
+        private void HighlightButton(SanPham product)
+        {
+            Button existingButton = pbdouong.Controls.OfType<Button>().FirstOrDefault(btn => (int)btn.Tag == product.MaSanPham);
+
+            if (existingButton != null)
+            {
+                // Lưu màu nền và màu văn bản hiện tại
+                Color originalBackColor = existingButton.BackColor;
+                Color originalForeColor = existingButton.ForeColor;
+
+                // Đặt màu nền và màu văn bản mới
+                existingButton.BackColor = Color.Yellow;
+                existingButton.ForeColor = Color.Red; // Chọn một màu văn bản phù hợp
+
+                // Tạo một đối tượng Timer để chuyển đổi màu nền và màu văn bản
+                Timer timer = new Timer();
+                timer.Interval = 5000; // Đặt khoảng thời gian (ví dụ: 500 mili giây)
+                timer.Tick += (sender, e) =>
+                {
+                    // Chuyển đổi màu nền và màu văn bản
+                    if (existingButton.BackColor == Color.Yellow)
+                    {
+                        existingButton.BackColor = originalBackColor;
+                        existingButton.ForeColor = originalForeColor;
+                    }
+                    else
+                    {
+                        existingButton.BackColor = Color.Yellow;
+                        existingButton.ForeColor = Color.Red; // Chọn một màu văn bản phù hợp
+                    }
+                };
+
+                // Bắt đầu Timer
+                timer.Start();
+
+                // Dừng Timer sau 5 giây
+                timer.Tick += (sender, e) =>
+                {
+                    timer.Stop();
+
+                    // Đặt lại màu nền và màu văn bản về màu gốc
+                    existingButton.BackColor = originalBackColor;
+                    existingButton.ForeColor = originalForeColor;
+                };
+            }
+        }
+
+
+
     }
 }

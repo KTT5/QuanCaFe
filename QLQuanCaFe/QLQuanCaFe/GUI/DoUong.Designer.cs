@@ -69,7 +69,7 @@
             this.flpDSDoUong.Location = new System.Drawing.Point(674, 41);
             this.flpDSDoUong.Name = "flpDSDoUong";
             this.flpDSDoUong.Padding = new System.Windows.Forms.Padding(7);
-            this.flpDSDoUong.Size = new System.Drawing.Size(343, 322);
+            this.flpDSDoUong.Size = new System.Drawing.Size(360, 322);
             this.flpDSDoUong.TabIndex = 0;
             // 
             // panel1
@@ -185,7 +185,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1029, 556);
+            this.ClientSize = new System.Drawing.Size(1037, 556);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lbMaKH);
