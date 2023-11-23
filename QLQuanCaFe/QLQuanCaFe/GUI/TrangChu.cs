@@ -41,22 +41,54 @@ namespace QLQuanCaFe
 
         private void btn_TaiBan_Click(object sender, EventArgs e)
         {
-            openChildForm(new TaiBan());
+            //Kiểm tra có quyền mới cho vào
+            if (checkper("ALL") == true || checkper("Thu Chi") == true)
+            {
+                openChildForm(new TaiBan());
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền để truy cập");
+            }
         }
 
         private void btn_TaiQuay_Click(object sender, EventArgs e)
         {
-            openChildForm(new DoUong());
+            //Kiểm tra có quyền mới cho vào
+            if (checkper("ALL") == true || checkper("Thu Chi") == true)
+            {
+                openChildForm(new DoUong());
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền để truy cập");
+            }
         }
 
         private void btn_BaoCao_Click(object sender, EventArgs e)
         {
-            openChildForm(new ThongKe());
+            //Kiểm tra có quyền mới cho vào
+            if (checkper("ALL") == true || checkper("Bao Cao") == true)
+            {
+                openChildForm(new ThongKe());
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền để truy cập");
+            }
         }
 
         private void btn_KhachHang_Click(object sender, EventArgs e)
         {
-            openChildForm(new KhachHangGUI());
+            //Kiểm tra có quyền mới cho vào
+            if (checkper("ALL") == true || checkper("QL Khach Hang")==true)
+            {
+                openChildForm(new KhachHangGUI());
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền để truy cập");
+            }
 
         }
 
@@ -86,7 +118,7 @@ namespace QLQuanCaFe
 
         private void TrangChu_Load(object sender, EventArgs e)
         {
-            openChildForm(new TaiBan());
+            //openChildForm(new TaiBan());
             list_detail = list_per(id_per(FormLogin.ID_USER));
             label1.Text= FormLogin.NAME_USER;
         }
@@ -127,23 +159,6 @@ namespace QLQuanCaFe
                             select perm.code_action;
 
                 termsList = query.ToList();
-                /*using (SqlConnection con = new SqlConnection(connection))
-                {
-                    con.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM tbl_permision_del WHERE id_per ='" + id_per + "'", con);
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    if (dt != null)
-                    {
-                        foreach (DataRow dr in dt.Rows)
-                        {
-                            termsList.Add(dr["code_action"].ToString());
-                        }
-                    }
-                    con.Close();
-
-                }*/
             }
             catch (Exception)
             {
@@ -170,11 +185,6 @@ namespace QLQuanCaFe
             if (MessageBox.Show("Bạn có chắc là muốn thoát không?", "Quản Lý Quán Cafe", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
                 e.Cancel = true;
-                this.Close();
-            }
-            else
-            {
-                return;
             }
         }
 

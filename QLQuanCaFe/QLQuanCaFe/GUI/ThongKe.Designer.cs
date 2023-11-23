@@ -33,6 +33,7 @@
             this.btnThongKe = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.button1 = new System.Windows.Forms.Button();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvBill)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,12 +50,12 @@
             this.dtgvBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvBill.Location = new System.Drawing.Point(27, 78);
             this.dtgvBill.Name = "dtgvBill";
-            this.dtgvBill.Size = new System.Drawing.Size(614, 239);
+            this.dtgvBill.Size = new System.Drawing.Size(624, 266);
             this.dtgvBill.TabIndex = 2;
             // 
             // btnThongKe
             // 
-            this.btnThongKe.Location = new System.Drawing.Point(408, 26);
+            this.btnThongKe.Location = new System.Drawing.Point(274, 22);
             this.btnThongKe.Name = "btnThongKe";
             this.btnThongKe.Size = new System.Drawing.Size(75, 23);
             this.btnThongKe.TabIndex = 3;
@@ -64,13 +65,21 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(489, 27);
+            this.button1.Location = new System.Drawing.Point(355, 23);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 3;
             this.button1.Text = "Lưu File TxT";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(451, 26);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker2.TabIndex = 0;
+            this.dateTimePicker2.Value = new System.DateTime(2023, 10, 27, 15, 24, 5, 0);
             // 
             // ThongKe
             // 
@@ -80,6 +89,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnThongKe);
             this.Controls.Add(this.dtgvBill);
+            this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
             this.Name = "ThongKe";
             this.Text = "ThongKe";
@@ -96,5 +106,6 @@
         private System.Windows.Forms.Button btnThongKe;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
     }
 }

@@ -202,7 +202,7 @@ namespace QLQuanCaFe
 
             if (idBill == 0)
             {
-                hd.InsertBill(table.ID);
+                hd.InsertBill(table.ID, FormLogin.ID_USER);
                 cthd.InsertBillInfo(hd.getMaxIDHD(), SanPhamID, count);
                 b.updateBan(table.ID);
             }

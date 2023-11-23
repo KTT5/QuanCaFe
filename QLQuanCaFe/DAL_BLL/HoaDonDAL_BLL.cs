@@ -39,10 +39,11 @@ namespace DAL_BLL
             return 0;
         }
 
-        public void InsertBill(int id)
+        public void InsertBill(int id,string manv)
         {
             DonHang dh = new DonHang();
             dh.IDTable = id;
+            dh.MaNhanVien = int.Parse(manv);
             dh.NgayDatHang = DateTime.Now;
             qlcf.DonHangs.InsertOnSubmit(dh);
             qlcf.SubmitChanges();

@@ -21,11 +21,11 @@ namespace QLQuanCaFe.GUI
         {
             InitializeComponent();
         }
-        void LoadListBillByDate(DateTime checkIn)
+        void LoadListBillByDate(DateTime checkFrom, DateTime checkTo)
         {
             string Text = FormLogin.NAME_USER;
             var query = from donHang in data.DonHangs
-                        where donHang.NgayDatHang == checkIn && donHang.TongTien !=null
+                        where donHang.NgayDatHang >= checkFrom && donHang.NgayDatHang<= checkTo && donHang.TongTien !=null
                         select new
                         {
                             DonHang = donHang,
@@ -38,7 +38,10 @@ namespace QLQuanCaFe.GUI
                 List<ChiTietDonHang> ctdh = item.ChiTietDonHangs;
                 foreach (var ch in ctdh)
                 {
-                    dtgvBill.Rows.Add(donHang.MaDonHang, donHang.NgayDatHang, Text, ch.SoLuong, ch.SanPham.TenSanPham,ch.DonHang.TongTien);
+                    if (donHang.NhanVien != null)
+                    {
+                        dtgvBill.Rows.Add(donHang.MaDonHang, donHang.NgayDatHang, donHang.NhanVien.TenNhanVien, ch.SoLuong, ch.SanPham.TenSanPham, ch.DonHang.TongTien);
+                    }
                 }
 
             }
@@ -57,13 +60,15 @@ namespace QLQuanCaFe.GUI
         private void btnThongKe_Click(object sender, EventArgs e)
         {
             dtgvBill.Rows.Clear();
-            LoadListBillByDate(dateTimePicker1.Value);
+            LoadListBillByDate(dateTimePicker1.Value, dateTimePicker2.Value);
         }
 
         private void ThongKe_Load(object sender, EventArgs e)
         {
             setDataGridView();
-            dateTimePicker1.Value= DateTime.Now;
+            DateTime today = DateTime.Now;
+            dateTimePicker1.Value = new DateTime(today.Year, today.Month, 1);
+            dateTimePicker2.Value = dateTimePicker1.Value.AddMonths(1).AddDays(-1);
             //LoadListBillByDate(dateTimePicker1.Value);
         }
         private void btnSave_Click(object sender, EventArgs e)

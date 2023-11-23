@@ -47,7 +47,6 @@ namespace QLQuanCaFe.GUI
             try
             {
                 NhanVien us = new NhanVien();
-                us.MaNhanVien = int.Parse(txtID.Text);
                 us.TenNhanVien = txtNameUser.Text;
                 us.user_name = txtUserName.Text;
                 us.pass = txtPass.Text;

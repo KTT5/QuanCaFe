@@ -34,7 +34,7 @@ namespace QLQuanCaFe.GUI
         }
         void loadCB()
         {
-            string[] dataArray = new string[] { "ALL", "EDIT", "DEL", "ADD" };
+            string[] dataArray = new string[] { "ALL", "QL Khach Hang", "Bao Cao", "Thu Chi" };
 
             List<string> dataList = dataArray.ToList();
             cbCode.DataSource = dataList;

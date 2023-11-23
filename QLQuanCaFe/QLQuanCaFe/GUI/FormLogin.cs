@@ -52,19 +52,19 @@ namespace QLQuanCaFe.GUI
                 id = query.FirstOrDefault().ToString();
                 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Lỗi xảy ra khi truy vấn dữ liệu hoặc kết nối với server thất bại !");
+                MessageBox.Show("Lỗi xảy ra: " + ex.Message);
             }
             return id;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            ID_USER = getID(txtUser.Text, txtPass.Text);
-            NAME_USER = getName(txtUser.Text, txtPass.Text);
-            if (ID_USER != "")
+            ID_USER = getID(txtUser.Text, txtPass.Text);  
+            if (!string.IsNullOrEmpty(ID_USER) && ID_USER!="0")
             {
+                NAME_USER = getName(txtUser.Text, txtPass.Text);
                 TrangChu fmain = new TrangChu();
                 fmain.Show();
                 this.Hide();

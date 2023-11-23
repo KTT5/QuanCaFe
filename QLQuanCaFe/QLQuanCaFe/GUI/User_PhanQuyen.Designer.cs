@@ -46,7 +46,7 @@
             this.panel_body.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_body.Location = new System.Drawing.Point(123, 42);
             this.panel_body.Name = "panel_body";
-            this.panel_body.Size = new System.Drawing.Size(639, 298);
+            this.panel_body.Size = new System.Drawing.Size(769, 356);
             this.panel_body.TabIndex = 5;
             // 
             // button4
@@ -100,7 +100,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(123, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(639, 42);
+            this.panel2.Size = new System.Drawing.Size(769, 42);
             this.panel2.TabIndex = 4;
             // 
             // label1
@@ -108,7 +108,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(248, 18);
+            this.label1.Location = new System.Drawing.Point(313, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(157, 18);
             this.label1.TabIndex = 0;
@@ -124,14 +124,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(123, 340);
+            this.panel1.Size = new System.Drawing.Size(123, 398);
             this.panel1.TabIndex = 3;
             // 
             // User_PhanQuyen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(762, 340);
+            this.ClientSize = new System.Drawing.Size(892, 398);
             this.Controls.Add(this.panel_body);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

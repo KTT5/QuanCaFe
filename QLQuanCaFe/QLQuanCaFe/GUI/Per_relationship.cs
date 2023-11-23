@@ -24,7 +24,7 @@ namespace QLQuanCaFe.GUI
         }
         void loadData()
         {
-            var dt = from p in data.tbl_per_relationships select new { p.id_rel, p.id_user_rel, p.id_per_rel, p.suspended };
+            var dt = from p in data.tbl_per_relationships select new { p.id_rel, p.NhanVien.TenNhanVien, p.tbl_permision.name_per, p.suspended };
             dataGridView1.DataSource = dt;
         }
         void loadCBUser()
