@@ -52,6 +52,8 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtLuong = new System.Windows.Forms.TextBox();
             this.txtMK = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lb_tong = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,7 +70,7 @@
             // btnLuu
             // 
             this.btnLuu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLuu.Location = new System.Drawing.Point(521, 383);
+            this.btnLuu.Location = new System.Drawing.Point(521, 401);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(75, 23);
             this.btnLuu.TabIndex = 39;
@@ -79,7 +81,7 @@
             // btnXoa
             // 
             this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoa.Location = new System.Drawing.Point(668, 383);
+            this.btnXoa.Location = new System.Drawing.Point(668, 401);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 38;
@@ -90,7 +92,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(387, 383);
+            this.button2.Location = new System.Drawing.Point(387, 401);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 37;
@@ -283,11 +285,32 @@
             this.txtMK.Size = new System.Drawing.Size(171, 22);
             this.txtMK.TabIndex = 48;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(300, 366);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(106, 16);
+            this.label10.TabIndex = 49;
+            this.label10.Text = "Tổng thanh toán:";
+            // 
+            // lb_tong
+            // 
+            this.lb_tong.AutoSize = true;
+            this.lb_tong.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_tong.Location = new System.Drawing.Point(412, 366);
+            this.lb_tong.Name = "lb_tong";
+            this.lb_tong.Size = new System.Drawing.Size(0, 16);
+            this.lb_tong.TabIndex = 50;
+            // 
             // QLNhanVien_GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lb_tong);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.txtMK);
             this.Controls.Add(this.txtLuong);
             this.Controls.Add(this.txtEmail);
@@ -347,5 +370,7 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtLuong;
         private System.Windows.Forms.TextBox txtMK;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lb_tong;
     }
 }

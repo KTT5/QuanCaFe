@@ -95,5 +95,13 @@ namespace DAL_BLL
                 qlcf.SubmitChanges();
             }
         }
+        public decimal? GetTotalSpendingByStaff(int manv)
+        {
+            decimal? totalSpending = qlcf.DonHangs
+                .Where(donHang => donHang.MaNhanVien == manv)
+                .Sum(donHang => (decimal?)donHang.TongTien);
+
+            return totalSpending ?? 0;
+        }
     }
 }

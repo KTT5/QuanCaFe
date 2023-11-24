@@ -19,7 +19,7 @@ namespace QLQuanCaFe.GUI
         public QLSanPham()
         {
             InitializeComponent();
-            List<SanPham> khs = du.GetSanPhams1();
+            List<SanPhamWithTheLoai> khs = du.GetallSanPhams();
             dgvSanPham.DataSource = khs;
             txtTimkiem.Text = "Tìm kiếm theo tên...";
             txtTimkiem.ForeColor = System.Drawing.Color.Gray;
@@ -27,7 +27,13 @@ namespace QLQuanCaFe.GUI
 
         private void QLSanPham_Load(object sender, EventArgs e)
         {
-            List<SanPham> sps = du.GetSanPhams1();
+            dgvSanPham.Columns[0].HeaderText = "Mã SP";
+            dgvSanPham.Columns[1].HeaderText = "Tên SP";
+            dgvSanPham.Columns[2].HeaderText = "Giá Bán";
+            dgvSanPham.Columns[3].HeaderText = "Mã TL";
+            dgvSanPham.Columns[4].HeaderText = "Hình Ảnh";
+            dgvSanPham.Columns[5].HeaderText = "Tên TL";
+            List<SanPhamWithTheLoai> sps = du.GetallSanPhams();
             dgvSanPham.DataSource = sps;
             txtMaSP.Enabled = false;
             txtTenSP.Enabled = false;
@@ -56,7 +62,7 @@ namespace QLQuanCaFe.GUI
                 txtMaSP.Text = sanpham.MaSanPham.ToString();
                 txtTenSP.Text = sanpham.TenSanPham;
                 txtGiaBan.Text = sanpham.GiaTien.ToString();
-                cbbLoai.Text = sanpham.MaTheLoai.ToString();
+                cbbLoai.Text = sanpham.TheLoai.TenTheLoai.ToString();
                 //string hinhanh = sanpham.HinhAnh.ToString();
                 //byte[] data = (byte[])sanpham.HinhAnh;
                 if (sanpham.HinhAnh == null)
@@ -120,7 +126,7 @@ namespace QLQuanCaFe.GUI
         private void btnThem_Click(object sender, EventArgs e)
         {
             lbCheck.Text = "Them";
-            //txtMaKH.Enabled = true;
+            txtMaSP.Enabled = true;
             txtTenSP.Enabled = true;
             txtGiaBan.Enabled = true;
             //txtTenKH.Enabled = true;

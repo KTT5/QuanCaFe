@@ -63,6 +63,8 @@ namespace QLQuanCaFe.GUI
                 txtMK.Text = nhanvien.pass;
                 txtEmail.Text = nhanvien.Email;
                 txtLuong.Text = nhanvien.Luong.ToString();
+                decimal? totalSpending = nv.GetTotalSpendingByStaff(nhanvien.MaNhanVien);
+                lb_tong.Text = (totalSpending ?? 0m).ToString();
             }
         }
 
@@ -223,7 +225,7 @@ namespace QLQuanCaFe.GUI
             int ma = int.Parse(txtMaNV.Text);
             if (nv.KTMaNV(ma) == true)
             {
-                MessageBox.Show("Mã khách hàng không hợp lệ. Vui lòng nhập lại!!", "Thông báo", MessageBoxButtons.OK);
+                MessageBox.Show("Mã nhân viên không hợp lệ. Vui lòng nhập lại!!", "Thông báo", MessageBoxButtons.OK);
 
             }
             else

@@ -17,6 +17,24 @@ namespace DAL_BLL
             return sanphams;
           
         }
+        public List<SanPhamWithTheLoai> GetallSanPhams()
+        {
+            var result = from sanpham in qlcf.SanPhams
+                         join theloai in qlcf.TheLoais on sanpham.MaTheLoai equals theloai.MaTheLoai
+                         select new SanPhamWithTheLoai
+                         {
+                             MaSanPham = sanpham.MaSanPham,
+                             TenSanPham = sanpham.TenSanPham,
+                             GiaTien = (decimal)sanpham.GiaTien,
+                             HinhAnh=sanpham.HinhAnh,
+                             MaTheLoai = theloai.MaTheLoai,
+                             TenTheLoai = theloai.TenTheLoai
+                         };
+            var sanphams = result.ToList();
+            //(from kh in qlcf.KhachHangs select kh).ToList();
+            return sanphams;
+
+        }
 
         public List<SanPham> GetSanPhamByTheLoai(string id)
         {
@@ -60,7 +78,7 @@ namespace DAL_BLL
         public List<SanPham> GetSanPhamsTheoTen(string ma)
         {
             var khachhangs = (from kh in qlcf.SanPhams
-                              where kh.TenSanPham == ma
+                              where kh.TenSanPham.Contains(ma)
                               select kh).ToList();
 
             return khachhangs;

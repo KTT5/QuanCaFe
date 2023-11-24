@@ -75,6 +75,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLCF.dbml</DependentUpon>
     </Compile>
+    <Compile Include="SanPhamWithTheLoai.cs" />
     <Compile Include="TheLoaiDAL_BLL.cs" />
     <Compile Include="ToppingDAL_BLL.cs" />
   </ItemGroup>

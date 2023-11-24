@@ -35,5 +35,11 @@ namespace QLQuanCaFe
             QLNhanVien_GUI form = new QLNhanVien_GUI();
             form.Show();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            QLTopping form = new QLTopping();
+            form.Show();
+        }
     }
 }

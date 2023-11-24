@@ -90,5 +90,13 @@ namespace DAL_BLL
                 qlcf.SubmitChanges();
             }
         }
+        public decimal? GetTotalSpendingByCustomer(int maKhachHang)
+        {
+            decimal? totalSpending = qlcf.DonHangs
+                .Where(donHang => donHang.MaKhachHang == maKhachHang)
+                .Sum(donHang => (decimal?)donHang.TongTien);
+
+            return totalSpending ?? 0;
+        }
     }
 }

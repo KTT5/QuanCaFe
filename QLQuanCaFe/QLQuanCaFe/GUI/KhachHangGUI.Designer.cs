@@ -44,6 +44,9 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.txtTimkiem = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lb_Tong = new System.Windows.Forms.Label();
+            this.lb_chi = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhachhang)).BeginInit();
             this.SuspendLayout();
             // 
@@ -143,7 +146,7 @@
             // btnLuu
             // 
             this.btnLuu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLuu.Location = new System.Drawing.Point(440, 274);
+            this.btnLuu.Location = new System.Drawing.Point(443, 295);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(75, 23);
             this.btnLuu.TabIndex = 23;
@@ -154,7 +157,7 @@
             // btnXoa
             // 
             this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoa.Location = new System.Drawing.Point(567, 274);
+            this.btnXoa.Location = new System.Drawing.Point(570, 295);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 22;
@@ -165,7 +168,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(315, 274);
+            this.button2.Location = new System.Drawing.Point(318, 295);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 21;
@@ -205,11 +208,42 @@
             this.label5.TabIndex = 18;
             this.label5.Text = "Thông tin khách hàng";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(320, 260);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(86, 16);
+            this.label6.TabIndex = 25;
+            this.label6.Text = "Tổng chi tiêu:";
+            // 
+            // lb_Tong
+            // 
+            this.lb_Tong.AutoSize = true;
+            this.lb_Tong.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_Tong.Location = new System.Drawing.Point(406, 260);
+            this.lb_Tong.Name = "lb_Tong";
+            this.lb_Tong.Size = new System.Drawing.Size(0, 16);
+            this.lb_Tong.TabIndex = 26;
+            // 
+            // lb_chi
+            // 
+            this.lb_chi.AutoSize = true;
+            this.lb_chi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_chi.Location = new System.Drawing.Point(412, 260);
+            this.lb_chi.Name = "lb_chi";
+            this.lb_chi.Size = new System.Drawing.Size(0, 16);
+            this.lb_chi.TabIndex = 27;
+            // 
             // KhachHangGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lb_chi);
+            this.Controls.Add(this.lb_Tong);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.lbCheck);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.btnXoa);
@@ -253,5 +287,8 @@
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.TextBox txtTimkiem;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lb_Tong;
+        private System.Windows.Forms.Label lb_chi;
     }
 }

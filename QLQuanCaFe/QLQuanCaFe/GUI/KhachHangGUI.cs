@@ -15,6 +15,7 @@ namespace QLQuanCaFe
     public partial class KhachHangGUI : Form
     {
         KhachHangDAL_BLL kh = new KhachHangDAL_BLL();
+      
         public KhachHang KhachHangDuocChon { get; private set; }
         public KhachHangGUI()
         {
@@ -38,6 +39,8 @@ namespace QLQuanCaFe
                 txtTenKH.Text = khachHang.TenKhachHang;
                 txtDiaChi.Text = khachHang.DiaChi;
                 txtSoDT.Text = khachHang.SoDienThoai;
+                decimal? totalSpending = kh.GetTotalSpendingByCustomer(khachHang.MaKhachHang);
+                lb_chi.Text = (totalSpending ?? 0m).ToString();
             }
             
         }
@@ -201,7 +204,27 @@ namespace QLQuanCaFe
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            int ma = int.Parse(txtMaKH.Text);
+            if (kh.KTMaKH(ma) == true)
+            {
+                MessageBox.Show("Mã khách hàng không hợp lệ. Vui lòng nhập lại!!", "Thông báo", MessageBoxButtons.OK);
 
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xoá?", "Xác nhận xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    kh.XoaKH(ma);
+                    MessageBox.Show("Xoá thành công", "Thông báo", MessageBoxButtons.OK);
+                    KhachHang_Load(sender, e);
+                }
+                else
+                {
+                    return;
+                }
+
+            }
         }
 
         private void dgvKhachhang_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)

@@ -336,7 +336,7 @@ namespace QLQuanCaFe.GUI
             if (txtKhachhang.Text.Trim() == "")
             {
                 //lbMaKH.Text = 23000.ToString();
-                dh1.MaKhachHang = 23000;
+                dh1.MaKhachHang = null;
             }
             else
             {
