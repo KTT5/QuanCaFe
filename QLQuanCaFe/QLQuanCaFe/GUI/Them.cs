@@ -41,5 +41,11 @@ namespace QLQuanCaFe
             QLTopping form = new QLTopping();
             form.Show();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            QLBan form = new QLBan();
+            form.Show();
+        }
     }
 }

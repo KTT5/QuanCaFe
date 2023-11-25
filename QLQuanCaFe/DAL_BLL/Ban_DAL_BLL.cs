@@ -17,6 +17,34 @@ namespace DAL_BLL
             var bans = data.Bans.Select(d => d).ToList();
             return bans;
         }
+
+        public void themBan(Ban t)
+        {
+            Ban per = new Ban();
+            per.ID = t.ID;
+            per.Name = t.Name;
+            per.status = "Trống";
+            data.Bans.InsertOnSubmit(per);
+            data.SubmitChanges();
+        }
+        public void xoaBan(Ban t)
+        {
+            Ban per = data.Bans.Where(us => us.ID == t.ID).FirstOrDefault();
+            if (per != null)
+            {
+                data.Bans.DeleteOnSubmit(per);
+                data.SubmitChanges();
+            }
+        }
+        public void suaBan(Ban t)
+        {
+            Ban per = data.Bans.Where(us => us.ID == t.ID).FirstOrDefault();
+            if (per != null)
+            {
+                per.Name=t.Name;
+                data.SubmitChanges();
+            }
+        }
         public void updateBan(int id)
         {
             Ban b=data.Bans.Where(x=>x.ID==id).FirstOrDefault();

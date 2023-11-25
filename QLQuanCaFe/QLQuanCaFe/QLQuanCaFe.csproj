@@ -198,6 +198,9 @@
     <EmbeddedResource Include="GUI\Per_relationship.resx">
       <DependentUpon>Per_relationship.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QLBan.resx">
+      <DependentUpon>QLBan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\QLTopping.resx">
       <DependentUpon>QLTopping.cs</DependentUpon>
     </EmbeddedResource>
