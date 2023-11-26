@@ -13,9 +13,11 @@ THÀNH VIÊN NHÓM
 <b>Mục tiêu:</b> </br>
 Phần mềm hỗ trợ trong việc quản lý các nghiệp vụ như tính tiền, in hóa đơn, thống kê, quản lý nhân viên,…v.v. Phần mềm quản lý quán cà phê giúp cho người sử dụng tiết kiệm được thời gian, nhanh chóng, thao tác đơn giản, dễ dàng sử dụng và quản lý.</br></br> 
 <b>Chức năng:</b> </br>
-Chương trình gồm có 5 chức năng chính: </br></br>
+Chương trình gồm có 7 chức năng chính: </br></br>
 •	Chức năng bán đồ uống</br></br>
 •	Lập hoá đơn bán.</br></br>
-•	Thiết lập khuyến mãi.</br></br>
+•	Đặt bàn, chuyển bàn.</br></br>
 •	Cập nhật danh mục sản phẩm. </br></br>
+•	Phân quyền nhân viên. </br></br>
+•	Quản lý khách hàng. </br></br>
 •	Báo cáo thống kê.
