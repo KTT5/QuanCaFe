@@ -79,6 +79,7 @@
             this.btnXoa.TabIndex = 38;
             this.btnXoa.Text = "Xoá";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // button2
             // 

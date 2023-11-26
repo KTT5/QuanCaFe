@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -115,6 +116,49 @@ namespace DAL_BLL
             {
                 qlcf.SanPhams.DeleteOnSubmit(khXoa);
                 qlcf.SubmitChanges();
+            }
+        }
+        public bool KTMaSP(int ma)
+        {
+            var existingCustomer = qlcf.SanPhams.SingleOrDefault(kh => kh.MaSanPham == ma);
+            if (existingCustomer != null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        public List<TopProductDTO> Top5SanPham()
+        {
+            var top5Products = (
+                from sp in qlcf.SanPhams
+                join ctdh in qlcf.ChiTietDonHangs on sp.MaSanPham equals ctdh.MaSanPham
+                group ctdh by sp.TenSanPham into g
+                orderby g.Sum(ct => ct.SoLuong) descending
+                select new TopProductDTO
+                {
+                    TenSanPham = g.Key,
+                    TongSoLuongDaBan = (int)g.Sum(ct => ct.SoLuong)
+                }
+            ).Take(5).ToList();
+
+            return top5Products;
+        }
+        public class TopProductDTO
+        {
+            public string TenSanPham { get; set; }
+            public int TongSoLuongDaBan { get; set; }
+        }
+        public void SuaSPtheoCTHoaDon(int makh)
+        {
+            ChiTietDonHang khSua = qlcf.ChiTietDonHangs.Where(khs => khs.MaSanPham == makh).FirstOrDefault();
+            if (khSua != null)
+            {
+                khSua.MaSanPham = null;
+                qlcf.SubmitChanges();
+
             }
         }
     }

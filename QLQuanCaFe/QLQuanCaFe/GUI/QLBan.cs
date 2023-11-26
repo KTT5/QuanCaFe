@@ -15,6 +15,7 @@ namespace QLQuanCaFe.GUI
     {
         QLCFDataContext data=new QLCFDataContext();
         Ban_DAL_BLL bn=new Ban_DAL_BLL();
+        HoaDonDAL_BLL hd = new HoaDonDAL_BLL();
         public QLBan()
         {
             InitializeComponent();
@@ -69,6 +70,7 @@ namespace QLQuanCaFe.GUI
                 Ban ban = new Ban();
                 ban.Name = txtName.Text;
                 ban.ID=int.Parse(txtID.Text);
+                hd.SuaHDtheoBan(ban.ID);
                 bn.xoaBan(ban);
                 MessageBox.Show("Xóa Thành Công");
                 loadData();

@@ -74,5 +74,15 @@ namespace DAL_BLL
                 qlcf.SubmitChanges();
             }
         }
+        public void SuaTPtheoCTTopping(int makh)
+        {
+            ChiTietTopping khSua = qlcf.ChiTietToppings.Where(khs => khs.MaTopping == makh).FirstOrDefault();
+            if (khSua != null)
+            {
+                khSua.MaTopping = null;
+                qlcf.SubmitChanges();
+
+            }
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace QLQuanCaFe
     public partial class KhachHangGUI : Form
     {
         KhachHangDAL_BLL kh = new KhachHangDAL_BLL();
-      
+        HoaDonDAL_BLL hd = new HoaDonDAL_BLL();
         public KhachHang KhachHangDuocChon { get; private set; }
         public KhachHangGUI()
         {
@@ -135,13 +135,21 @@ namespace QLQuanCaFe
                     {
                         if (kh.KTSDT(sodt) == true)
                         {
-                            kh.ThemKH(ma, ten, sodt, diachi);
-                            MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
-                            KhachHang_Load(sender, e);
-                            txtMaKH.Text = "";
-                            txtSoDT.Text = "";
-                            txtDiaChi.Text = "";
-                            txtTenKH.Text = ""; button2.Enabled = true;
+                            try
+                            {
+                                kh.ThemKH(ma, ten, sodt, diachi);
+                                MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
+                                KhachHang_Load(sender, e);
+                                txtMaKH.Text = "";
+                                txtSoDT.Text = "";
+                                txtDiaChi.Text = "";
+                                txtTenKH.Text = ""; button2.Enabled = true;
+                                lb_chi.Text = "";
+                            }
+                            catch (Exception)
+                            {
+                                MessageBox.Show("Thêm thất bại", "Thông báo", MessageBoxButtons.OK);
+                            }
                         }
                         else
                         {
@@ -169,15 +177,22 @@ namespace QLQuanCaFe
                 }
                 else
                 {
-                    
-                    kh.SuaKH(ma, ten, sodt, diachi);
-                    MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK);
-                    KhachHang_Load(sender, e);
-                    txtMaKH.Text = "";
-                    txtSoDT.Text = "";
-                    txtDiaChi.Text = "";
-                    txtTenKH.Text = "";
-                    btnThem.Enabled = true;
+                    try
+                    {
+                        kh.SuaKH(ma, ten, sodt, diachi);
+                        MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK);
+                        KhachHang_Load(sender, e);
+                        txtMaKH.Text = "";
+                        txtSoDT.Text = "";
+                        txtDiaChi.Text = "";
+                        txtTenKH.Text = "";
+                        lb_chi.Text = "";
+                        btnThem.Enabled = true;
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Sửa thất bại", "Thông báo", MessageBoxButtons.OK);
+                    }
                 }
 
             }
@@ -215,9 +230,23 @@ namespace QLQuanCaFe
                 DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xoá?", "Xác nhận xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    kh.XoaKH(ma);
-                    MessageBox.Show("Xoá thành công", "Thông báo", MessageBoxButtons.OK);
-                    KhachHang_Load(sender, e);
+                    try
+                    {
+                        hd.SuaHDtheoKH(ma);
+                        kh.XoaKH(ma);
+                        MessageBox.Show("Xoá thành công", "Thông báo", MessageBoxButtons.OK);
+                        KhachHang_Load(sender, e);
+                        txtMaKH.Text = "";
+                        txtSoDT.Text = "";
+                        txtDiaChi.Text = "";
+                        txtTenKH.Text = "";
+                        lb_chi.Text = "";
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Xoá thất bại", "Thông báo", MessageBoxButtons.OK);
+                    }
+
                 }
                 else
                 {

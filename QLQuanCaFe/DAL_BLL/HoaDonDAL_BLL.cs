@@ -65,6 +65,26 @@ namespace DAL_BLL
             }    
             
         }
-        
+        public void SuaHDtheoKH(int makh)
+        {
+            DonHang khSua = qlcf.DonHangs.Where(khs => khs.MaKhachHang == makh).FirstOrDefault();
+            if (khSua != null)
+            {
+                khSua.MaKhachHang = null;
+                qlcf.SubmitChanges();
+
+            }
+        }
+        public void SuaHDtheoBan(int makh)
+        {
+            DonHang khSua = qlcf.DonHangs.Where(khs => khs.IDTable == makh).FirstOrDefault();
+            if (khSua != null)
+            {
+                khSua.IDTable = null;
+                qlcf.SubmitChanges();
+
+            }
+        }
+
     }
 }

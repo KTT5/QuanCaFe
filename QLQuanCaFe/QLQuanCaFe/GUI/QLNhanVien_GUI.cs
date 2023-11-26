@@ -156,18 +156,27 @@ namespace QLQuanCaFe.GUI
                     {
                         if (nv.KTSDT(nv1.SoDienThoai) == true)
                         {
-                            nv.ThemNV(nv1);
-                            MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
-                            QLNhanVien_GUI_Load(sender, e);
-                            txtMaNV.Text = "";
-                            txtSoDT.Text = "";
-                            txtDiaChi.Text = "";
-                            txtTenNV.Text = "";
-                            txtTaikhoan.Text = "";
-                            txtMK.Text = "";
-                            txtEmail.Text = "";
-                            txtLuong.Text = "";
-                            button2.Enabled = true;
+                            try
+                            {
+                                
+                                nv.ThemNV(nv1);
+                                MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
+                                QLNhanVien_GUI_Load(sender, e);
+                                txtMaNV.Text = "";
+                                txtSoDT.Text = "";
+                                txtDiaChi.Text = "";
+                                txtTenNV.Text = "";
+                                txtTaikhoan.Text = "";
+                                txtMK.Text = "";
+                                txtEmail.Text = "";
+                                txtLuong.Text = "";
+                                lb_tong.Text = "";
+                                button2.Enabled = true;
+                            }
+                            catch (Exception)
+                            {
+                                MessageBox.Show("Thêm thất bại", "Thông báo", MessageBoxButtons.OK);
+                            }
                         }
                         else
                         {
@@ -202,19 +211,26 @@ namespace QLQuanCaFe.GUI
                 }
                 else
                 {
-
-                    nv.SuaNV(nv1);
-                    MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK);
-                    QLNhanVien_GUI_Load(sender, e);
-                    txtMaNV.Text = "";
-                    txtSoDT.Text = "";
-                    txtDiaChi.Text = "";
-                    txtTenNV.Text = "";
-                    txtTaikhoan.Text = "";
-                    txtMK.Text = "";
-                    txtEmail.Text = "";
-                    txtLuong.Text = "";
-                    btnThem.Enabled = true;
+                    try
+                    {
+                        nv.SuaNV(nv1);
+                        MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK);
+                        QLNhanVien_GUI_Load(sender, e);
+                        txtMaNV.Text = "";
+                        txtSoDT.Text = "";
+                        txtDiaChi.Text = "";
+                        txtTenNV.Text = "";
+                        txtTaikhoan.Text = "";
+                        txtMK.Text = "";
+                        txtEmail.Text = "";
+                        txtLuong.Text = "";
+                        lb_tong.Text = "";
+                        btnThem.Enabled = true;
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Sửa thất bại", "Thông báo", MessageBoxButtons.OK);
+                    }
                 }
 
             }
@@ -233,9 +249,25 @@ namespace QLQuanCaFe.GUI
                 DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xoá?", "Xác nhận xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    nv.XoaNV(ma);
-                    MessageBox.Show("Xoá thành công", "Thông báo", MessageBoxButtons.OK);
-                    QLNhanVien_GUI_Load(sender, e);
+                    try
+                    {
+                        nv.XoaNV(ma);
+                        MessageBox.Show("Xoá thành công", "Thông báo", MessageBoxButtons.OK);
+                        QLNhanVien_GUI_Load(sender, e);
+                        txtMaNV.Text = "";
+                        txtSoDT.Text = "";
+                        txtDiaChi.Text = "";
+                        txtTenNV.Text = "";
+                        txtTaikhoan.Text = "";
+                        txtMK.Text = "";
+                        txtEmail.Text = "";
+                        txtLuong.Text = "";
+                        lb_tong.Text = "";
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Xoá thất bại", "Thông báo", MessageBoxButtons.OK);
+                    }
                 }
                 else
                 {

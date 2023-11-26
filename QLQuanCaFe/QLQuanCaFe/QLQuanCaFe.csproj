@@ -123,6 +123,12 @@
     <Compile Include="GUI\QLBan.Designer.cs">
       <DependentUpon>QLBan.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\QLTheLoai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\QLTheLoai.Designer.cs">
+      <DependentUpon>QLTheLoai.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\QLTopping.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QLBan.resx">
       <DependentUpon>QLBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QLTheLoai.resx">
+      <DependentUpon>QLTheLoai.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QLTopping.resx">
       <DependentUpon>QLTopping.cs</DependentUpon>

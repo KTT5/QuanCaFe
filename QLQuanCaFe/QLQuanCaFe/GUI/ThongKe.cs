@@ -11,12 +11,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using static DAL_BLL.DoUongDAL_BLL;
 
 namespace QLQuanCaFe.GUI
 {
     public partial class ThongKe : Form
     {
         QLCFDataContext data = new QLCFDataContext();
+        DoUongDAL_BLL du = new DoUongDAL_BLL();
         public ThongKe()
         {
             InitializeComponent();
@@ -69,6 +71,14 @@ namespace QLQuanCaFe.GUI
             DateTime today = DateTime.Now;
             dateTimePicker1.Value = new DateTime(today.Year, today.Month, 1);
             dateTimePicker2.Value = dateTimePicker1.Value.AddMonths(1).AddDays(-1);
+            List<TopProductDTO> topProducts = du.Top5SanPham();
+
+            // Gán danh sách này làm nguồn dữ liệu cho DataGridView
+            dataGridView1.DataSource = topProducts;
+
+            // Optional: Tùy chỉnh hiển thị cột (bạn có thể thay đổi tên cột theo ý muốn)
+            dataGridView1.Columns["TenSanPham"].HeaderText = "Tên Sản Phẩm";
+            dataGridView1.Columns["TongSoLuongDaBan"].HeaderText = "Tổng Số Lượng Đã Bán";
             //LoadListBillByDate(dateTimePicker1.Value);
         }
         private void btnSave_Click(object sender, EventArgs e)

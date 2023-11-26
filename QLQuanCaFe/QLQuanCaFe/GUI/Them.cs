@@ -47,5 +47,11 @@ namespace QLQuanCaFe
             QLBan form = new QLBan();
             form.Show();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            QLTheLoai form = new QLTheLoai();
+            form.Show();
+        }
     }
 }

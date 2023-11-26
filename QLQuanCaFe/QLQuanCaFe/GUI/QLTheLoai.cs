@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -11,26 +12,30 @@ using System.Windows.Forms;
 
 namespace QLQuanCaFe.GUI
 {
-    public partial class QLTopping : Form
+    public partial class QLTheLoai : Form
     {
-        ToppingDAL_BLL tp = new ToppingDAL_BLL();
-        public QLTopping()
+        TheLoaiDAL_BLL tl = new TheLoaiDAL_BLL();
+        public QLTheLoai()
         {
             InitializeComponent();
-            List<Topping> tps = tp.getToppping();
+            List<TheLoai> tps = tl.getTheLoai();
             dgvKhachhang.DataSource = tps;
             txtTimkiem.Text = "Tìm kiếm theo tên...";
             txtTimkiem.ForeColor = System.Drawing.Color.Gray;
         }
 
-        private void QLTopping_Load(object sender, EventArgs e)
+        private void label5_Click(object sender, EventArgs e)
         {
-            dgvKhachhang.Columns[0].HeaderText = "Mã TP";
-            dgvKhachhang.Columns[1].HeaderText = "Tên TP";
-            dgvKhachhang.Columns[2].HeaderText = "Giá";
-            List<Topping> khs = tp.getToppping();
+
+        }
+
+        private void QLTheLoai_Load(object sender, EventArgs e)
+        {
+            dgvKhachhang.Columns[0].HeaderText = "Mã TL";
+            dgvKhachhang.Columns[1].HeaderText = "Tên TL";
+
+            List<TheLoai> khs = tl.getTheLoai();
             dgvKhachhang.DataSource = khs;
-            txtSoDT.Enabled = false;
             txtTenKH.Enabled = false;
             txtMaKH.Enabled = false;
             btnLuu.Enabled = false;
@@ -40,7 +45,6 @@ namespace QLQuanCaFe.GUI
         {
             lbCheck.Text = "Sua";
             //txtMaKH.Enabled = true;
-            txtSoDT.Enabled = true;
             txtTenKH.Enabled = true;
             btnLuu.Enabled = true;
             btnThem.Enabled = false;
@@ -50,14 +54,13 @@ namespace QLQuanCaFe.GUI
         {
             DataGridViewRow row = dgvKhachhang.Rows[e.RowIndex];
             int masv = int.Parse(row.Cells[0].Value.ToString());
-            List<Topping> tps = new List<Topping>();
-            tps = tp.getToppingTheoMa(masv);
+            List<TheLoai> tps = new List<TheLoai>();
+            tps = tl.getTheLoaiTheoMa(masv);
             if (tps.Count > 0)
             {
-                Topping topping = tps[0];
-                txtMaKH.Text = topping.MaTopping.ToString();
-                txtTenKH.Text = topping.Ten;
-                txtSoDT.Text = topping.Gia.ToString();
+                TheLoai topping = tps[0];
+                txtMaKH.Text = topping.MaTheLoai.ToString();
+                txtTenKH.Text = topping.TenTheLoai;
             }
         }
 
@@ -66,12 +69,12 @@ namespace QLQuanCaFe.GUI
             string searchText = txtTimkiem.Text.Trim().ToLower();
             if (string.IsNullOrEmpty(searchText))
             {
-                QLTopping_Load(sender, e);
+                QLTheLoai_Load(sender, e);
             }
             else
             {
-                List<Topping> khs = new List<Topping>();
-                khs = tp.getToppingTheoTen(searchText);
+                List<TheLoai> khs = new List<TheLoai>();
+                khs = tl.getTheLoaiTheoTen(searchText);
                 dgvKhachhang.DataSource = khs;
             }
         }
@@ -98,7 +101,6 @@ namespace QLQuanCaFe.GUI
         {
             lbCheck.Text = "Them";
             txtMaKH.Enabled = true;
-            txtSoDT.Enabled = true;
             txtTenKH.Enabled = true;
             btnLuu.Enabled = true;
             button2.Enabled = false;
@@ -110,31 +112,31 @@ namespace QLQuanCaFe.GUI
             {
                 int ma = int.Parse(txtMaKH.Text);
                 string ten = txtTenKH.Text.ToString().Trim();
-                int sodt = int.Parse(txtSoDT.Text);
-                if (string.IsNullOrEmpty(ten) || string.IsNullOrEmpty(txtMaKH.Text)  || string.IsNullOrEmpty(txtSoDT.Text))
+                if (string.IsNullOrEmpty(ten) || string.IsNullOrEmpty(txtMaKH.Text) )
                 {
                     MessageBox.Show("Không được để trống bất kì giá trị nào", "Thông báo", MessageBoxButtons.OK);
                 }
                 else
                 {
-                    if (tp.KTMaTP(ma) == true)
+                    if (tl.KTMaTP(ma) == true)
                     {
                         try
                         {
-                            tp.ThemTP(ma, ten, sodt);
+                            tl.ThemTL(ma, ten);
                             MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
-                            QLTopping_Load(sender, e);
+                            QLTheLoai_Load(sender, e);
                             txtMaKH.Text = "";
-                            txtSoDT.Text = "";
                             txtTenKH.Text = ""; button2.Enabled = true;
                         }
-                        catch (Exception) { MessageBox.Show("Thêm thất bại", "Thông báo", MessageBoxButtons.OK); }
-
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Thêm thất bại", "Thông báo", MessageBoxButtons.OK);
+                        }
 
                     }
                     else
                     {
-                        MessageBox.Show("Mã topping đã tồn tại. Vui lòng nhập lại!!", "Thông báo", MessageBoxButtons.OK);
+                        MessageBox.Show("Mã 'thể loại đã tồn tại. Vui lòng nhập lại!!", "Thông báo", MessageBoxButtons.OK);
                     }
 
                 }
@@ -144,8 +146,7 @@ namespace QLQuanCaFe.GUI
             {
                 int ma = int.Parse(txtMaKH.Text);
                 string ten = txtTenKH.Text.ToString().Trim();
-                int sodt = int.Parse(txtSoDT.Text);
-                if (string.IsNullOrEmpty(ten) || string.IsNullOrEmpty(txtMaKH.Text)  || string.IsNullOrEmpty(txtSoDT.Text))
+                if (string.IsNullOrEmpty(ten) || string.IsNullOrEmpty(txtMaKH.Text) )
                 {
                     MessageBox.Show("Không được để trống bất kì giá trị nào", "Thông báo", MessageBoxButtons.OK);
                 }
@@ -153,15 +154,17 @@ namespace QLQuanCaFe.GUI
                 {
                     try
                     {
-                        tp.SuaTP(ma, ten, sodt);
+                        tl.SuaTL(ma, ten);
                         MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK);
-                        QLTopping_Load(sender, e);
+                        QLTheLoai_Load(sender, e);
                         txtMaKH.Text = "";
-                        txtSoDT.Text = "";
                         txtTenKH.Text = "";
                         btnThem.Enabled = true;
                     }
-                    catch (Exception) { MessageBox.Show("Sửa thất bại", "Thông báo", MessageBoxButtons.OK); }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Sửa thất bại", "Thông báo", MessageBoxButtons.OK);
+                    }
                 }
 
             }
@@ -170,9 +173,9 @@ namespace QLQuanCaFe.GUI
         private void btnXoa_Click(object sender, EventArgs e)
         {
             int ma = int.Parse(txtMaKH.Text);
-            if (tp.KTMaTP(ma) == true)
+            if (tl.KTMaTP(ma) == true)
             {
-                MessageBox.Show("Mã Topping không hợp lệ. Vui lòng nhập lại!!", "Thông báo", MessageBoxButtons.OK);
+                MessageBox.Show("Mã thể loại không hợp lệ. Vui lòng nhập lại!!", "Thông báo", MessageBoxButtons.OK);
 
             }
             else
@@ -182,10 +185,10 @@ namespace QLQuanCaFe.GUI
                 {
                     try
                     {
-                        tp.SuaTPtheoCTTopping(ma);
-                        tp.XoaTP(ma);
+                        //tl.SuaSPtheoTheLoai(ma);
+                        tl.XoaTP(ma);
                         MessageBox.Show("Xoá thành công", "Thông báo", MessageBoxButtons.OK);
-                        QLTopping_Load(sender, e);
+                        QLTheLoai_Load(sender, e);
                     }
                     catch (Exception)
                     {

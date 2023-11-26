@@ -129,6 +129,7 @@ namespace QLQuanCaFe.GUI
             txtMaSP.Enabled = true;
             txtTenSP.Enabled = true;
             txtGiaBan.Enabled = true;
+            pictureBox1.Image = null;
             //txtTenKH.Enabled = true;
             btnLuu.Enabled = true;
             button2.Enabled = false;
@@ -150,16 +151,22 @@ namespace QLQuanCaFe.GUI
                 }
                 else
                 {
-                    
-                     du.ThemSP(ten, gia, matl, b);
-                     MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
-                     QLSanPham_Load(sender, e);
-                     txtGiaBan.Text = "";
-                     txtTenSP.Text = "";
-                     //txtDiaChi.Text = "";
-                     //txtTenKH.Text = ""; 
-                    button2.Enabled = true;
-                    pictureBox1.Image = null;
+                    try
+                    {
+
+                        du.ThemSP(ten, gia, matl, b);
+                        MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
+                        QLSanPham_Load(sender, e);
+                        txtGiaBan.Text = "";
+                        txtTenSP.Text = "";
+                        txtMaSP.Text = "";
+                        cbbLoai.SelectedItem = null;
+                        //txtDiaChi.Text = "";
+                        //txtTenKH.Text = ""; 
+                        button2.Enabled = true;
+                        pictureBox1.Image = null;
+                    }
+                    catch(Exception) { MessageBox.Show("Thêm thất bại", "Thông báo", MessageBoxButtons.OK); }
 
 
                 }
@@ -179,15 +186,19 @@ namespace QLQuanCaFe.GUI
                 }
                 else
                 {
-
-                    du.SuaSP(ma, ten, gia, matl,b);
-                    MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK);
-                    QLSanPham_Load(sender, e);
-                    txtMaSP.Text = "";
-                    txtTenSP.Text = "";
-                    txtGiaBan.Text = "";
-                    pictureBox1.Image = null;
-                    btnThem.Enabled = true;
+                    try
+                    {
+                        du.SuaSP(ma, ten, gia, matl, b);
+                        MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK);
+                        QLSanPham_Load(sender, e);
+                        txtMaSP.Text = "";
+                        txtTenSP.Text = "";
+                        txtGiaBan.Text = "";
+                        cbbLoai.SelectedItem = null;
+                        pictureBox1.Image = null;
+                        btnThem.Enabled = true;
+                    }
+                    catch (Exception) { MessageBox.Show("Sửa thất bại", "Thông báo", MessageBoxButtons.OK); }
                 }
 
             }
@@ -220,6 +231,43 @@ namespace QLQuanCaFe.GUI
         {
             MemoryStream m = new MemoryStream(data);
             return Image.FromStream(m);
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            int ma = int.Parse(txtMaSP.Text);
+            if (du.KTMaSP(ma) == true)
+            {
+                MessageBox.Show("Mã sản phẩm không hợp lệ. Vui lòng nhập lại!!", "Thông báo", MessageBoxButtons.OK);
+
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xoá?", "Xác nhận xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        du.SuaSPtheoCTHoaDon(ma);
+                        du.XoaSP(ma);
+                        MessageBox.Show("Xoá thành công", "Thông báo", MessageBoxButtons.OK);
+                        txtMaSP.Text = "";
+                        txtTenSP.Text = "";
+                        txtGiaBan.Text = "";
+                        cbbLoai.SelectedItem = null;
+                        QLSanPham_Load(sender, e);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Xoá thất bại", "Thông báo", MessageBoxButtons.OK);
+                    }
+                }
+                else
+                {
+                    return;
+                }
+
+            }
         }
     }
 }
