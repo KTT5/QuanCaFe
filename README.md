@@ -11,11 +11,11 @@ THÀNH VIÊN NHÓM
 <i>Thúc đẩy tăng trưởng:</i> Phần mềm cung cấp thông tin chi tiết về hiệu suất kinh doanh. Thông tin này có thể giúp chủ cửa hàng xác định các cơ hội để cải thiện doanh số bán hàng và lợi nhuận.</br></br>
 
 <b>Mục tiêu:</b> </br>
-Phần mềm hỗ trợ trong việc quản lý các nghiệp vụ như tính tiền, in hóa đơn, thống kê, quản lý nhân viên,…v.v. Phần mềm quản lý quán cà phê giúp cho người sử dụng tiết kiệm được thời gian, nhanh chóng, thao tác đơn giản, dễ dàng sử dụng và quản lý. 
+Phần mềm hỗ trợ trong việc quản lý các nghiệp vụ như tính tiền, in hóa đơn, thống kê, quản lý nhân viên,…v.v. Phần mềm quản lý quán cà phê giúp cho người sử dụng tiết kiệm được thời gian, nhanh chóng, thao tác đơn giản, dễ dàng sử dụng và quản lý.</br></br> 
 <b>Chức năng:</b> </br>
-Chương trình gồm có 5 chức năng chính: 
-•	Chức năng bán đồ uống
-•	Lập hoá đơn bán.
-•	Thiết lập khuyến mãi.
-•	Cập nhật danh mục sản phẩm. 
+Chương trình gồm có 5 chức năng chính: </br></br>
+•	Chức năng bán đồ uống</br></br>
+•	Lập hoá đơn bán.</br></br>
+•	Thiết lập khuyến mãi.</br></br>
+•	Cập nhật danh mục sản phẩm. </br></br>
 •	Báo cáo thống kê.
