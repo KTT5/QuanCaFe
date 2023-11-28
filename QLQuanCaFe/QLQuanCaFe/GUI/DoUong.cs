@@ -1,5 +1,6 @@
 ﻿using DAL_BLL;
 using Dynamic_Controls;
+using QLQuanCaFe.Report;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,7 @@ namespace QLQuanCaFe.GUI
 {
     public partial class DoUong : Form
     {
+        public static int MA_HD;
         int manv = int.Parse(FormLogin.ID_USER);
         DoUongDAL_BLL du = new DoUongDAL_BLL();
         ToppingDAL_BLL to = new ToppingDAL_BLL();
@@ -350,7 +352,7 @@ namespace QLQuanCaFe.GUI
             int  maxMaDonHang = hd.LayMaDH();
             foreach (var tuple in danhSachSanPham)
             {
-                ChiTietDonHang cthd1 = new ChiTietDonHang();
+                DAL_BLL.ChiTietDonHang cthd1 = new DAL_BLL.ChiTietDonHang();
                 cthd1.MaDonHang = maxMaDonHang;
                 cthd1.MaSanPham = tuple.Item1.MaSanPham;
                 cthd1.SoLuong = tuple.Item2;
@@ -373,14 +375,17 @@ namespace QLQuanCaFe.GUI
                 cttp1.SoLuong = 1;
                 cttp.ThemCTTopping(cttp1);
             }
+            MA_HD = maxMaDonHang;
             danhSachSanPham.Clear();
             danhSachTopping.Clear();
             flpDSDoUong.Controls.Clear();
             MessageBox.Show("Tổng tiền phải trả là: " + lbTongTien.Text);
+            
             thanhtoan = 0;
             txtKhachhang.Text = "";
             lbTongTien.Text = "";
-            
+            Form1 form1 = new Form1();
+            form1.Show();
         }
         
         private void RecommendProducts(SanPham selectedDrink)

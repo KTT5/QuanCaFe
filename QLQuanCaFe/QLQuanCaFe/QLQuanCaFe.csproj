@@ -67,6 +67,8 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -185,6 +187,22 @@
     <Compile Include="GUI\TrangChu.Designer.cs">
       <DependentUpon>TrangChu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\BanRP.cs" />
+    <Compile Include="Report\CFContext.cs" />
+    <Compile Include="Report\ChiTietDonHangRP.cs" />
+    <Compile Include="Report\ChiTietToppingRP.cs" />
+    <Compile Include="Report\DonHangRP.cs" />
+    <Compile Include="Report\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\HoaDonReport.cs" />
+    <Compile Include="Report\KhachHangRP.cs" />
+    <Compile Include="Report\NhanVienRP.cs" />
+    <Compile Include="Report\SanPhamRP.cs" />
+    <Compile Include="Report\ToppingRP.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="GUI\DoUong.resx">
       <DependentUpon>DoUong.cs</DependentUpon>
@@ -247,7 +265,16 @@
     <EmbeddedResource Include="GUI\TrangChu.resx">
       <DependentUpon>TrangChu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptHoaDon.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\QLQuanCaFe.Report.DonHangRP.datasource" />
+    <None Include="Properties\DataSources\QLQuanCaFe.Report.HoaDonReport.datasource" />
+    <None Include="Properties\DataSources\QLQuanCaFe.Report.ToppingReport.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
