@@ -1,30 +1,34 @@
 ﻿using Microsoft.Reporting.WinForms;
-using QLQuanCaFe.GUI;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QLQuanCaFe.Report
 {
-    public partial class Form1 : Form
+    public partial class Form2 : Form
     {
-        public Form1()
+        public Form2()
         {
             InitializeComponent();
         }
-      
-        int madh = DoUong.MA_HD;
-        private void Form1_Load(object sender, EventArgs e)
+        int madh = TaiBan.MADH;
+
+        private void Form2_Load(object sender, EventArgs e)
         {
+
             CFContext context = new CFContext();
 
             DonHangRP dh = context.DonHangs.FirstOrDefault(dh1 => dh1.MaDonHang == madh);
             List<ChiTietDonHang> listCTDH = context.ChiTietDonHangs.Where(ct => ct.MaDonHang == madh).ToList();
             List<ChiTietToppingRP> listCTTP = context.ChiTietToppings.Where(ct => ct.MaDonHang == madh).ToList();
             List<HoaDonReport> tempListRp = new List<HoaDonReport>();
-          
+
             // Tạo một đối tượng HoaDonReport chứa thông tin chung
             HoaDonReport hoaDonChung = new HoaDonReport();
             if (dh.Ban == null)
@@ -79,7 +83,7 @@ namespace QLQuanCaFe.Report
                 }
 
             }
-            
+
 
             //listRp.AddRange(tempListRp);
 

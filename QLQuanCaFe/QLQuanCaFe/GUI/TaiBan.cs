@@ -12,11 +12,13 @@ using Dynamic_Controls;
 using DAL_BLL;
 using System.Globalization;
 using QLQuanCaFe.GUI;
+using QLQuanCaFe.Report;
 
 namespace QLQuanCaFe
 {
     public partial class TaiBan : Form
     {
+        public static int MADH;
         QLCFDataContext data = new QLCFDataContext();
         Ban_DAL_BLL b =new Ban_DAL_BLL();
         TheLoaiDAL_BLL category =new TheLoaiDAL_BLL();
@@ -45,9 +47,9 @@ namespace QLQuanCaFe
         {
             flpTable.Controls.Clear();
 
-            List<Ban> tableList = b.getBan();
+            List<DAL_BLL.Ban> tableList = b.getBan();
 
-            foreach (Ban item in tableList)
+            foreach (DAL_BLL.Ban item in tableList)
             {
                 Button btn = new Button() { Width = 90, Height = 90 };
                 btn.Text = item.Name + Environment.NewLine + item.status;
@@ -91,7 +93,7 @@ namespace QLQuanCaFe
             foreach (var item in query)
             {
                 DonHang donHang = item.DonHang;
-                List<ChiTietDonHang> ctdh = item.ChiTietDonHangs;
+                List<DAL_BLL.ChiTietDonHang> ctdh = item.ChiTietDonHangs;
                 List<ChiTietTopping> cttp = item.ChiTietToppings;
                 foreach (var ch in ctdh)
                 {
@@ -138,7 +140,7 @@ namespace QLQuanCaFe
         }
         private void Button_Click(object sender, EventArgs e)
         {
-            int tableID = ((sender as Button).Tag as Ban).ID;
+            int tableID = ((sender as Button).Tag as DAL_BLL.Ban).ID;
             lsvBill.Tag = (sender as Button).Tag;
             ShowBill(tableID);
         }
@@ -188,7 +190,7 @@ namespace QLQuanCaFe
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            Ban table = lsvBill.Tag as Ban;
+            DAL_BLL.Ban table = lsvBill.Tag as DAL_BLL.Ban;
 
             if (table == null)
             {
@@ -218,7 +220,7 @@ namespace QLQuanCaFe
 
         private void btnThem2_Click(object sender, EventArgs e)
         {
-            Ban table = lsvBill.Tag as Ban;
+            DAL_BLL.Ban table = lsvBill.Tag as DAL_BLL.Ban;
 
             if (table == null)
             {
@@ -262,9 +264,9 @@ namespace QLQuanCaFe
 
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
-            Ban table = lsvBill.Tag as Ban;
+            DAL_BLL.Ban table = lsvBill.Tag as DAL_BLL.Ban;
             int idBill = hd.GetUncheckBillIDByTableID(table.ID);
-
+            MADH = idBill;
             int totalPrice = int.Parse(txbTotalPrice.Text.Replace(".", "").Split(',')[0]);
 
             if (idBill != -1)
@@ -278,14 +280,16 @@ namespace QLQuanCaFe
                     loadTable();
                 }
             }
+            Form2 form = new Form2();
+            form.Show();
         }
 
         private void btnChuyenBan_Click(object sender, EventArgs e)
         {
-            int id1 = (lsvBill.Tag as Ban).ID;
+            int id1 = (lsvBill.Tag as DAL_BLL.Ban).ID;
 
-            int id2 = (cbBan.SelectedItem as Ban).ID;
-            if (MessageBox.Show(string.Format("Bạn có thật sự muốn chuyển bàn {0} qua bàn {1}", (lsvBill.Tag as Ban).Name, (cbBan.SelectedItem as Ban).Name), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            int id2 = (cbBan.SelectedItem as DAL_BLL.Ban).ID;
+            if (MessageBox.Show(string.Format("Bạn có thật sự muốn chuyển bàn {0} qua bàn {1}", (lsvBill.Tag as DAL_BLL.Ban).Name, (cbBan.SelectedItem as DAL_BLL.Ban).Name), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
                 b.chuyenBan(id1, id2);
 

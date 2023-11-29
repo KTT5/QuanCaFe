@@ -198,10 +198,17 @@
     <Compile Include="Report\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\HoaDonReport.cs" />
     <Compile Include="Report\KhachHangRP.cs" />
     <Compile Include="Report\NhanVienRP.cs" />
     <Compile Include="Report\SanPhamRP.cs" />
+    <Compile Include="Report\Test.cs" />
     <Compile Include="Report\ToppingRP.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="GUI\DoUong.resx">
@@ -268,12 +275,16 @@
     <EmbeddedResource Include="Report\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\rptHoaDon.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\QLQuanCaFe.Report.DonHangRP.datasource" />
     <None Include="Properties\DataSources\QLQuanCaFe.Report.HoaDonReport.datasource" />
+    <None Include="Properties\DataSources\QLQuanCaFe.Report.Test.datasource" />
     <None Include="Properties\DataSources\QLQuanCaFe.Report.ToppingReport.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

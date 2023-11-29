@@ -41,5 +41,6 @@ namespace QLQuanCaFe.Report
         public virtual KhachHangRP KhachHang { get; set; }
 
         public virtual NhanVienRP NhanVien { get; set; }
+        
     }
 }
