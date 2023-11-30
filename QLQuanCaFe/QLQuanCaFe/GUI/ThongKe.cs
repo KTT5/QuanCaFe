@@ -40,10 +40,7 @@ namespace QLQuanCaFe.GUI
                 List<ChiTietDonHang> ctdh = item.ChiTietDonHangs;
                 foreach (var ch in ctdh)
                 {
-                    if (donHang.NhanVien != null)
-                    {
-                        dtgvBill.Rows.Add(donHang.MaDonHang, donHang.NgayDatHang, donHang.NhanVien.TenNhanVien, ch.SoLuong, ch.SanPham.TenSanPham, ch.DonHang.TongTien);
-                    }
+                    dtgvBill.Rows.Add(donHang.MaDonHang, donHang.NgayDatHang, ch.SoLuong, ch.SanPham.TenSanPham, ch.DonHang.TongTien);
                 }
 
             }
@@ -53,7 +50,7 @@ namespace QLQuanCaFe.GUI
         {
             dtgvBill.Columns.Add("MaDonHang", "Mã Đơn Hàng");
             dtgvBill.Columns.Add("NgayDatHang", "Ngày Đặt Hàng");
-            dtgvBill.Columns.Add("TenNhanVien", "Tên Nhân Viên");
+           // dtgvBill.Columns.Add("TenNhanVien", "Tên Nhân Viên");
             dtgvBill.Columns.Add("SoLuong", "Số Lượng");
             dtgvBill.Columns.Add("TenSanPham", "Sản Phẩm");
             dtgvBill.Columns.Add("TongTien", "Tổng Tiền");

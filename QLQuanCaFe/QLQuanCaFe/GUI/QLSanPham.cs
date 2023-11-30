@@ -248,7 +248,7 @@ namespace QLQuanCaFe.GUI
                 {
                     try
                     {
-                        du.SuaSPtheoCTHoaDon(ma);
+                        //du.SuaSPtheoCTHoaDon(ma);
                         du.XoaSP(ma);
                         MessageBox.Show("Xoá thành công", "Thông báo", MessageBoxButtons.OK);
                         txtMaSP.Text = "";

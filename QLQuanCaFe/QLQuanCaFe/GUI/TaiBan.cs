@@ -280,8 +280,8 @@ namespace QLQuanCaFe
                     loadTable();
                 }
             }
-            Form2 form = new Form2();
-            form.Show();
+            //Form2 form = new Form2();
+           //form.Show();
         }
 
         private void btnChuyenBan_Click(object sender, EventArgs e)

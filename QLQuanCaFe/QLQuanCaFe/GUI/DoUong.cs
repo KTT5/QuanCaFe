@@ -51,7 +51,7 @@ namespace QLQuanCaFe.GUI
 
         private void DoUong_Load(object sender, EventArgs e)
         {
-            
+            btnThanhtoan.Enabled = false;
             List<Topping> tp = to.getToppping();
             dataGridView1.DataSource = tp;
             dataGridView1.Columns[0].HeaderText = "STT";
@@ -243,7 +243,7 @@ namespace QLQuanCaFe.GUI
             lbTongTien.Text = thanhtoan.ToString();
             bt.Enabled = false;
             RecommendProducts(sanPham);
-
+            btnThanhtoan.Enabled = true;
         }
 
         private void lbDouong_Click(object sender, EventArgs e)
@@ -394,7 +394,7 @@ namespace QLQuanCaFe.GUI
             var recommendedProducts = du.GetSanPhams()
                 .Where(product => product.MaSanPham != selectedDrink.MaSanPham) // Loại bỏ đồ uống đã chọn
                 .OrderByDescending(product => ContentBasedRecommendation.CalculateSimilarity(selectedDrink, product))
-                .Take(1); // Lấy ra 5 đồ uống có sự tương đồng cao nhất
+                .Take(2); // Lấy ra 5 đồ uống có sự tương đồng cao nhất
 
             // Hiển thị các sản phẩm được đề xuất (thay thế bằng cách phù hợp với giao diện của bạn)
             foreach (var product in recommendedProducts)

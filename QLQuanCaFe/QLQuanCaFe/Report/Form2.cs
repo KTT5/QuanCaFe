@@ -48,7 +48,7 @@ namespace QLQuanCaFe.Report
             {
                 hoaDonChung.TenKH = dh.KhachHang.TenKhachHang;
             }
-            hoaDonChung.TenNV = dh.NhanVien.TenNhanVien;
+            //hoaDonChung.TenNV = dh.NhanVien.TenNhanVien;
             hoaDonChung.TongTien = (int)dh.TongTien;
             hoaDonChung.Ngay = ((DateTime)dh.NgayDatHang).Date.Date;
 
