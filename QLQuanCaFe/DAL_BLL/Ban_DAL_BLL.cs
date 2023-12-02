@@ -109,32 +109,22 @@ namespace DAL_BLL
             List<ChiTietTopping> cttp1 = data.ChiTietToppings.Where(tp => tp.MaDonHang == idSecondBill).ToList();
             foreach(var tp in cttp1)
             {
-                tp.MaDonHang = idFirstBill; data.SubmitChanges();
+                tp.MaDonHang = idSecondBill; data.SubmitChanges();
             }
 
             List<ChiTietDonHang> bt2 = data.ChiTietDonHangs.Where(x => x.MaDonHang == idFirstBill).ToList();
             foreach (ChiTietDonHang ctdh in tam)
             {
-                ctdh.MaDonHang = idFirstBill;
+                ctdh.MaDonHang = idSecondBill;
+                data.SubmitChanges();
             }
             List<ChiTietTopping> cttp2 = data.ChiTietToppings.Where(tp => tp.MaDonHang == idFirstBill).ToList();
             foreach (var tp in cttp2)
             {
                 tp.MaDonHang = idSecondBill; data.SubmitChanges();
             }
-
+            isFirstTablEmty = (from b in data.ChiTietDonHangs where b.MaDonHang == idFirstBill select b).Count();
             if (isFirstTablEmty == 0)
-            {
-                Ban bn = data.Bans.Where(t => t.ID == id2).FirstOrDefault();
-                bn.status = "Trống";
-                data.SubmitChanges();
-            }
-            else
-            {
-                updateBan(id2);
-            }
-
-            if (isSecondTablEmty == 0)
             {
                 Ban bn = data.Bans.Where(t => t.ID == id1).FirstOrDefault();
                 bn.status = "Trống";
@@ -143,6 +133,17 @@ namespace DAL_BLL
             else
             {
                 updateBan(id1);
+            }
+
+            if (isSecondTablEmty == 0)
+            {
+                Ban bn = data.Bans.Where(t => t.ID == id2).FirstOrDefault();
+                bn.status = "Trống";
+                data.SubmitChanges();
+            }
+            else
+            {
+                updateBan(id2);
             }    
         }
     }

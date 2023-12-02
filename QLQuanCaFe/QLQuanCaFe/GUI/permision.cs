@@ -67,22 +67,29 @@ namespace QLQuanCaFe.GUI
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (txtID.Text == "")
+            try
             {
-                MessageBox.Show("Không Được Để Trống ID");
-                return;
+                if (txtID.Text == "")
+                {
+                    MessageBox.Show("Không Được Để Trống ID");
+                    return;
+                }
+                tbl_permision per = data.tbl_permisions.Where(us => us.id_per == int.Parse(txtID.Text)).FirstOrDefault();
+                if (per != null)
+                {
+                    data.tbl_permisions.DeleteOnSubmit(per);
+                    data.SubmitChanges();
+                    MessageBox.Show("Xóa Thàng Công");
+                    loadData();
+                }
+                else
+                {
+                    MessageBox.Show("Xóa Thất Bại");
+                }
             }
-            tbl_permision per = data.tbl_permisions.Where(us => us.id_per == int.Parse(txtID.Text)).FirstOrDefault();
-            if (per != null)
+            catch (Exception)
             {
-                data.tbl_permisions.DeleteOnSubmit(per);
-                data.SubmitChanges();
-                MessageBox.Show("Xóa Thàng Công");
-                loadData();
-            }
-            else
-            {
-                MessageBox.Show("Xóa Thất Bại");
+                MessageBox.Show("Không Thể Xóa Vì Có Tài Khoản Đang Được Truy Cập Vào Nhóm Quyền Này");
             }
         }
 

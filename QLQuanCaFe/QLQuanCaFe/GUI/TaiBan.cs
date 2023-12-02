@@ -89,7 +89,10 @@ namespace QLQuanCaFe
                             ChiTietDonHangs = data.ChiTietDonHangs.Where(ctdh => ctdh.MaDonHang == donHang.MaDonHang).ToList(),
                             ChiTietToppings = data.ChiTietToppings.Where(cttp => cttp.MaDonHang==donHang.MaDonHang).ToList()
                         };
-
+            if (query==null)
+            {
+                b.updateBan2(id);
+            }    
             foreach (var item in query)
             {
                 DonHang donHang = item.DonHang;
@@ -211,6 +214,7 @@ namespace QLQuanCaFe
             else
             {
                 cthd.InsertBillInfo(idBill, SanPhamID, count);
+                b.updateBan(table.ID);
             }
 
             ShowBill(table.ID);
@@ -294,7 +298,7 @@ namespace QLQuanCaFe
                 b.chuyenBan(id1, id2);
 
                 loadTable();
-                ShowBill(id1);
+                ShowBill(id1); 
                 ShowBill(id2);
             }
         }
