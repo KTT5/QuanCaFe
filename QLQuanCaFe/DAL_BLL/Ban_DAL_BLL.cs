@@ -124,6 +124,7 @@ namespace DAL_BLL
                 tp.MaDonHang = idSecondBill; data.SubmitChanges();
             }
             isFirstTablEmty = (from b in data.ChiTietDonHangs where b.MaDonHang == idFirstBill select b).Count();
+            isSecondTablEmty = (from b in data.ChiTietDonHangs where b.MaDonHang == idSecondBill select b).Count();
             if (isFirstTablEmty == 0)
             {
                 Ban bn = data.Bans.Where(t => t.ID == id1).FirstOrDefault();
