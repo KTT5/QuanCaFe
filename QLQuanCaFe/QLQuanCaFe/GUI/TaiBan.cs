@@ -20,12 +20,12 @@ namespace QLQuanCaFe
     {
         public static int MADH;
         QLCFDataContext data = new QLCFDataContext();
-        Ban_DAL_BLL b =new Ban_DAL_BLL();
-        TheLoaiDAL_BLL category =new TheLoaiDAL_BLL();
-        DoUongDAL_BLL sp=new DoUongDAL_BLL();
-        HoaDonDAL_BLL hd=new HoaDonDAL_BLL();
+        Ban_DAL_BLL b = new Ban_DAL_BLL();
+        TheLoaiDAL_BLL category = new TheLoaiDAL_BLL();
+        DoUongDAL_BLL sp = new DoUongDAL_BLL();
+        HoaDonDAL_BLL hd = new HoaDonDAL_BLL();
         CTHoaDon cthd = new CTHoaDon();
-        ToppingDAL_BLL tp=new ToppingDAL_BLL();
+        ToppingDAL_BLL tp = new ToppingDAL_BLL();
         CTTopping cttp = new CTTopping();
 
         public TaiBan()
@@ -33,7 +33,7 @@ namespace QLQuanCaFe
             InitializeComponent();
         }
 
-       private void TaiBan_Load(object sender, EventArgs e)
+        private void TaiBan_Load(object sender, EventArgs e)
         {
             getCBTheLoai();
             getCBSanPham();
@@ -82,17 +82,17 @@ namespace QLQuanCaFe
 
             int totalPrice = 0;
             var query = from donHang in data.DonHangs
-                        where donHang.IDTable == id &&  donHang.TongTien ==null
+                        where donHang.IDTable == id && donHang.TongTien == null
                         select new
                         {
                             DonHang = donHang,
                             ChiTietDonHangs = data.ChiTietDonHangs.Where(ctdh => ctdh.MaDonHang == donHang.MaDonHang).ToList(),
-                            ChiTietToppings = data.ChiTietToppings.Where(cttp => cttp.MaDonHang==donHang.MaDonHang).ToList()
+                            ChiTietToppings = data.ChiTietToppings.Where(cttp => cttp.MaDonHang == donHang.MaDonHang).ToList()
                         };
-            if (query==null)
+            if (query == null)
             {
                 b.updateBan2(id);
-            }    
+            }
             foreach (var item in query)
             {
                 DonHang donHang = item.DonHang;
@@ -113,14 +113,14 @@ namespace QLQuanCaFe
                     lsvBill.Controls.Add(lb);
                     totalPrice += (int)(ch.SanPham.GiaTien * ch.SoLuong);
                 }
-                foreach(var tp in cttp)
+                foreach (var tp in cttp)
                 {
                     ListViewItem lsvItem = new ListViewItem(tp.Topping.Ten.ToString());
                     lsvItem.SubItems.Add(tp.SoLuong.ToString());
                     lsvItem.SubItems.Add(tp.Topping.Gia.ToString());
                     listView1.Items.Add(lsvItem);
                     totalPrice += (int)(tp.SoLuong * tp.Topping.Gia);
-                }    
+                }
 
             }
 
@@ -139,7 +139,7 @@ namespace QLQuanCaFe
             //Thread.CurrentThread.CurrentCulture = culture;
 
             txbTotalPrice.Text = totalPrice.ToString("c", culture);
-            
+
         }
         private void Button_Click(object sender, EventArgs e)
         {
@@ -148,10 +148,10 @@ namespace QLQuanCaFe
             ShowBill(tableID);
         }
 
-         private void ban1_Click(object sender, EventArgs e)
-         {
+        private void ban1_Click(object sender, EventArgs e)
+        {
 
-         }
+        }
         private void getCBTheLoai()
         {
             cbTheLoai.DataSource = category.getTheLoai();
@@ -161,7 +161,7 @@ namespace QLQuanCaFe
 
         private void getCBSanPham()
         {
-            cbSanPham.DataSource= sp.GetSanPhams();
+            cbSanPham.DataSource = sp.GetSanPhams();
             cbSanPham.ValueMember = "MaSanPham";
             cbSanPham.DisplayMember = "TenSanPham";
         }
@@ -175,20 +175,20 @@ namespace QLQuanCaFe
 
         private void getCBBan()
         {
-            cbBan.DataSource= b.getBan();
+            cbBan.DataSource = b.getBan();
             cbBan.ValueMember = "ID";
             cbBan.DisplayMember = "Name";
         }
 
         private void cbTheLoai_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbTheLoai.SelectedItem == null && cbTheLoai.SelectedValue.ToString()=="")
+            if (cbTheLoai.SelectedItem == null && cbTheLoai.SelectedValue.ToString() == "")
                 return;
             else
             {
-                var a= from sp in data.SanPhams where sp.MaTheLoai == int.Parse(cbTheLoai.SelectedValue.ToString()) select sp;
+                var a = from sp in data.SanPhams where sp.MaTheLoai == int.Parse(cbTheLoai.SelectedValue.ToString()) select sp;
                 cbSanPham.DataSource = a; //sp.GetSanPhamByTheLoai(cbTheLoai.SelectedValue.ToString());
-            }    
+            }
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -256,14 +256,14 @@ namespace QLQuanCaFe
         private void loadTopping(int mahd)
         {
             listView1.Items.Clear();
-            var t=(from tp in data.ChiTietToppings where tp.MaDonHang==mahd select tp).ToList();
-            foreach(ChiTietTopping item in t)
+            var t = (from tp in data.ChiTietToppings where tp.MaDonHang == mahd select tp).ToList();
+            foreach (ChiTietTopping item in t)
             {
                 ListViewItem lsvItem = new ListViewItem(item.Topping.Ten.ToString());
                 lsvItem.SubItems.Add(item.SoLuong.ToString());
                 lsvItem.SubItems.Add(item.Topping.Gia.ToString());
                 listView1.Items.Add(lsvItem);
-            }    
+            }
         }
 
         private void btnCheckOut_Click(object sender, EventArgs e)
@@ -285,7 +285,7 @@ namespace QLQuanCaFe
                 }
             }
             //Form2 form = new Form2();
-           //form.Show();
+            //form.Show();
         }
 
         private void btnChuyenBan_Click(object sender, EventArgs e)
@@ -298,7 +298,7 @@ namespace QLQuanCaFe
                 b.chuyenBan(id1, id2);
 
                 loadTable();
-                ShowBill(id1); 
+                ShowBill(id1);
                 ShowBill(id2);
             }
         }

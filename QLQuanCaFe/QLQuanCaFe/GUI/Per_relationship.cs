@@ -104,9 +104,10 @@ namespace QLQuanCaFe.GUI
             tbl_per_relationship per = data.tbl_per_relationships.Where(us => us.id_rel == int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString())).FirstOrDefault();
             if (per != null)
             {
-                var dt1 = (from p in data.tbl_per_relationships where p.NhanVien.TenNhanVien == dataGridView1.CurrentRow.Cells[1].Value.ToString() && p.id_rel==per.id_rel select p).FirstOrDefault();
+                var dt1= (from p in data.tbl_per_relationships where p.NhanVien.TenNhanVien == dataGridView1.CurrentRow.Cells[1].Value.ToString() && p.id_rel==per.id_rel select p).FirstOrDefault();
+
                 per.id_user_rel = dt1.id_user_rel;
-                var dt2 = (from p in data.tbl_per_relationships where p.tbl_permision.name_per == dataGridView1.CurrentRow.Cells[2].Value.ToString() && p.id_rel == per.id_rel select p).FirstOrDefault();
+                var dt2 = (from p in data.tbl_per_relationships where p.tbl_permision.name_per== dataGridView1.CurrentRow.Cells[2].Value.ToString() && p.id_rel == per.id_rel select p).FirstOrDefault();
                 per.id_per_rel = dt2.id_per_rel;
                 if (checkBox1.Checked)
                 {

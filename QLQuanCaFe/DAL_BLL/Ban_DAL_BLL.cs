@@ -41,14 +41,14 @@ namespace DAL_BLL
             Ban per = data.Bans.Where(us => us.ID == t.ID).FirstOrDefault();
             if (per != null)
             {
-                per.Name=t.Name;
+                per.Name = t.Name;
                 data.SubmitChanges();
             }
         }
         public void updateBan(int id)
         {
-            Ban b=data.Bans.Where(x=>x.ID==id).FirstOrDefault();
-            if (b!=null)
+            Ban b = data.Bans.Where(x => x.ID == id).FirstOrDefault();
+            if (b != null)
             {
 
                 b.status = "Có Người";
@@ -67,17 +67,17 @@ namespace DAL_BLL
             }
         }
 
-        public void chuyenBan(int id1 , int id2)
+        public void chuyenBan(int id1, int id2)
         {
-            int idFirstBill=(from b in data.DonHangs where b.IDTable==id1 && b.TongTien ==null select b.MaDonHang).FirstOrDefault();
+            int idFirstBill = (from b in data.DonHangs where b.IDTable == id1 && b.TongTien == null select b.MaDonHang).FirstOrDefault();
             int idSecondBill = (from b in data.DonHangs where b.IDTable == id2 && b.TongTien == null select b.MaDonHang).FirstOrDefault();
 
             int isFirstTablEmty = 1;
             int isSecondTablEmty = 1;
 
-            if( idFirstBill==0)
+            if (idFirstBill == 0)
             {
-                DonHang t1=new DonHang();
+                DonHang t1 = new DonHang();
                 t1.NgayDatHang = DateTime.Now;
                 t1.IDTable = id1;
                 data.DonHangs.InsertOnSubmit(t1);
@@ -85,7 +85,7 @@ namespace DAL_BLL
                 idFirstBill = (from b in data.DonHangs where b.IDTable == id1 && b.TongTien == null select b.MaDonHang).Max();
             }
             isFirstTablEmty = (from b in data.ChiTietDonHangs where b.MaDonHang == idFirstBill select b).Count();
-            if (idSecondBill==0)
+            if (idSecondBill == 0)
             {
                 DonHang t1 = new DonHang();
                 t1.NgayDatHang = DateTime.Now;
@@ -96,18 +96,18 @@ namespace DAL_BLL
             }
             isSecondTablEmty = (from b in data.ChiTietDonHangs where b.MaDonHang == idSecondBill select b).Count();
 
-            var IDBillInfoTable = from bi in data.ChiTietDonHangs where bi.MaDonHang == idSecondBill select bi ;
+            var IDBillInfoTable = from bi in data.ChiTietDonHangs where bi.MaDonHang == idSecondBill select bi;
 
             List<ChiTietDonHang> tam = data.ChiTietDonHangs.Where(x => x.MaDonHang == idSecondBill).ToList();
 
             List<ChiTietDonHang> bt = data.ChiTietDonHangs.Where(x => x.MaDonHang == idFirstBill).ToList();
-            foreach(ChiTietDonHang ctdh in bt)
+            foreach (ChiTietDonHang ctdh in bt)
             {
                 ctdh.MaDonHang = idSecondBill;
                 data.SubmitChanges();
             }
             List<ChiTietTopping> cttp1 = data.ChiTietToppings.Where(tp => tp.MaDonHang == idSecondBill).ToList();
-            foreach(var tp in cttp1)
+            foreach (var tp in cttp1)
             {
                 tp.MaDonHang = idSecondBill; data.SubmitChanges();
             }
@@ -145,7 +145,7 @@ namespace DAL_BLL
             else
             {
                 updateBan(id2);
-            }    
+            }
         }
     }
 }

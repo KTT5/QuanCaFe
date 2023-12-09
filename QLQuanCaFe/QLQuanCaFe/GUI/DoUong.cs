@@ -90,6 +90,7 @@ namespace QLQuanCaFe.GUI
 
                 btn.Click += Btn_Click;
                 pbdouong.Controls.Add(btn);
+                
             });
         }
 
@@ -167,6 +168,7 @@ namespace QLQuanCaFe.GUI
                 pc.Size = new Size(30, 30);
                 string path = "D:\\hk1 nam4\\phatTrienPhanMem\\cf\\QuanCaFe\\QLQuanCaFe\\QLQuanCaFe\\Image\\icontrasg.png";
                 //string path = "C:\\Users\\PC\\Documents\\GitHub\\QuanCaFe\\QLQuanCaFe\\QLQuanCaFe\\Image\\icontrasg.png";
+                //string path = "D:\\Hoc\\cnpmnc\\doan\\doan\\QLQuanCaFe\\QLQuanCaFe\\Image\\icontrasg.png";
                 pc.Image = Image.FromFile(path);
                 pc.Location = new Point(40, 25);
                 pc.Click += Pc_Click;
@@ -384,8 +386,8 @@ namespace QLQuanCaFe.GUI
             thanhtoan = 0;
             txtKhachhang.Text = "";
             lbTongTien.Text = "";
-            Form1 form1 = new Form1();
-            form1.Show();
+            //Form1 form1 = new Form1();
+            //form1.Show();
         }
         
         private void RecommendProducts(SanPham selectedDrink)

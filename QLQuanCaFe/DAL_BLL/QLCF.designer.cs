@@ -69,7 +69,7 @@ namespace DAL_BLL
     #endregion
 		
 		public QLCFDataContext() : 
-				base(global::DAL_BLL.Properties.Settings.Default.QLCafeConnectionString4, mappingSource)
+				base(global::DAL_BLL.Properties.Settings.Default.QLCafeConnectionString3, mappingSource)
 		{
 			OnCreated();
 		}
@@ -227,7 +227,7 @@ namespace DAL_BLL
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID
 		{
 			get
@@ -365,7 +365,7 @@ namespace DAL_BLL
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTopping", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTopping", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int MaTopping
 		{
 			get
@@ -917,9 +917,9 @@ namespace DAL_BLL
 		
 		private System.Nullable<int> _MaNhanVien;
 		
-		private System.Nullable<int> _IDTable;
-		
 		private System.Nullable<decimal> _TongTien;
+		
+		private System.Nullable<int> _IDTable;
 		
 		private EntitySet<ChiTietDonHang> _ChiTietDonHangs;
 		
@@ -943,10 +943,10 @@ namespace DAL_BLL
     partial void OnNgayDatHangChanged();
     partial void OnMaNhanVienChanging(System.Nullable<int> value);
     partial void OnMaNhanVienChanged();
-    partial void OnIDTableChanging(System.Nullable<int> value);
-    partial void OnIDTableChanged();
     partial void OnTongTienChanging(System.Nullable<decimal> value);
     partial void OnTongTienChanged();
+    partial void OnIDTableChanging(System.Nullable<int> value);
+    partial void OnIDTableChanged();
     #endregion
 		
 		public DonHang()
@@ -1047,6 +1047,26 @@ namespace DAL_BLL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongTien", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> TongTien
+		{
+			get
+			{
+				return this._TongTien;
+			}
+			set
+			{
+				if ((this._TongTien != value))
+				{
+					this.OnTongTienChanging(value);
+					this.SendPropertyChanging();
+					this._TongTien = value;
+					this.SendPropertyChanged("TongTien");
+					this.OnTongTienChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDTable", DbType="Int")]
 		public System.Nullable<int> IDTable
 		{
@@ -1067,26 +1087,6 @@ namespace DAL_BLL
 					this._IDTable = value;
 					this.SendPropertyChanged("IDTable");
 					this.OnIDTableChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongTien", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> TongTien
-		{
-			get
-			{
-				return this._TongTien;
-			}
-			set
-			{
-				if ((this._TongTien != value))
-				{
-					this.OnTongTienChanging(value);
-					this.SendPropertyChanging();
-					this._TongTien = value;
-					this.SendPropertyChanged("TongTien");
-					this.OnTongTienChanged();
 				}
 			}
 		}
@@ -1300,7 +1300,7 @@ namespace DAL_BLL
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaKhachHang", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaKhachHang", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int MaKhachHang
 		{
 			get
@@ -1839,7 +1839,7 @@ namespace DAL_BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HinhAnh", DbType="Binary(50)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HinhAnh", DbType="Image", UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary HinhAnh
 		{
 			get
@@ -2500,7 +2500,7 @@ namespace DAL_BLL
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTheLoai", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTheLoai", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int MaTheLoai
 		{
 			get

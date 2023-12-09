@@ -33,10 +33,10 @@ namespace DAL_BLL
 
             return khachhangs;
         }
-        public void ThemTP(int ma, string ten, int gia)
+        public void ThemTP( string ten, int gia)
         {
             Topping tp = new Topping();
-            tp.MaTopping = ma;
+            
             tp.Ten = ten;
             tp.Gia = gia;
             qlcf.Toppings.InsertOnSubmit(tp);

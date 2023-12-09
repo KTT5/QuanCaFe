@@ -32,10 +32,10 @@ namespace DAL_BLL
 
             return khachhangs;
         }
-        public void ThemTL(int ma, string ten)
+        public void ThemTL( string ten)
         {
             TheLoai tp = new TheLoai();
-            tp.MaTheLoai = ma;
+            
             tp.TenTheLoai = ten;
             qlcf.TheLoais.InsertOnSubmit(tp);
             qlcf.SubmitChanges();
@@ -53,6 +53,18 @@ namespace DAL_BLL
         public bool KTMaTP(int ma)
         {
             var existingCustomer = qlcf.TheLoais.SingleOrDefault(kh => kh.MaTheLoai == ma);
+            if (existingCustomer != null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        public bool KTTenTL(string ten)
+        {
+            var existingCustomer = qlcf.TheLoais.SingleOrDefault(kh => kh.TenTheLoai == ten);
             if (existingCustomer != null)
             {
                 return false;

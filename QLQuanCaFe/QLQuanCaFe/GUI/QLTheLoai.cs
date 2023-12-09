@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -110,33 +111,34 @@ namespace QLQuanCaFe.GUI
         {
             if (lbCheck.Text == "Them")
             {
-                int ma = int.Parse(txtMaKH.Text);
+               // int ma = int.Parse(txtMaKH.Text);
                 string ten = txtTenKH.Text.ToString().Trim();
-                if (string.IsNullOrEmpty(ten) || string.IsNullOrEmpty(txtMaKH.Text) )
+                if (string.IsNullOrEmpty(ten))
                 {
                     MessageBox.Show("Không được để trống bất kì giá trị nào", "Thông báo", MessageBoxButtons.OK);
                 }
                 else
                 {
-                    if (tl.KTMaTP(ma) == true)
+
+                    try
                     {
-                        try
+                        if (tl.KTTenTL(ten))
                         {
-                            tl.ThemTL(ma, ten);
+                            tl.ThemTL(ten);
                             MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
                             QLTheLoai_Load(sender, e);
                             txtMaKH.Text = "";
                             txtTenKH.Text = ""; button2.Enabled = true;
                         }
-                        catch (Exception)
+                        else
                         {
-                            MessageBox.Show("Thêm thất bại", "Thông báo", MessageBoxButtons.OK);
+                            MessageBox.Show("Tên thể loại đã tồn tại", "Thông báo", MessageBoxButtons.OK);
                         }
-
                     }
-                    else
+                        
+                    catch (Exception)
                     {
-                        MessageBox.Show("Mã 'thể loại đã tồn tại. Vui lòng nhập lại!!", "Thông báo", MessageBoxButtons.OK);
+                        MessageBox.Show("Thêm thất bại", "Thông báo", MessageBoxButtons.OK);
                     }
 
                 }

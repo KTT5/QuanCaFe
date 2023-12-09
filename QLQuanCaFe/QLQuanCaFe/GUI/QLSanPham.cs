@@ -153,18 +153,24 @@ namespace QLQuanCaFe.GUI
                 {
                     try
                     {
-
-                        du.ThemSP(ten, gia, matl, b);
-                        MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
-                        QLSanPham_Load(sender, e);
-                        txtGiaBan.Text = "";
-                        txtTenSP.Text = "";
-                        txtMaSP.Text = "";
-                        cbbLoai.SelectedItem = null;
-                        //txtDiaChi.Text = "";
-                        //txtTenKH.Text = ""; 
-                        button2.Enabled = true;
-                        pictureBox1.Image = null;
+                        if (du.KTTenSP(ten) == true)
+                        {
+                            du.ThemSP(ten, gia, matl, b);
+                            MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
+                            QLSanPham_Load(sender, e);
+                            txtGiaBan.Text = "";
+                            txtTenSP.Text = "";
+                            txtMaSP.Text = "";
+                            cbbLoai.SelectedItem = null;
+                            //txtDiaChi.Text = "";
+                            //txtTenKH.Text = ""; 
+                            button2.Enabled = true;
+                            pictureBox1.Image = null;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Tên sản phẩm đã tồn tại", "Thông báo", MessageBoxButtons.OK);
+                        }
                     }
                     catch(Exception) { MessageBox.Show("Thêm thất bại", "Thông báo", MessageBoxButtons.OK); }
 

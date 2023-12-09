@@ -108,20 +108,19 @@ namespace QLQuanCaFe.GUI
         {
             if (lbCheck.Text == "Them")
             {
-                int ma = int.Parse(txtMaKH.Text);
+                
                 string ten = txtTenKH.Text.ToString().Trim();
                 int sodt = int.Parse(txtSoDT.Text);
-                if (string.IsNullOrEmpty(ten) || string.IsNullOrEmpty(txtMaKH.Text)  || string.IsNullOrEmpty(txtSoDT.Text))
+                if (string.IsNullOrEmpty(ten)  || string.IsNullOrEmpty(txtSoDT.Text))
                 {
                     MessageBox.Show("Không được để trống bất kì giá trị nào", "Thông báo", MessageBoxButtons.OK);
                 }
                 else
                 {
-                    if (tp.KTMaTP(ma) == true)
-                    {
+                    
                         try
                         {
-                            tp.ThemTP(ma, ten, sodt);
+                            tp.ThemTP( ten, sodt);
                             MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
                             QLTopping_Load(sender, e);
                             txtMaKH.Text = "";
@@ -132,14 +131,11 @@ namespace QLQuanCaFe.GUI
 
 
                     }
-                    else
-                    {
-                        MessageBox.Show("Mã topping đã tồn tại. Vui lòng nhập lại!!", "Thông báo", MessageBoxButtons.OK);
-                    }
+                    
 
                 }
 
-            }
+            
             if (lbCheck.Text == "Sua")
             {
                 int ma = int.Parse(txtMaKH.Text);

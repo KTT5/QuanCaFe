@@ -35,10 +35,10 @@ namespace DAL_BLL
 
             return khachhangs;
         }
-        public void ThemKH(int ma, string ten, string sodt, string diachi)
+        public void ThemKH( string ten, string sodt, string diachi)
         {
             KhachHang kh = new KhachHang();
-            kh.MaKhachHang = ma;
+            
             kh.TenKhachHang = ten;
             kh.SoDienThoai = sodt;
             kh.DiaChi = diachi;

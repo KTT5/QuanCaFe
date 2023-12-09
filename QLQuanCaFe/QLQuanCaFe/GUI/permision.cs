@@ -89,7 +89,7 @@ namespace QLQuanCaFe.GUI
             }
             catch (Exception)
             {
-                MessageBox.Show("Không Thể Xóa Vì Có Tài Khoản Đang Được Truy Cập Vào Nhóm Quyền Này");
+                MessageBox.Show("Không thể xoá vì tài khoản đang được truy cập vào nhóm quyền này");
             }
         }
 

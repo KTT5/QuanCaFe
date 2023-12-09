@@ -121,23 +121,22 @@ namespace QLQuanCaFe
         {
             if (lbCheck.Text == "Them")
             {
-                int ma = int.Parse(txtMaKH.Text);
+                //int ma = int.Parse(txtMaKH.Text);
                 string ten = txtTenKH.Text.ToString().Trim();
                 string sodt = txtSoDT.Text.ToString().Trim();
                 string diachi = txtDiaChi.Text.ToString().Trim();
-                if (string.IsNullOrEmpty(ten) || string.IsNullOrEmpty(txtMaKH.Text) || string.IsNullOrEmpty(diachi) || string.IsNullOrEmpty(sodt))
+                if (string.IsNullOrEmpty(ten) || string.IsNullOrEmpty(diachi) || string.IsNullOrEmpty(sodt))
                 {
                     MessageBox.Show("Không được để trống bất kì giá trị nào", "Thông báo", MessageBoxButtons.OK);
                 }
                 else
                 {
-                    if (kh.KTMaKH(ma) == true)
-                    {
+                   
                         if (kh.KTSDT(sodt) == true)
                         {
                             try
                             {
-                                kh.ThemKH(ma, ten, sodt, diachi);
+                                kh.ThemKH( ten, sodt, diachi);
                                 MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
                                 KhachHang_Load(sender, e);
                                 txtMaKH.Text = "";
@@ -156,11 +155,7 @@ namespace QLQuanCaFe
                             MessageBox.Show("Số điện thoại đã tồn tại. Vui lòng nhập lại!!", "Thông báo", MessageBoxButtons.OK);
                         }
                         
-                    }
-                    else
-                    {
-                        MessageBox.Show("Mã khách hàng đã tồn tại. Vui lòng nhập lại!!", "Thông báo", MessageBoxButtons.OK);
-                    }
+                    
 
                 }
 

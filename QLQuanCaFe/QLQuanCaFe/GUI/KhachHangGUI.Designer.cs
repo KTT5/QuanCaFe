@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.dgvKhachhang = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -53,28 +52,18 @@
             // dgvKhachhang
             // 
             this.dgvKhachhang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvKhachhang.Location = new System.Drawing.Point(12, 54);
+            this.dgvKhachhang.Location = new System.Drawing.Point(12, 240);
             this.dgvKhachhang.Name = "dgvKhachhang";
-            this.dgvKhachhang.Size = new System.Drawing.Size(267, 384);
+            this.dgvKhachhang.Size = new System.Drawing.Size(776, 198);
             this.dgvKhachhang.TabIndex = 0;
             this.dgvKhachhang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKhachhang_CellContentClick);
             this.dgvKhachhang.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKhachhang_CellContentDoubleClick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(350, 76);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Mã KH:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(345, 120);
+            this.label2.Location = new System.Drawing.Point(83, 51);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 16);
             this.label2.TabIndex = 2;
@@ -84,7 +73,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(350, 214);
+            this.label3.Location = new System.Drawing.Point(88, 91);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 16);
             this.label3.TabIndex = 3;
@@ -94,7 +83,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(312, 166);
+            this.label4.Location = new System.Drawing.Point(324, 54);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(88, 16);
             this.label4.TabIndex = 4;
@@ -103,7 +92,7 @@
             // txtDiaChi
             // 
             this.txtDiaChi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDiaChi.Location = new System.Drawing.Point(403, 211);
+            this.txtDiaChi.Location = new System.Drawing.Point(141, 88);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(365, 22);
             this.txtDiaChi.TabIndex = 5;
@@ -111,15 +100,16 @@
             // txtMaKH
             // 
             this.txtMaKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaKH.Location = new System.Drawing.Point(403, 73);
+            this.txtMaKH.Location = new System.Drawing.Point(12, 48);
             this.txtMaKH.Name = "txtMaKH";
-            this.txtMaKH.Size = new System.Drawing.Size(170, 22);
+            this.txtMaKH.Size = new System.Drawing.Size(47, 22);
             this.txtMaKH.TabIndex = 6;
+            this.txtMaKH.Visible = false;
             // 
             // txtTenKH
             // 
             this.txtTenKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenKH.Location = new System.Drawing.Point(403, 117);
+            this.txtTenKH.Location = new System.Drawing.Point(141, 48);
             this.txtTenKH.Name = "txtTenKH";
             this.txtTenKH.Size = new System.Drawing.Size(170, 22);
             this.txtTenKH.TabIndex = 7;
@@ -127,7 +117,7 @@
             // txtSoDT
             // 
             this.txtSoDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSoDT.Location = new System.Drawing.Point(403, 163);
+            this.txtSoDT.Location = new System.Drawing.Point(415, 51);
             this.txtSoDT.Name = "txtSoDT";
             this.txtSoDT.Size = new System.Drawing.Size(170, 22);
             this.txtSoDT.TabIndex = 9;
@@ -136,7 +126,7 @@
             // lbCheck
             // 
             this.lbCheck.AutoSize = true;
-            this.lbCheck.Location = new System.Drawing.Point(662, 113);
+            this.lbCheck.Location = new System.Drawing.Point(671, 174);
             this.lbCheck.Name = "lbCheck";
             this.lbCheck.Size = new System.Drawing.Size(35, 13);
             this.lbCheck.TabIndex = 24;
@@ -146,7 +136,7 @@
             // btnLuu
             // 
             this.btnLuu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLuu.Location = new System.Drawing.Point(443, 295);
+            this.btnLuu.Location = new System.Drawing.Point(369, 164);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(75, 23);
             this.btnLuu.TabIndex = 23;
@@ -157,7 +147,7 @@
             // btnXoa
             // 
             this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoa.Location = new System.Drawing.Point(570, 295);
+            this.btnXoa.Location = new System.Drawing.Point(496, 164);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 22;
@@ -168,7 +158,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(318, 295);
+            this.button2.Location = new System.Drawing.Point(244, 164);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 21;
@@ -179,18 +169,18 @@
             // btnThem
             // 
             this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThem.Location = new System.Drawing.Point(199, 12);
+            this.btnThem.Location = new System.Drawing.Point(127, 164);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 20;
-            this.btnThem.Text = "Thêm KH";
+            this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // txtTimkiem
             // 
             this.txtTimkiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimkiem.Location = new System.Drawing.Point(12, 12);
+            this.txtTimkiem.Location = new System.Drawing.Point(12, 212);
             this.txtTimkiem.Name = "txtTimkiem";
             this.txtTimkiem.Size = new System.Drawing.Size(181, 22);
             this.txtTimkiem.TabIndex = 19;
@@ -202,7 +192,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(420, 14);
+            this.label5.Location = new System.Drawing.Point(304, 9);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(182, 20);
             this.label5.TabIndex = 18;
@@ -212,7 +202,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(320, 260);
+            this.label6.Location = new System.Drawing.Point(52, 129);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(86, 16);
             this.label6.TabIndex = 25;
@@ -222,7 +212,7 @@
             // 
             this.lb_Tong.AutoSize = true;
             this.lb_Tong.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Tong.Location = new System.Drawing.Point(406, 260);
+            this.lb_Tong.Location = new System.Drawing.Point(138, 129);
             this.lb_Tong.Name = "lb_Tong";
             this.lb_Tong.Size = new System.Drawing.Size(0, 16);
             this.lb_Tong.TabIndex = 26;
@@ -231,7 +221,7 @@
             // 
             this.lb_chi.AutoSize = true;
             this.lb_chi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_chi.Location = new System.Drawing.Point(412, 260);
+            this.lb_chi.Location = new System.Drawing.Point(144, 129);
             this.lb_chi.Name = "lb_chi";
             this.lb_chi.Size = new System.Drawing.Size(0, 16);
             this.lb_chi.TabIndex = 27;
@@ -258,7 +248,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvKhachhang);
             this.Name = "KhachHangGUI";
             this.Text = "KhachHang";
@@ -272,7 +261,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvKhachhang;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;

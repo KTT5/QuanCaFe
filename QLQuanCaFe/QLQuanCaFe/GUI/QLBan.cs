@@ -38,17 +38,18 @@ namespace QLQuanCaFe.GUI
             }
             try
             {
-                Ban t1=data.Bans.Where(x=>x.Name==txtName.Text).FirstOrDefault();
+                Ban t1=data.Bans.Where(x=>x.Name==txtName.Text.Trim()).FirstOrDefault();
                 if(t1!=null)
                 {
                     MessageBox.Show($"Đã Tồn Tại Bàn Có Tên :{txtName.Text}");
                     return;
                 }    
                 Ban ban = new Ban();
-                ban.ID = int.Parse(txtID.Text);
+                
                 ban.Name = txtName.Text;
                 bn.themBan(ban);
                 MessageBox.Show("Thêm Thành Công");
+                txtName.Text = "";
                 loadData();
             }
             catch (Exception)
@@ -73,6 +74,7 @@ namespace QLQuanCaFe.GUI
                 hd.SuaHDtheoBan(ban.ID);
                 bn.xoaBan(ban);
                 MessageBox.Show("Xóa Thành Công");
+                txtName.Text = "";
                 loadData();
             }
             catch (Exception)
@@ -95,6 +97,7 @@ namespace QLQuanCaFe.GUI
                 ban.Name = txtName.Text;
                 ban.ID = int.Parse(txtID.Text);
                 bn.suaBan(ban);
+                txtName.Text = "";
                 MessageBox.Show("Sửa Thành Công");
                 loadData();
             }

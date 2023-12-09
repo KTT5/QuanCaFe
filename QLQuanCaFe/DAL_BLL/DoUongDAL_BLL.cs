@@ -130,6 +130,18 @@ namespace DAL_BLL
                 return true;
             }
         }
+        public bool KTTenSP(string ten)
+        {
+            var existingCustomer = qlcf.SanPhams.SingleOrDefault(kh => kh.TenSanPham == ten);
+            if (existingCustomer != null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         public List<TopProductDTO> Top5SanPham()
         {
             var top5Products = (

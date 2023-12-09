@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLCafe" Class="QLCFDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-HBPU190\SV;Initial Catalog=QLCafe;Integrated Security=True" SettingsObjectName="DAL_BLL.Properties.Settings" SettingsPropertyName="QLCafeConnectionString4" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=HP090123\SQLEXPRESS;Initial Catalog=QLCafe;Integrated Security=True" SettingsObjectName="DAL_BLL.Properties.Settings" SettingsPropertyName="QLCafeConnectionString3" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Ban" Member="Bans">
     <Type Name="Ban">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Column Name="status" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Association Name="Ban_DonHang" Member="DonHangs" ThisKey="ID" OtherKey="IDTable" Type="DonHang" />
@@ -10,7 +10,7 @@
   </Table>
   <Table Name="dbo.Topping" Member="Toppings">
     <Type Name="Topping">
-      <Column Name="MaTopping" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaTopping" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Ten" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="Gia" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Topping_ChiTietTopping" Member="ChiTietToppings" ThisKey="MaTopping" OtherKey="MaTopping" Type="ChiTietTopping" />
@@ -42,8 +42,8 @@
       <Column Name="MaKhachHang" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NgayDatHang" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="MaNhanVien" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="IDTable" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TongTien" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="IDTable" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="DonHang_ChiTietDonHang" Member="ChiTietDonHangs" ThisKey="MaDonHang" OtherKey="MaDonHang" Type="ChiTietDonHang" />
       <Association Name="DonHang_ChiTietTopping" Member="ChiTietToppings" ThisKey="MaDonHang" OtherKey="MaDonHang" Type="ChiTietTopping" />
       <Association Name="Ban_DonHang" Member="Ban" ThisKey="IDTable" OtherKey="ID" Type="Ban" IsForeignKey="true" />
@@ -53,7 +53,7 @@
   </Table>
   <Table Name="dbo.KhachHang" Member="KhachHangs">
     <Type Name="KhachHang">
-      <Column Name="MaKhachHang" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaKhachHang" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="TenKhachHang" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="DiaChi" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="SoDienThoai" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
@@ -80,7 +80,7 @@
       <Column Name="TenSanPham" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="GiaTien" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
       <Column Name="MaTheLoai" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="HinhAnh" Type="System.Data.Linq.Binary" DbType="Binary(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="HinhAnh" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
       <Association Name="SanPham_ChiTietDonHang" Member="ChiTietDonHangs" ThisKey="MaSanPham" OtherKey="MaSanPham" Type="ChiTietDonHang" />
       <Association Name="TheLoai_SanPham" Member="TheLoai" ThisKey="MaTheLoai" OtherKey="MaTheLoai" Type="TheLoai" IsForeignKey="true" />
     </Type>
@@ -114,7 +114,7 @@
   </Table>
   <Table Name="dbo.TheLoai" Member="TheLoais">
     <Type Name="TheLoai">
-      <Column Name="MaTheLoai" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaTheLoai" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="TenTheLoai" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Association Name="TheLoai_SanPham" Member="SanPhams" ThisKey="MaTheLoai" OtherKey="MaTheLoai" Type="SanPham" />
     </Type>

@@ -1,6 +1,5 @@
 ﻿
 using QLQuanCaFe.GUI;
-using QLQuanCaFe.Report;
 using System;
 using System.Collections.Generic;
 using System.Linq;
